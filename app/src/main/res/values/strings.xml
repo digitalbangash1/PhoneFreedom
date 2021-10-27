@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">PhoneFreedom</string>
+    <string name="telefon_fri">Jeg holder fri fra telefonen</string>
+    <string name="fra">Fra</string>
+    <string name="til">Til</string>
+    <string name="start"> </string>
+    <string name="end"> </string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_time">Tilføj tid</string>
+    <string name="auto_reply">Auto svar tekst</string>
+</resources>
