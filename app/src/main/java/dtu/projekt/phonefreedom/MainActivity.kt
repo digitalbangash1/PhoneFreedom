@@ -3,6 +3,8 @@ package dtu.projekt.phonefreedom
 import android.app.TimePickerDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import dtu.projekt.phonefreedom.databinding.ActivityMainBinding
 import java.text.SimpleDateFormat
 import java.util.*
@@ -15,11 +17,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
+        val navController = findNavController(R.id.settings)
         setContentView(view)
         addTime()
     }
 
-    fun addTime() {
+    private fun addTime() {
         binding.addTime.setOnClickListener{
             val cal = Calendar.getInstance()
             val timeListen = TimePickerDialog.OnTimeSetListener{timePicker, hour, minute ->
@@ -39,5 +42,10 @@ class MainActivity : AppCompatActivity() {
 
         }
     }
+
+    fun goToSetting() {
+
+    }
+
 
 }
