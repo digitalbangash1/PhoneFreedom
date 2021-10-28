@@ -8,7 +8,7 @@ import androidx.navigation.findNavController
 import dtu.projekt.phonefreedom.databinding.ActivityMainBinding
 import java.text.SimpleDateFormat
 import java.util.*
-
+//dsasrafsd
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
