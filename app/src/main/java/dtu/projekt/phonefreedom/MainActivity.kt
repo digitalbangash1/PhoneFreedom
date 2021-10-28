@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         addTime()
     }
 
-// Hello
+// HelloAlijan
     private fun addTime() {
         binding.addTime.setOnClickListener{
             val cal = Calendar.getInstance()
