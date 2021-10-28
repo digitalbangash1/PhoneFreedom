@@ -17,11 +17,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
-        val navController = findNavController(R.id.settings)
+     //   val navController = findNavController(R.id.settings)
         setContentView(view)
         addTime()
     }
 
+// Hello
     private fun addTime() {
         binding.addTime.setOnClickListener{
             val cal = Calendar.getInstance()

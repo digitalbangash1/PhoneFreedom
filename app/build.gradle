@@ -55,7 +55,7 @@ dependencies {
     androidTestImplementation("androidx.navigation:navigation-testing:2.3.5")
 
     // Jetpack Compose Integration
-    implementation("androidx.navigation:navigation-compose:")
+   // implementation("androidx.navigation:navigation-compose:")
 
 
     implementation 'androidx.core:core-ktx:1.6.0'
