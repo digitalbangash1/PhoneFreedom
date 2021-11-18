@@ -14,6 +14,10 @@ import android.R
 import android.view.View
 
 import android.widget.ImageButton
+import android.content.Intent
+
+
+
 
 
 
@@ -34,7 +38,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun addClickListeners(){
         binding.buttonSelectPredefinedMessage.setOnClickListener {
-
+            val myIntent = Intent(this, PredefinedMessagesActivity::class.java)
+            this.startActivity(myIntent)
         }
     }
 
