@@ -3,16 +3,22 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/digit/StudioProjects/PhoneFreedom/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.14010416666666667" />
+        <entry key="..\:/Users/digit/StudioProjects/PhoneFreedom/app/src/main/res/drawable/borders.xml" value="0.18541666666666667" />
+        <entry key="..\:/Users/digit/StudioProjects/PhoneFreedom/app/src/main/res/drawable/ic_launcher_background.xml" value="0.14010416666666667" />
+        <entry key="..\:/Users/digit/StudioProjects/PhoneFreedom/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/digit/StudioProjects/PhoneFreedom/app/src/main/res/layout/activity_predefined_messages.xml" value="0.14175724637681159" />
+        <entry key="..\:/Users/digit/StudioProjects/PhoneFreedom/app/src/main/res/layout/content_predefined_messages.xml" value="0.14175724637681159" />
+        <entry key="..\:/Users/digit/StudioProjects/PhoneFreedom/app/src/main/res/layout/fragment_menu.xml" value="0.13802083333333334" />
         <entry key="..\:/Users/eldre/AndroidStudioProjects/PhoneFreedom2/app/src/main/res/drawable/borders.xml" value="0.2703125" />
         <entry key="..\:/Users/eldre/AndroidStudioProjects/PhoneFreedom2/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2703125" />
-        <entry key="..\:/Users/eldre/AndroidStudioProjects/PhoneFreedom2/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/eldre/AndroidStudioProjects/PhoneFreedom2/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Users/eldre/AndroidStudioProjects/PhoneFreedom2/app/src/main/res/layout/fragment_menu.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/eldre/AndroidStudioProjects/PhoneFreedom2/app/src/main/res/layout/fragment_time.xml" value="0.1598731884057971" />
-        <entry key="..\:/Users/salim/AndroidStudioProjects/PhoneFreedomD/app/src/main/res/layout/activity_main.xml" value="0.2" />
-        <entry key="..\:/Users/salim/AndroidStudioProjects/PhoneFreedomD/app/src/main/res/layout/fragment_menu.xml" value="0.2826086956521739" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

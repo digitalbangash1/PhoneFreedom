@@ -8,6 +8,15 @@ import androidx.navigation.findNavController
 import dtu.projekt.phonefreedom.databinding.ActivityMainBinding
 import java.text.SimpleDateFormat
 import java.util.*
+import android.widget.Toast
+
+import android.R
+import android.view.View
+
+import android.widget.ImageButton
+
+
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,6 +29,13 @@ class MainActivity : AppCompatActivity() {
      //   val navController = findNavController(R.id.settings)
         setContentView(view)
         addTime()
+        addClickListeners()
+    }
+
+    private fun addClickListeners(){
+        binding.buttonSelectPredefinedMessage.setOnClickListener {
+
+        }
     }
 
 // HelloAlijan
@@ -30,14 +46,14 @@ class MainActivity : AppCompatActivity() {
                 cal.set(Calendar.HOUR_OF_DAY, hour)
                 cal.set(Calendar.MINUTE, minute)
 
-                binding.end.text = SimpleDateFormat("HH:mm").format(cal.time)
+                binding.editTextFreeFrom.setText(SimpleDateFormat("HH:mm").format(cal.time))
             }
             TimePickerDialog(this, timeListen, cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), true).show()
             val secondTime = TimePickerDialog.OnTimeSetListener{timePicker, hour, minute ->
                 cal.set(Calendar.HOUR_OF_DAY, hour)
                 cal.set(Calendar.MINUTE, minute)
 
-                binding.start.text = SimpleDateFormat("HH:mm").format(cal.time)
+                binding.editTextFreeFrom.setText(SimpleDateFormat("HH:mm").format(cal.time))
             }
             TimePickerDialog(this, secondTime, cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), true).show()
 
