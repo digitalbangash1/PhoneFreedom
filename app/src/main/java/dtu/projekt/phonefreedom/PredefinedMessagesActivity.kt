@@ -50,7 +50,7 @@ class PredefinedMessagesAdapter (
         return view
     }
 
-
+//prøver noget
 }
 
 }
