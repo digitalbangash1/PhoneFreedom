@@ -1,6 +1,8 @@
 package dtu.projekt.phonefreedom
 
+import android.R.attr
 import android.app.Activity
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,6 +10,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import dtu.projekt.phonefreedom.databinding.ActivityPredefinedMessagesBinding
+import android.R.attr.data
+
+
+
 
 class PredefinedMessagesActivity : AppCompatActivity() {
 
@@ -21,7 +27,11 @@ class PredefinedMessagesActivity : AppCompatActivity() {
         listViewPredefinedMessage.isClickable = true
         listViewPredefinedMessage.adapter = adapter
         listViewPredefinedMessage.setOnItemClickListener { parent, view, position, id ->
-            Toast.makeText(this, messages[position], Toast.LENGTH_SHORT).show()
+            //Toast.makeText(this, messages[position], Toast.LENGTH_SHORT).show()
+            val myIntent = Intent(this, MainActivity::class.java)
+            myIntent.putExtra("Extra_SelectedPredefinedMessage", messages[position])
+            setResult(Activity.RESULT_OK, myIntent);
+            finish();
         }
     }
 
