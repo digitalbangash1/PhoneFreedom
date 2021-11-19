@@ -9,10 +9,9 @@
 <ListView
     android:id="@+id/listViewPredefinedMessage"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:listitem="@layout/activity_predefined_messages_list_item">
+    android:layout_height="fill_parent"
+    />
 
-</ListView>
 
 
 </LinearLayout>

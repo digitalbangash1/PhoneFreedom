@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">PhoneFreedom</string>
-    <string name="telefon_fri">Jeg holder fri fra telefonen</string>
+    <string name="autosvar">Auto-svar tekst</string>
+    <string name="holderfrifratlf">Jeg holder fri fra telefon</string>
+    <string name="write_msg">Skriv beskeden her</string>
     <string name="fra">Fra</string>
     <string name="til">Til</string>
     <string name="start"> </string>
