@@ -21,15 +21,16 @@ class PredefinedMessagesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_predefined_messages)
 
-        var messages = arrayOf<String>("One", "Two", "Three","One", "Two", "Three","One", "Two", "Three")
+        var messages = arrayOf<String>("Fordi jeg spiser", "jeg gider ikke","One", "Two", "Three","One", "Two", "Three")
         var adapter = PredefinedMessagesAdapter(this, messages)
         var listViewPredefinedMessage = findViewById<ListView>(R.id.listViewPredefinedMessage)
         listViewPredefinedMessage.isClickable = true
         listViewPredefinedMessage.adapter = adapter
         listViewPredefinedMessage.setOnItemClickListener { parent, view, position, id ->
             //Toast.makeText(this, messages[position], Toast.LENGTH_SHORT).show()
+            var message = "Jeg holder mobilfri ... " + messages[position]
             val myIntent = Intent(this, MainActivity::class.java)
-            myIntent.putExtra("Extra_SelectedPredefinedMessage", messages[position])
+            myIntent.putExtra("Extra_SelectedPredefinedMessage", message)
             setResult(Activity.RESULT_OK, myIntent);
             finish();
         }

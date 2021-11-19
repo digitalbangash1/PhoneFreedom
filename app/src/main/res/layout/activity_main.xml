@@ -82,6 +82,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/history" />
         </LinearLayout>
+
     </LinearLayout>
 
     <LinearLayout android:orientation="vertical" android:layout_margin="12dip"
