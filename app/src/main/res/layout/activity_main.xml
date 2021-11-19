@@ -133,5 +133,11 @@
 
     </LinearLayout>
 
+    <ImageButton
+        android:id="@+id/whatsappButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button" />
+
 
 </LinearLayout>

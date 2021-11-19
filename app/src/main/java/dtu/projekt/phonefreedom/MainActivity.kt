@@ -34,6 +34,13 @@ class MainActivity : AppCompatActivity() {
         setContentView(view)
         addTime()
         addClickListeners()
+        whatsappButton()
+    }
+
+     private fun whatsappButton() {
+        binding.whatsappButton.setOnClickListener {
+            binding.whatsappButton.isSelected = !binding.whatsappButton.isSelected
+        }
     }
 
     private fun addClickListeners(){
