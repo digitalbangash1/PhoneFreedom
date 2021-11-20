@@ -13,35 +13,48 @@
         android:layout_height="wrap_content">
     <LinearLayout android:orientation="horizontal"
         android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <ImageView
-            android:id="@+id/imageViewMessnger"
-            android:layout_marginLeft="5dip"
+
+        <ImageButton
+            android:id="@+id/messengerButton"
             style="@style/availableAppsItem"
-            app:srcCompat="@drawable/messenger_on" />
-        <ImageView
-            android:id="@+id/imageViewSnapchat"
+            android:layout_marginHorizontal="3dp"
+            android:background="@drawable/messenger" />
+        <ImageButton
+            android:id="@+id/SnapchatButton"
             style="@style/availableAppsItem"
-            app:srcCompat="@drawable/snapchat_on" />
-        <ImageView
-            android:id="@+id/imageViewWhatsApp"
+            android:layout_marginHorizontal="3dp"
+            android:background="@drawable/snapchat" />
+        <ImageButton
+            android:id="@+id/CallButton"
             style="@style/availableAppsItem"
-            app:srcCompat="@drawable/whatsapp_on" />
-        <ImageView
-            android:id="@+id/imageViewCall"
+            android:layout_marginHorizontal="3dp"
+            android:background="@drawable/call" />
+        <ImageButton
+            android:id="@+id/TelegramButton"
             style="@style/availableAppsItem"
-            app:srcCompat="@drawable/call_on" />
-        <ImageView
-            android:id="@+id/imageViewTelegram"
+            android:layout_marginHorizontal="3dp"
+            android:background="@drawable/telegram" />
+
+        <ImageButton
+            android:id="@+id/whatsappButton"
             style="@style/availableAppsItem"
-            app:srcCompat="@drawable/telegram_on" />
-        <ImageView
-            android:id="@+id/imageViewEmail"
+            android:layout_marginHorizontal="3dp"
+            android:background="@drawable/whatsapp"/>
+        <ImageButton
+            android:id="@+id/EmailButton"
             style="@style/availableAppsItem"
-            app:srcCompat="@drawable/email_on" />
-        <ImageView
-            android:id="@+id/imageViewInstagram"
+            android:layout_marginHorizontal="3dp"
+            android:background="@drawable/email" />
+        <ImageButton
+            android:id="@+id/InstagramButton"
             style="@style/availableAppsItem"
-            app:srcCompat="@drawable/instagram_on" />
+            android:layout_marginHorizontal="3dp"
+            android:background="@drawable/instagram" />
+        <ImageButton
+            android:id="@+id/MessageButton"
+            style="@style/availableAppsItem"
+            android:layout_marginHorizontal="3dp"
+            android:background="@drawable/message" />
     </LinearLayout>
     </HorizontalScrollView>
 
@@ -133,11 +146,7 @@
 
     </LinearLayout>
 
-    <ImageButton
-        android:id="@+id/whatsappButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button" />
+
 
 
 </LinearLayout>
