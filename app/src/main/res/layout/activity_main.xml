@@ -156,7 +156,20 @@
 
     </LinearLayout>
 
+    <Switch
+        android:id="@+id/SwitchOnOff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:showText="true"
+        android:textOff="OFF"
+        android:textOn="ON"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:thumb="@drawable/sw_thumb"
+        tools:ignore="UseSwitchCompatOrMaterialXml">
 
+    </Switch>
 
 
 </LinearLayout>
