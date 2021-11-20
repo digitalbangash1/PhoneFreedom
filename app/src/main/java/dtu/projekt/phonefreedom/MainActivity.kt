@@ -24,7 +24,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(view)
         addTime()
         addClickListeners()
+        appButton()
     }
+
+
 
     private fun addClickListeners(){
         binding.buttonSelectPredefinedMessage.setOnClickListener {
@@ -71,6 +74,34 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun goToSetting() {
+
+    }
+    private fun appButton() {
+        binding.whatsappButton.setOnClickListener {
+            binding.whatsappButton.isSelected = !binding.whatsappButton.isSelected
+        }
+        binding.CallButton.setOnClickListener {
+            binding.CallButton.isSelected = !binding.CallButton.isSelected
+        }
+        binding.SnapchatButton.setOnClickListener {
+            binding.SnapchatButton.isSelected = !binding.SnapchatButton.isSelected
+        }
+        binding.EmailButton.setOnClickListener {
+            binding.EmailButton.isSelected = !binding.EmailButton.isSelected
+        }
+        binding.messengerButton.setOnClickListener {
+            binding.messengerButton.isSelected = !binding.messengerButton.isSelected
+        }
+        binding.TelegramButton.setOnClickListener {
+            binding.TelegramButton.isSelected = !binding.TelegramButton.isSelected
+        }
+        binding.InstagramButton.setOnClickListener {
+            binding.InstagramButton.isSelected = !binding.InstagramButton.isSelected
+        }
+        binding.MessageButton.setOnClickListener {
+            binding.MessageButton.isSelected = !binding.MessageButton.isSelected
+        }
+
 
     }
 
