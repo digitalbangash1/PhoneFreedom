@@ -9,7 +9,7 @@ import java.util.*
 
 import android.content.Intent
 import android.widget.EditText
-import android.widget.TextView
+import androidx.navigation.findNavController
 
 
 class MainActivity : AppCompatActivity() {
@@ -25,6 +25,9 @@ class MainActivity : AppCompatActivity() {
         addTime()
         addClickListeners()
         appButton()
+        binding.toSettings.setOnClickListener(
+            val fragment =
+        )
     }
 
 
@@ -59,7 +62,7 @@ class MainActivity : AppCompatActivity() {
                 cal.set(Calendar.HOUR_OF_DAY, hour)
                 cal.set(Calendar.MINUTE, minute)
 
-                binding.editTextFreeFrom.setText(SimpleDateFormat("HH:mm").format(cal.time))
+                binding.editTextFreeTo.setText(SimpleDateFormat("HH:mm").format(cal.time))
             }
             TimePickerDialog(this, timeListen, cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), true).show()
             val secondTime = TimePickerDialog.OnTimeSetListener{timePicker, hour, minute ->
@@ -73,9 +76,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun goToSetting() {
-
-    }
     private fun appButton() {
         binding.whatsappButton.setOnClickListener {
             binding.whatsappButton.isSelected = !binding.whatsappButton.isSelected
@@ -103,6 +103,12 @@ class MainActivity : AppCompatActivity() {
         }
 
 
+    }
+
+    fun showMenu(fragment: MenuFragment) {
+        val fram = supportFragmentManager.beginTransaction()
+        fram.replace(R.id.fragment_menu, fragment)
+        fram.commit()
     }
 
 
