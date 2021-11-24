@@ -25,9 +25,7 @@ class MainActivity : AppCompatActivity() {
         addTime()
         addClickListeners()
         appButton()
-        binding.toSettings.setOnClickListener(
-            val fragment =
-        )
+        showMenu()
     }
 
 
@@ -105,10 +103,11 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun showMenu(fragment: MenuFragment) {
-        val fram = supportFragmentManager.beginTransaction()
-        fram.replace(R.id.fragment_menu, fragment)
-        fram.commit()
+    private fun showMenu() {
+        binding.toSettings.setOnClickListener{
+            val intent = Intent(this, LanguageActivity::class.java)
+            this.startActivity(intent)
+        }
     }
 
 

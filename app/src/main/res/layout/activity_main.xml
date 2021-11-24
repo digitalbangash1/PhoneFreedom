@@ -9,6 +9,7 @@
     tools:context=".MainActivity"
     tools:viewBindingIgnore="false">
 
+
     <HorizontalScrollView android:layout_width="fill_parent"
         android:layout_height="wrap_content">
     <LinearLayout android:orientation="horizontal"
@@ -180,7 +181,7 @@
     <FrameLayout
         android:id="@+id/fragment_menu"
         android:layout_width="213dp"
-        android:layout_height="0dp"
+        android:layout_height="18dp"
         android:layout_weight="0.1" />
 
 

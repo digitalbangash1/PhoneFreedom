@@ -10,16 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PhoneFreedom">
         <activity
-            android:name=".MainActivity2"
+            android:name=".LanguageActivity"
             android:exported="false" />
         <activity
             android:name=".PredefinedMessagesActivity"
             android:exported="false" />
-        <activity
-            android:name=".model.PredefinedMessagesActivity"
-            android:exported="false"
-            android:label="@string/title_activity_predefined_messages"
-            android:theme="@style/Theme.PhoneFreedom.NoActionBar" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
