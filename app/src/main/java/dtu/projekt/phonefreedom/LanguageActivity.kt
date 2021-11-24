@@ -70,10 +70,10 @@ class LanguageActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        val intent = Intent(Intent.ACTION_MAIN)
-        intent.addCategory(Intent.CATEGORY_HOME)
-        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
-        startActivity(intent)
+        val myIntent = Intent(this, MainActivity::class.java)
+        myIntent.addCategory(Intent.CATEGORY_HOME)
+        myIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+        startActivity(myIntent)
         finish()
         exitProcess(0)
     }
