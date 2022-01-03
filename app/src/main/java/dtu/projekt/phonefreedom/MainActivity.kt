@@ -11,7 +11,7 @@ import java.util.*
 //dsasrafsd
 class MainActivity : AppCompatActivity() {
 
-    //TODO Forbind API Til Messenger          (Ali J)
+    //TODO Forbind API Til Messenger          (Ali J))
     //TODO Forbind API Til Telegram           /*ALi Dadayev*/
     //TODO Forbind API Til Snapchat
     //TODO Forbind API Til Whatsapp          /*salim*/
