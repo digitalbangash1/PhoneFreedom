@@ -12,7 +12,7 @@ import java.util.*
 class MainActivity : AppCompatActivity() {
 
     //TODO Forbind API Til Messenger
-    //TODO Forbind API Til Telegram
+    //TODO Forbind API Til Telegram             /*ALi*/
     //TODO Forbind API Til Snapchat
     //TODO Forbind API Til Whatsapp          /*salim*/
     //TODO Forbind API Til Instagram
