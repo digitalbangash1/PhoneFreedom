@@ -99,7 +99,7 @@ class MainActivity : AppCompatActivity() {
         binding.MessageButton.setOnClickListener {
             binding.MessageButton.isSelected = !binding.MessageButton.isSelected
         }
-
+//
 
     }
 
