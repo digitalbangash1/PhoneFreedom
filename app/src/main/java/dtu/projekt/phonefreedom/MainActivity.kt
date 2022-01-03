@@ -11,6 +11,17 @@ import java.util.*
 //dsasrafsd
 class MainActivity : AppCompatActivity() {
 
+    //TODO Forbind API Til Messenger
+    //TODO Forbind API Til Telegram
+    //TODO Forbind API Til Snapchat
+    //TODO Forbind API Til Whatsapp
+    //TODO Forbind API Til Instagram
+    //TODO Forbind API Til Besked
+    //TODO Forbind API Til Opkald
+    //TODO Forbind API Til E-mail
+
+    //TODO Slå alle applikationer til / fra
+
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
