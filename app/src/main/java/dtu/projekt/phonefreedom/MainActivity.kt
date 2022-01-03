@@ -11,13 +11,13 @@ import java.util.*
 //dsasrafsd
 class MainActivity : AppCompatActivity() {
 
-    //TODO Forbind API Til Messenger         (Ali)
+    //TODO Forbind API Til Messenger         ((Ali J))
     //TODO Forbind API Til Telegram
     //TODO Forbind API Til Snapchat
     //TODO Forbind API Til Whatsapp          /*salim*/
     //TODO Forbind API Til Instagram
     //TODO Forbind API Til Besked            /*salim*/
-    //TODO Forbind API Til Opkald            (Ali)
+    //TODO Forbind API Til Opkald            (Ali J)
     //TODO Forbind API Til E-mail
 
     //TODO Slå alle applikationer til / fr  /*salim*/
