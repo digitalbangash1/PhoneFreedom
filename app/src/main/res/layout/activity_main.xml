@@ -10,58 +10,72 @@
     tools:viewBindingIgnore="false">
 
 
-    <HorizontalScrollView android:layout_width="fill_parent"
+    <HorizontalScrollView
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content">
-    <LinearLayout android:orientation="horizontal"
-        android:layout_width="wrap_content" android:layout_height="wrap_content">
 
-        <ImageButton
-            android:id="@+id/messengerButton"
-            style="@style/availableAppsItem"
-            android:layout_marginHorizontal="3dp"
-            android:background="@drawable/messenger" />
-        <ImageButton
-            android:id="@+id/SnapchatButton"
-            style="@style/availableAppsItem"
-            android:layout_marginHorizontal="3dp"
-            android:background="@drawable/snapchat" />
-        <ImageButton
-            android:id="@+id/CallButton"
-            style="@style/availableAppsItem"
-            android:layout_marginHorizontal="3dp"
-            android:background="@drawable/call" />
-        <ImageButton
-            android:id="@+id/TelegramButton"
-            style="@style/availableAppsItem"
-            android:layout_marginHorizontal="3dp"
-            android:background="@drawable/telegram" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-        <ImageButton
-            android:id="@+id/whatsappButton"
-            style="@style/availableAppsItem"
-            android:layout_marginHorizontal="3dp"
-            android:background="@drawable/whatsapp"/>
-        <ImageButton
-            android:id="@+id/EmailButton"
-            style="@style/availableAppsItem"
-            android:layout_marginHorizontal="3dp"
-            android:background="@drawable/email" />
-        <ImageButton
-            android:id="@+id/InstagramButton"
-            style="@style/availableAppsItem"
-            android:layout_marginHorizontal="3dp"
-            android:background="@drawable/instagram" />
-        <ImageButton
-            android:id="@+id/MessageButton"
-            style="@style/availableAppsItem"
-            android:layout_marginHorizontal="3dp"
-            android:background="@drawable/message" />
-    </LinearLayout>
+            <ImageButton
+                android:id="@+id/messengerButton"
+                style="@style/availableAppsItem"
+                android:layout_marginHorizontal="3dp"
+                android:background="@drawable/messenger" />
+
+            <ImageButton
+                android:id="@+id/SnapchatButton"
+                style="@style/availableAppsItem"
+                android:layout_marginHorizontal="3dp"
+                android:background="@drawable/snapchat" />
+
+            <ImageButton
+                android:id="@+id/CallButton"
+                style="@style/availableAppsItem"
+                android:layout_marginHorizontal="3dp"
+                android:background="@drawable/call" />
+
+            <ImageButton
+                android:id="@+id/TelegramButton"
+                style="@style/availableAppsItem"
+                android:layout_marginHorizontal="3dp"
+                android:background="@drawable/telegram" />
+
+            <ImageButton
+                android:id="@+id/whatsappButton"
+                style="@style/availableAppsItem"
+                android:layout_marginHorizontal="3dp"
+                android:background="@drawable/whatsapp" />
+
+            <ImageButton
+                android:id="@+id/EmailButton"
+                style="@style/availableAppsItem"
+                android:layout_marginHorizontal="3dp"
+                android:background="@drawable/email" />
+
+            <ImageButton
+                android:id="@+id/InstagramButton"
+                style="@style/availableAppsItem"
+                android:layout_marginHorizontal="3dp"
+                android:background="@drawable/instagram" />
+
+            <ImageButton
+                android:id="@+id/MessageButton"
+                style="@style/availableAppsItem"
+                android:layout_marginHorizontal="3dp"
+                android:background="@drawable/message" />
+        </LinearLayout>
     </HorizontalScrollView>
 
-    <LinearLayout android:orientation="vertical" android:layout_margin="12dip"
-        android:layout_width="fill_parent" android:layout_height="wrap_content"
-        android:background="@drawable/borders">
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dip"
+        android:background="@drawable/borders"
+        android:orientation="vertical">
+
         <TextView
             android:id="@+id/textViewAutoText"
             android:layout_width="178dp"
@@ -70,25 +84,30 @@
             android:text="@string/autosvar"
             android:textColor="#000000"
             android:textSize="18sp"
-            android:textStyle="bold"
-            />
-        <LinearLayout android:orientation="horizontal" android:layout_margin="12dip"
-            android:layout_width="fill_parent" android:layout_height="wrap_content"
-            android:background="@drawable/borders">
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dip"
+            android:background="@drawable/borders"
+            android:orientation="horizontal">
+
             <EditText
                 android:id="@+id/editTextAutoText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:ems="10"
                 android:layout_weight="1"
+                android:ems="10"
+                android:hint="@string/write_msg"
                 android:inputType="textPersonName"
-                android:text=""
-                android:hint="@string/write_msg"/>
+                android:text="" />
+
             <ImageButton
                 android:id="@+id/buttonSelectPredefinedMessage"
-                android:layout_marginLeft="30dip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="30dip"
                 android:background="@drawable/history" />
         </LinearLayout>
     </LinearLayout>
@@ -166,32 +185,60 @@
 
     </LinearLayout>
 
-    <Switch
-        android:id="@+id/SwitchOnOff"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:showText="true"
-        android:textOff="OFF"
-        android:textOn="ON"
-        android:textSize="25dp"
-        android:textStyle="bold"
-        android:thumb="@drawable/sw_thumb"
-        tools:ignore="UseSwitchCompatOrMaterialXml">
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="176dp"
+        android:layout_margin="12dip"
+        android:background="@drawable/borders"
+        android:orientation="vertical">
 
-    </Switch>
-
-    <Button
-        android:id="@+id/toSettings"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/settings" />
-
-    <FrameLayout
-        android:id="@+id/fragment_menu"
-        android:layout_width="213dp"
-        android:layout_height="18dp"
-        android:layout_weight="0.1" />
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:text="Advanceret Indstillinger" />
 
 
+        <LinearLayout
+            android:layout_width="358dp"
+            android:layout_height="98dp"
+            android:layout_margin="12dip"
+            android:background="@drawable/borders"
+            android:orientation="horizontal">
+
+
+            <Switch
+                android:id="@+id/SwitchOnOff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:showText="true"
+                android:textOff="OFF"
+                android:textOn="ON"
+                android:textSize="25dp"
+                android:textStyle="bold"
+                android:thumb="@drawable/sw_thumb"
+                tools:ignore="UseSwitchCompatOrMaterialXml">
+
+            </Switch>
+
+            <Button
+                android:id="@+id/toSettings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="2dp"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:text="@string/settings" />
+
+        </LinearLayout>
+
+        <!--    <FrameLayout-->
+        <!--        android:id="@+id/fragment_menu"-->
+        <!--        android:layout_width="213dp"-->
+        <!--        android:layout_height="18dp"-->
+        <!--        android:layout_weight="0.1" />-->
+
+    </LinearLayout>
 </LinearLayout>
