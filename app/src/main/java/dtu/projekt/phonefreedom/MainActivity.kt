@@ -14,6 +14,17 @@ import androidx.navigation.findNavController
 
 class MainActivity : AppCompatActivity() {
 
+    //TODO Forbind API Til Messenger          (Ali J)
+    //TODO Forbind API Til Telegram           /*ALi D*/
+    //TODO Forbind API Til Snapchat
+    //TODO Forbind API Til Whatsapp          /*salim*/
+    //TODO Forbind API Til Instagram
+    //TODO Forbind API Til Besked            /*salim*/
+    //TODO Forbind API Til Opkald
+    //TODO Forbind API Til E-mail             ( Ali J)
+
+    //TODO Slå alle applikationer til / fr  /*salim*/
+
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {

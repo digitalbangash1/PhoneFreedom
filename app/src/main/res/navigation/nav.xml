@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav"
+    app:startDestination="@id/mainActivity">
+
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="dtu.projekt.phonefreedom.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
+    <activity
+        android:id="@+id/predefinedMessagesActivity"
+        android:name="dtu.projekt.phonefreedom.PredefinedMessagesActivity"
+        android:label="activity_predefined_messages"
+        tools:layout="@layout/activity_predefined_messages" />
+    <fragment
+        android:id="@+id/menuFragment"
+        android:name="dtu.projekt.phonefreedom.MenuFragment"
+        android:label="fragment_menu"
+        tools:layout="@layout/fragment_menu" >
+        <action
+            android:id="@+id/action_menuFragment_to_languageActivity"
+            app:destination="@id/languageActivity" />
+    </fragment>
+    <activity
+        android:id="@+id/languageActivity"
+        android:name="dtu.projekt.phonefreedom.LanguageActivity"
+        android:label="activity_language"
+        tools:layout="@layout/activity_language" />
+</navigation>
