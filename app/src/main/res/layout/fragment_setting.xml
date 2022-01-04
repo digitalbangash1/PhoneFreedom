@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".PredefinedMessagesActivity">
+
+    <TextView
+        android:id="@+id/textViewMobileFree"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:layout_margin="10dp"
+        android:textColor="#000000"
+        android:layout_gravity="center"
+        />
+
+    <ListView
+        android:id="@+id/listViewPredefinedMessage"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        />
+
+
+
+</LinearLayout>

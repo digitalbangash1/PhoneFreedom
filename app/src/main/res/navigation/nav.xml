@@ -3,30 +3,48 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav"
-    app:startDestination="@id/mainActivity">
+    app:startDestination="@id/mainFragment">
 
-    <activity
-        android:id="@+id/mainActivity"
-        android:name="dtu.projekt.phonefreedom.MainActivity"
-        android:label="activity_main"
-        tools:layout="@layout/activity_main" />
-    <activity
-        android:id="@+id/predefinedMessagesActivity"
-        android:name="dtu.projekt.phonefreedom.PredefinedMessagesActivity"
-        android:label="activity_predefined_messages"
-        tools:layout="@layout/activity_predefined_messages" />
     <fragment
-        android:id="@+id/menuFragment"
-        android:name="dtu.projekt.phonefreedom.MenuFragment"
-        android:label="fragment_menu"
-        tools:layout="@layout/fragment_menu" >
+        android:id="@+id/settingFragment"
+        android:name="dtu.projekt.phonefreedom.settingFragment"
+        android:label="fragment_setting"
+        tools:layout="@layout/fragment_setting" >
         <action
-            android:id="@+id/action_menuFragment_to_languageActivity"
-            app:destination="@id/languageActivity" />
+            android:id="@+id/action_settingFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/action_settingFragment_to_languageFragment2"
+            app:destination="@id/languageFragment2" />
     </fragment>
-    <activity
-        android:id="@+id/languageActivity"
-        android:name="dtu.projekt.phonefreedom.LanguageActivity"
-        android:label="activity_language"
-        tools:layout="@layout/activity_language" />
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="dtu.projekt.phonefreedom.mainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_settingFragment"
+            app:destination="@id/settingFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_predefindFragment"
+            app:destination="@id/predefindFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/predefindFragment"
+        android:name="dtu.projekt.phonefreedom.predefindFragment"
+        android:label="fragment_predefind"
+        tools:layout="@layout/fragment_predefind" >
+        <action
+            android:id="@+id/action_predefindFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/languageFragment2"
+        android:name="dtu.projekt.phonefreedom.languageFragment"
+        android:label="fragment_language"
+        tools:layout="@layout/fragment_language" >
+        <action
+            android:id="@+id/action_languageFragment2_to_settingFragment"
+            app:destination="@id/settingFragment" />
+    </fragment>
 </navigation>

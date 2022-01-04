@@ -12,7 +12,10 @@ import androidx.navigation.ui.AppBarConfiguration
 import dtu.projekt.phonefreedom.databinding.ActivityLanguageBinding
 import java.util.*
 import kotlin.system.exitProcess
+
+
 @Suppress("DEPRECATION")
+
 class LanguageActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
