@@ -11,22 +11,16 @@ import java.util.*
 //dsasrafsd
 class MainActivity : AppCompatActivity() {
 
-    //TODO Forbind API Til Messenger
-    //TODO Forbind API Til Telegram
+    //TODO Forbind API Til Messenger          (Ali J)
+    //TODO Forbind API Til Telegram           /*ALi D*/
     //TODO Forbind API Til Snapchat
     //TODO Forbind API Til Whatsapp          /*salim*/
-    //TODO Forbind API Til Instagram         /*Thomas*/
+    //TODO Forbind API Til Instagram
     //TODO Forbind API Til Besked            /*salim*/
     //TODO Forbind API Til Opkald
-    //TODO Forbind API Til E-mail
-    //TODO Implementere den nye ur funktion ( Visuelt kan ses på user interface gruppen )
-    //TODO On / Off Knap for hele applikationen
-    //TODO Settings fragment
-    //TODO Settings -> Sprogindstillinger
-    //TODO Settings -> Animationer on / Off
-    //TODO Billede / Logo med link i auto reply, som bruges til at videresende til enten App store / Play store.
+    //TODO Forbind API Til E-mail             ( Ali J)
 
-    //TODO Slå alle applikationer til / fra  /*salim*/
+    //TODO Slå alle applikationer til / fr  /*salim*/
 
     private lateinit var binding: ActivityMainBinding
 
