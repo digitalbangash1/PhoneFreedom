@@ -8,9 +8,10 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 import android.content.Intent
+import android.media.MediaPlayer
+
 import android.widget.EditText
-import androidx.navigation.findNavController
-import kotlinx.coroutines.NonCancellable.start
+
 
 
 class MainActivity : AppCompatActivity() {
@@ -75,37 +76,49 @@ class MainActivity : AppCompatActivity() {
 
     // HelloAlijan
     private fun addTime() {
-        binding.addTime.setOnClickListener {
+        binding.textViewFreeAddTime.setOnClickListener {
             val cal = Calendar.getInstance()
             val timeListen = TimePickerDialog.OnTimeSetListener { timePicker, hour, minute ->
                 cal.set(Calendar.HOUR_OF_DAY, hour)
                 cal.set(Calendar.MINUTE, minute)
 
-                binding.editTextFreeTo.setText(SimpleDateFormat("HH:mm").format(cal.time))
+                binding.editTextFreeTo.setText(SimpleDateFormat("HH : mm").format(cal.time))
             }
             TimePickerDialog(
-                this,
+                this,android.R.style.Theme_Holo_Dialog,
                 timeListen,
                 cal.get(Calendar.HOUR_OF_DAY),
                 cal.get(Calendar.MINUTE),
                 true
             ).show()
-            val secondTime = TimePickerDialog.OnTimeSetListener { timePicker, hour, minute ->
-                cal.set(Calendar.HOUR_OF_DAY, hour)
-                cal.set(Calendar.MINUTE, minute)
 
-                binding.editTextFreeFrom.setText(SimpleDateFormat("HH:mm").format(cal.time))
+            binding.editTextFreeTo.setOnClickListener {
+                val cal = Calendar.getInstance()
+                val timeListen = TimePickerDialog.OnTimeSetListener { timePicker, hour, minute ->
+                    cal.set(Calendar.HOUR_OF_DAY, hour)
+                    cal.set(Calendar.MINUTE, minute)
+
+                    binding.editTextFreeTo.setText(SimpleDateFormat("HH : mm").format(cal.time))
+                }
+                TimePickerDialog(
+                    this,android.R.style.Theme_Holo_Dialog,
+                    timeListen,
+                    cal.get(Calendar.HOUR_OF_DAY),
+                    cal.get(Calendar.MINUTE),
+                    true
+                ).show()
+
+
             }
-            TimePickerDialog(
-                this,
-                secondTime,
-                cal.get(Calendar.HOUR_OF_DAY),
-                cal.get(Calendar.MINUTE),
-                true
-            ).show()
 
         }
     }
+
+
+
+
+
+
 
     private fun appButton() {
         binding.whatsappButton.setOnClickListener {
@@ -132,6 +145,10 @@ class MainActivity : AppCompatActivity() {
         binding.MessageButton.setOnClickListener {
             binding.MessageButton.isSelected = !binding.MessageButton.isSelected
         }
+        binding.goandstopButton.setOnClickListener {
+            binding.goandstopButton.isSelected = !binding.goandstopButton.isSelected
+        }
+
 
 
     }
@@ -161,11 +178,11 @@ class MainActivity : AppCompatActivity() {
 //Here we tell android to only send it to whatsapp by setting the package to whatsapp's package.
 //This will not open the app selection dialog as we specifically send to whatsapp
 
-             //sendIntent.setPackage("com.whatsapp") // whatsapp
+             sendIntent.setPackage("com.whatsapp") // whatsapp
             // sendIntent.setPackage("com.facebook.orca") // facebook messeger
             //sendIntent.setPackage("org.telegram.messenger") // telegram
             // sendIntent.setPackage("com.snapchat.android") //snapchat
-             sendIntent.setPackage("com.instagram.android") //instagram
+            //sendIntent.setPackage("com.instagram.android") //instagram
             //  sendIntent.setPackage("com.samsung.android.messaging") // messages
              //sendIntent.setPackage("com.android.server.telecom") Phone call not working // telefon
             //
@@ -173,7 +190,34 @@ class MainActivity : AppCompatActivity() {
 
             startActivity(sendIntent)
         }
+
+
+
     }
+
+
+    /*fun MediaPlayer() {
+        var videoView : VideoView? =null
+        var mediaController : MediaController? = null
+       // videoView = findViewById()
+
+        binding.goandstopButton.setOnClickListener {
+
+        }
+
+    }
+    fun GoStopKnap(){
+    var videoView : VideoView? =null
+    var mediaController : MediaController? = null
+    binding.goandstopButton.setOnClickListener {
+
+    }
+    }*/
+
+
+
+
+
 
 
 }

@@ -4,10 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#7633D6"
+    android:background="@drawable/backg"
     android:orientation="vertical"
     tools:context=".MainActivity"
     tools:viewBindingIgnore="false">
+
 
 
     <HorizontalScrollView
@@ -71,7 +72,7 @@
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="178dp"
         android:layout_margin="12dip"
         android:background="@drawable/borders"
         android:orientation="vertical">
@@ -82,20 +83,22 @@
             android:layout_height="30dp"
             android:layout_marginTop="12dp"
             android:text="@string/autosvar"
-            android:textColor="#000000"
+            android:textColor="#000"
             android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textColorHint="@color/white"/>
+
+
         <Button
             android:id="@+id/whatsapp_send"
-            android:layout_width="wrap_content"
+            android:layout_width="110dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
             android:layout_marginBottom="2dp"
             android:layout_weight="0"
+            android:backgroundTint="#3A3E42"
             android:gravity="end"
             android:text="send" />
-
-
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -124,15 +127,15 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="385dp"
+        android:layout_height="189dp"
         android:layout_margin="12dip"
         android:background="@drawable/borders"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/textViewFree"
-            android:layout_width="205dp"
+            android:layout_width="308dp"
             android:layout_height="30dp"
             android:layout_marginTop="12dp"
             android:text="@string/holderfrifratlf"
@@ -140,116 +143,63 @@
             android:textSize="18sp"
             android:textStyle="bold" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="12dip"
-            android:background="@drawable/borders"
-            android:orientation="horizontal">
-
-            <EditText
-                android:id="@+id/editTextFreeFrom"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:hint="@string/fra"
-                android:inputType="time"
-                android:text="" />
-
-            <EditText
-                android:id="@+id/editTextFreeTo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:hint="@string/til"
-                android:inputType="time"
-                android:text="" />
-        </LinearLayout>
-
-        <TextView
+        <Button
             android:id="@+id/textViewFreeAddTime"
-            android:layout_width="178dp"
-            android:layout_height="30dp"
+            android:layout_width="116dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:text="@string/add_time"
-            android:textColor="#000000" />
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:backgroundTint="#595757"/>
 
 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="12dip"
-        android:background="@drawable/borders"
-        android:orientation="horizontal">
-
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/add_time"
-            android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/editTextFreeTo"
+            android:layout_width="116dp"
             android:layout_height="wrap_content"
-            android:background="#4CAF50"
-            android:backgroundTint="@color/white"
-            android:clickable="true"
-            android:focusable="true"
-            app:srcCompat="@android:drawable/ic_input_add" />
+            android:layout_gravity="center"
+            android:ems="10"
+            android:hint="@string/til"
+            android:inputType="time"
+            android:text="Time"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            android:background="#33929E"/>
+
 
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="176dp"
-        android:layout_margin="12dip"
+        android:layout_width="386dp"
+        android:layout_height="129dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="70dp"
+
         android:background="@drawable/borders"
-        android:orientation="vertical">
-
-        <Button
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="1dp"
-            android:text="Advanceret Indstillinger" />
+        android:orientation="horizontal">
 
 
-        <LinearLayout
-            android:layout_width="358dp"
-            android:layout_height="98dp"
-            android:layout_margin="12dip"
-            android:background="@drawable/borders"
-            android:orientation="horizontal">
+        <ImageButton
+            android:id="@+id/goandstopButton"
+            style="@style/availableAppsItem"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginHorizontal="3dp"
+            android:layout_marginStart="140dp"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/goandstop" />
 
-
-            <Switch
-                android:id="@+id/SwitchOnOff"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="end"
-                android:showText="true"
-                android:textOff="OFF"
-                android:textOn="ON"
-                android:textSize="25dp"
-                android:textStyle="bold"
-                android:thumb="@drawable/sw_thumb"
-                tools:ignore="UseSwitchCompatOrMaterialXml">
-
-            </Switch>
-
-            <Button
-                android:id="@+id/toSettings"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="5dp"
-                android:layout_marginBottom="2dp"
-                android:layout_weight="1"
-                android:gravity="end"
-                android:text="@string/settings" />
-
-        </LinearLayout>
-
-        <!--    <FrameLayout-->
-        <!--        android:id="@+id/fragment_menu"-->
-        <!--        android:layout_width="213dp"-->
-        <!--        android:layout_height="18dp"-->
-        <!--        android:layout_weight="0.1" />-->
+        <ImageButton
+            android:id="@+id/toSettings"
+            style="@style/availableAppsItem"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="100dp"
+            android:layout_marginTop="0dp"
+            android:background="@drawable/settingsb" />
 
     </LinearLayout>
 </LinearLayout>
