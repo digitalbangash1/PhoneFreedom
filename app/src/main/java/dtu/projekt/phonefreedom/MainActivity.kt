@@ -50,8 +50,8 @@ class MainActivity : AppCompatActivity() {
         addClickListeners()
         appButton()
         showMenu()
-        sendWhatsapp()
-        sendWhatsapp();
+        //sendWhatsapp()
+        //sendWhatsapp()
         launchNotificationAccessSettings()
         showVideo()
     }
@@ -217,7 +217,7 @@ class MainActivity : AppCompatActivity() {
 //Here we tell android to only send it to whatsapp by setting the package to whatsapp's package.
 //This will not open the app selection dialog as we specifically send to whatsapp
 
-             sendIntent.setPackage("com.whatsapp") // whatsapp
+            // sendIntent.setPackage("com.whatsapp") // whatsapp
             //sendIntent.setPackage("com.whatsapp") // whatsapp
             // sendIntent.setPackage("com.facebook.orca") // facebook messeger
             //sendIntent.setPackage("org.telegram.messenger") // telegram
@@ -230,11 +230,6 @@ class MainActivity : AppCompatActivity() {
 
             // startActivity(sendIntent)
         }
-
-
-
-    }
-
     private fun showVideo() {
         if (!binding.goandstopButton.isSelected) {
             binding.goandstopButton.setOnClickListener {
@@ -246,7 +241,13 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-}
+
+    }
+
+
+
+
+
 
 
 
