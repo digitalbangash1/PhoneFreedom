@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".PredefinedMessagesActivity">
+    tools:context=".PredefinedMessagesActivity"
+    android:background="@drawable/backg">
 
     <TextView
         android:id="@+id/textViewMobileFree"
@@ -14,7 +15,7 @@
         android:text="Jeg holder mobilfri ..."
         android:textStyle="bold"
         android:layout_margin="10dp"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         android:layout_gravity="center"
         />
 
@@ -22,6 +23,8 @@
         android:id="@+id/listViewPredefinedMessage"
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
+
+
         />
 
 
