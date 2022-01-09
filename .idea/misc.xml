@@ -48,6 +48,14 @@
         <entry key="..\:/Users/salim/StudioProjects/PhoneFreedom1/app/src/main/res/drawable/whatsapp.xml" value="0.21875" />
         <entry key="..\:/Users/salim/StudioProjects/PhoneFreedom1/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/salim/StudioProjects/PhoneFreedom1/app/src/main/res/layout/activity_main2.xml" value="0.20260416666666667" />
+        <entry key="app/src/main/res/layout/activity_language.xml" value="0.1911231884057971" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.2246376811594203" />
+        <entry key="app/src/main/res/layout/activity_predefined_messages.xml" value="0.21979166666666666" />
+        <entry key="app/src/main/res/layout/fragment_menu.xml" value="0.21979166666666666" />
+        <entry key="app/src/main/res/layout/fragment_settings.xml" value="0.1911231884057971" />
+        <entry key="app/src/main/res/layout/fragment_settings2.xml" value="0.1911231884057971" />
+        <entry key="app/src/main/res/layout/open_settings_tab.xml" value="0.21840135224844578" />
+        <entry key="app/src/main/res/layout/settings.xml" value="0.1911231884057971" />
       </map>
     </option>
   </component>

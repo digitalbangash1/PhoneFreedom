@@ -9,29 +9,14 @@ import java.util.*
 
 import android.content.Intent
 import android.media.MediaPlayer
+import android.view.View
+import android.widget.Button
 
 import android.widget.EditText
-
+import androidx.fragment.app.Fragment
 
 
 class MainActivity : AppCompatActivity() {
-
-    //TODO Forbind API Til Messenger          (Ali J)
-    //TODO Forbind API Til Telegram           /*ALi D*/
-    //TODO Forbind API Til Snapchat
-    //TODO Forbind API Til Whatsapp          /*salim*/
-    //TODO Forbind API Til Instagram         /*Thomas*/
-    //TODO Forbind API Til Besked            /*salim*/
-    //TODO Forbind API Til Opkald
-    //TODO Forbind API Til E-mail             ( Ali J)
-    //TODO Settings fragment
-
-    //TODO Settings -> Sprogindstillinger
-    //TODO Settings -> Animationer ON / OFF
-    //TODO Som bruger, ønsker jeg at kunne slå appen til med en On / Off funktion så appen er let at anvende.
-    //TODO Ny urfunktion i henhold til PO's ønske på discord
-    //TODO Billede / Logo med link i auto reply, som bruges til at videresende til enten App store / Play store.
-    //TODO Slå alle applikationer til / fr  /*salim*/
 
     private lateinit var binding: ActivityMainBinding
 
@@ -46,8 +31,19 @@ class MainActivity : AppCompatActivity() {
         addTime()
         addClickListeners()
         appButton()
-        showMenu()
         sendWhatsapp()
+
+        val ButtonOpen : Button = findViewById(R.id.btn_opensettings)
+        ButtonOpen.setOnClickListener {
+            val myFragment = Settings()
+            val fragment : Fragment? =
+            supportFragmentManager.findFragmentByTag(Settings::class.java.simpleName)
+            if ( fragment !is Settings){
+                supportFragmentManager.beginTransaction().add(R.id.btn_opensettings, myFragment, Settings::class.java.simpleName).commit()
+            }
+            ButtonOpen.visibility = View.GONE
+
+        }
     }
 
 
@@ -153,12 +149,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun showMenu() {
-        binding.toSettings.setOnClickListener {
-            val intent = Intent(this, LanguageActivity::class.java)
-            this.startActivity(intent)
-        }
-    }
+
 
     private fun sendWhatsapp() {
         binding.whatsappSend.setOnClickListener {

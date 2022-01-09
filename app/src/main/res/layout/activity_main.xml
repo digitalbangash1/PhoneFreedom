@@ -192,14 +192,12 @@
             android:layout_marginTop="25dp"
             android:background="@drawable/goandstop" />
 
-        <ImageButton
-            android:id="@+id/toSettings"
-            style="@style/availableAppsItem"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginHorizontal="100dp"
-            android:layout_marginTop="0dp"
-            android:background="@drawable/settingsb" />
+        <Button
+            android:id="@+id/btn_opensettings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Settings"
+            android:gravity="center"/>
 
     </LinearLayout>
 </LinearLayout>
