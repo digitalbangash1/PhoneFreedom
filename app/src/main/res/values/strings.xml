@@ -12,15 +12,6 @@
     <string name="auto_reply">Auto svar tekst</string>
     <string name="title_activity_predefined_messages">PredefinedMessagesActivity</string>
 
-    <string name="action_settings">Settings</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
-
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
     <!-- keys and app internal strings -->
     <string name="key_pref_app_language" translatable="false">pref_app_language</string>
@@ -60,8 +51,16 @@
     <string name="undo">Undo</string>
     <string name="all_contacts_selected">All contacts selected</string>
     <string name="all_contacts_unselected">All contacts unselected</string>
+    <string name="title_activity_video_clip">VideoClipActivity</string>
+    <string name="title_activity_video2">VideoActivity2</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
 
-
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
 
 </resources>

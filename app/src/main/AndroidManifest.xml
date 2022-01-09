@@ -2,6 +2,20 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="dtu.projekt.phonefreedom">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
+    <queries>
+
+        <!-- Specific apps Watomatic interacts with. Required for Android 11+ -->
+        <package android:name="com.whatsapp" />
+        <package android:name="com.facebook.orca" />
+        <package android:name="com.facebook.mlite" />
+        <package android:name="com.instagram.android" />
+    </queries>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,10 +24,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PhoneFreedom">
         <activity
-            android:name=".VideoClipActivity"
+            android:name=".VideoActivity2"
             android:exported="false"
+            android:label="@string/title_activity_video2"
             android:theme="@style/Theme.PhoneFreedom.NoActionBar" />
-
         <activity
             android:name=".LanguageActivity"
             android:exported="false" />
@@ -29,15 +43,38 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".notification_services.NotificationIntentActivity"
+            android:launchMode="singleTop"></activity>
 
         <service
-            android:name=".MyNotificationListener"
-            android:exported="true"
+            android:name=".notification_services.NotificationService"
+            android:exported="false"
+            android:label="NotificationService"
             android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
             <intent-filter>
                 <action android:name="android.service.notification.NotificationListenerService" />
             </intent-filter>
         </service>
+        <service
+            android:name=".notification_services.KeepAliveService"
+            android:stopWithTask="false" />
+
+        <receiver
+            android:name=".notification_services.NotificationServiceRestartReceiver"
+            android:enabled="true"
+            android:exported="false"
+            android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+                <!-- For HTC devices -->
+                <action android:name="com.htc.intent.action.QUICKBOOT_POWERON" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

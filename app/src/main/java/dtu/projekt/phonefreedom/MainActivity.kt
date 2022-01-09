@@ -8,9 +8,12 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 import android.content.Intent
+import android.media.MediaPlayer
+import android.os.Build
+import android.provider.Settings
+
 import android.widget.EditText
-import androidx.navigation.findNavController
-import kotlinx.coroutines.NonCancellable.start
+
 
 
 class MainActivity : AppCompatActivity() {
@@ -46,9 +49,10 @@ class MainActivity : AppCompatActivity() {
         addClickListeners()
         appButton()
         showMenu()
-        sendWhatsapp()
+        //sendWhatsapp()
+        showVideo()
+        launchNotificationAccessSettings()
     }
-
 
     private fun addClickListeners() {
         binding.buttonSelectPredefinedMessage.setOnClickListener {
@@ -56,7 +60,6 @@ class MainActivity : AppCompatActivity() {
             this.startActivityForResult(myIntent, 1)
         }
     }
-
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
@@ -73,36 +76,42 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    // HelloAlijan
+
     private fun addTime() {
-        binding.addTime.setOnClickListener {
+        binding.textViewFreeAddTime.setOnClickListener {
             val cal = Calendar.getInstance()
             val timeListen = TimePickerDialog.OnTimeSetListener { timePicker, hour, minute ->
                 cal.set(Calendar.HOUR_OF_DAY, hour)
                 cal.set(Calendar.MINUTE, minute)
 
-                binding.editTextFreeTo.setText(SimpleDateFormat("HH:mm").format(cal.time))
+                binding.editTextFreeTo.setText(SimpleDateFormat("HH : mm").format(cal.time))
             }
             TimePickerDialog(
-                this,
+                this,android.R.style.Theme_Holo_Dialog,
                 timeListen,
                 cal.get(Calendar.HOUR_OF_DAY),
                 cal.get(Calendar.MINUTE),
                 true
             ).show()
-            val secondTime = TimePickerDialog.OnTimeSetListener { timePicker, hour, minute ->
-                cal.set(Calendar.HOUR_OF_DAY, hour)
-                cal.set(Calendar.MINUTE, minute)
 
-                binding.editTextFreeFrom.setText(SimpleDateFormat("HH:mm").format(cal.time))
+            binding.editTextFreeTo.setOnClickListener {
+                val cal = Calendar.getInstance()
+                val timeListen = TimePickerDialog.OnTimeSetListener { timePicker, hour, minute ->
+                    cal.set(Calendar.HOUR_OF_DAY, hour)
+                    cal.set(Calendar.MINUTE, minute)
+
+                    binding.editTextFreeTo.setText(SimpleDateFormat("HH : mm").format(cal.time))
+                }
+                TimePickerDialog(
+                    this,android.R.style.Theme_Holo_Dialog,
+                    timeListen,
+                    cal.get(Calendar.HOUR_OF_DAY),
+                    cal.get(Calendar.MINUTE),
+                    true
+                ).show()
+
+
             }
-            TimePickerDialog(
-                this,
-                secondTime,
-                cal.get(Calendar.HOUR_OF_DAY),
-                cal.get(Calendar.MINUTE),
-                true
-            ).show()
 
         }
     }
@@ -132,6 +141,10 @@ class MainActivity : AppCompatActivity() {
         binding.MessageButton.setOnClickListener {
             binding.MessageButton.isSelected = !binding.MessageButton.isSelected
         }
+        binding.goandstopButton.setOnClickListener {
+            binding.goandstopButton.isSelected = !binding.goandstopButton.isSelected
+        }
+
 
 
     }
@@ -142,38 +155,87 @@ class MainActivity : AppCompatActivity() {
             this.startActivity(intent)
         }
     }
+    private fun showVideo() {
+        if (!binding.goandstopButton.isSelected) {
+            binding.goandstopButton.setOnClickListener {
+                val intent = Intent(this, VideoActivity2::class.java)
+                this.startActivity(intent)
+                binding.goandstopButton.isSelected
+            }
+        }
+    }
 
-    private fun sendWhatsapp() {
-        binding.whatsappSend.setOnClickListener {
-            val sendIntent = Intent()
-            sendIntent.action = Intent.ACTION_SEND
-            sendIntent.putExtra(
-                Intent.EXTRA_TEXT,
-                "This is the testing of the new intent that sends intent to the selected app package"
-            )
-            sendIntent.type = "text/plain"
+    private fun launchNotificationAccessSettings() {
+        val NOTIFICATION_LISTENER_SETTINGS: String
+        NOTIFICATION_LISTENER_SETTINGS =
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1) {
+                Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS
+            } else {
+                "android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS"
+            }
+        val i = Intent(NOTIFICATION_LISTENER_SETTINGS)
+        startActivity(i)
+    }
 
-
-//Here we tell android to only send it to whatsapp by setting the package to whatsapp's package.
-//This will not open the app selection dialog as we specifically send to whatsapp
-
-
-//Here we tell android to only send it to whatsapp by setting the package to whatsapp's package.
-//This will not open the app selection dialog as we specifically send to whatsapp
-
-             //sendIntent.setPackage("com.whatsapp") // whatsapp
-            // sendIntent.setPackage("com.facebook.orca") // facebook messeger
-            //sendIntent.setPackage("org.telegram.messenger") // telegram
-            // sendIntent.setPackage("com.snapchat.android") //snapchat
-             sendIntent.setPackage("com.instagram.android") //instagram
-            //  sendIntent.setPackage("com.samsung.android.messaging") // messages
-             //sendIntent.setPackage("com.android.server.telecom") Phone call not working // telefon
-            //
-
-
+    /*private fun sendWhatsapp(message: String) {
+        val sendIntent = Intent()
+        sendIntent.action = Intent.ACTION_SEND
+        sendIntent.putExtra(Intent.EXTRA_TEXT, "this is ")
+        sendIntent.type = "text/plain"
+        sendIntent.setPackage("com.whatsapp")
+        if (sendIntent.resolveActivity(packageManager) != null) {
             startActivity(sendIntent)
         }
     }
 
+    private fun sendWhatsapp() {
+        binding.whatsappSend.setOnClickListener {
+
+            val sendIntent = Intent() // this works
+            sendIntent.action = Intent.ACTION_SEND
+            sendIntent.putExtra(Intent.EXTRA_TEXT, "This is my text to send.")
+            sendIntent.type = "text/plain"
+            sendIntent.setPackage("com.whatsapp")
+            startActivity(sendIntent)
+
+            *//* val sendIntent = Intent()
+             sendIntent.action = Intent.ACTION_SEND
+             sendIntent.putExtra(Intent.EXTRA_TEXT, "this is a test")
+             sendIntent.type = "text/plain"
+             sendIntent.setPackage("com.whatsapp")
+             if (sendIntent.resolveActivity(packageManager) != null) {
+                 startActivity(sendIntent)
+             }*//*
+        }
+
+
+//Here we tell android to only send it to whatsapp by setting the package to whatsapp's package.
+//This will not open the app selection dialog as we specifically send to whatsapp
+
+
+//Here we tell android to only send it to whatsapp by setting the package to whatsapp's package.
+//This will not open the app selection dialog as we specifically send to whatsapp
+
+            //sendIntent.setPackage("com.whatsapp") // whatsapp
+            // sendIntent.setPackage("com.facebook.orca") // facebook messeger
+            //sendIntent.setPackage("org.telegram.messenger") // telegram
+            // sendIntent.setPackage("com.snapchat.android") //snapchat
+            //sendIntent.setPackage("com.instagram.android") //instagram
+            //  sendIntent.setPackage("com.samsung.android.messaging") // messages
+            //sendIntent.setPackage("com.android.server.telecom") Phone call not working // telefon
+            //
+
+
+            //startActivity(sendIntent)
+        }*/
+
+
 
 }
+
+
+
+
+
+
+

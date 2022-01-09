@@ -7,6 +7,7 @@ import android.content.pm.PackageManager;
 import androidx.preference.PreferenceManager;
 
 
+
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -128,7 +129,7 @@ public class PreferencesManager {
         }
 
         Type type = new TypeToken<Set<String>>() {}.getType();
-        return new Gson().fromJson(enabledAppsJsonStr, type);
+       return new Gson().fromJson(enabledAppsJsonStr, type);
     }
 
     public boolean isAppEnabled(App thisApp) {
