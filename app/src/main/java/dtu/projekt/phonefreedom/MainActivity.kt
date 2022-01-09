@@ -19,6 +19,7 @@ import androidx.fragment.app.Fragment
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    //val ButtonOpen : Button = findViewById(R.id.btn_opensettings)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,19 +34,22 @@ class MainActivity : AppCompatActivity() {
         appButton()
         sendWhatsapp()
 
-        val ButtonOpen : Button = findViewById(R.id.btn_opensettings)
-        ButtonOpen.setOnClickListener {
-            val myFragment = Settings()
-            val fragment : Fragment? =
-            supportFragmentManager.findFragmentByTag(Settings::class.java.simpleName)
-            if ( fragment !is Settings){
-                supportFragmentManager.beginTransaction().add(R.id.btn_opensettings, myFragment, Settings::class.java.simpleName).commit()
-            }
-            ButtonOpen.visibility = View.GONE
 
-        }
     }
 
+ private fun settings() {
+     binding.btnOpensettings.setOnClickListener {
+         val myFragment = Settings()
+         val fragment: Fragment? =
+             supportFragmentManager.findFragmentByTag(Settings::class.java.simpleName)
+         if (fragment !is Settings) {
+             supportFragmentManager.beginTransaction()
+                 .add(R.id., myFragment, Settings::class.java.simpleName).commit()
+         }
+         ButtonOpen.visibility = View.GONE
+
+     }
+ }
 
     private fun addClickListeners() {
         binding.buttonSelectPredefinedMessage.setOnClickListener {
