@@ -16,9 +16,9 @@ class VideoActivity2 : AppCompatActivity() {
         videoView.setVideoPath("android.resource://" + packageName + "/" + R.raw.videoclip)
         val mediaController = MediaController(this)
         //link mediaController to videoView
-        mediaController.setAnchorView(videoView)
+       // mediaController.setAnchorView(videoView)
         //allow mediaController to control our videoView
-        videoView.setMediaController(mediaController)
+        //videoView.setMediaController(mediaController)
         videoView.start()
     }
 }

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".PredefinedMessagesActivity"
-    android:background="@drawable/backg">
+    android:background="@drawable/background">
 
     <TextView
         android:id="@+id/textViewMobileFree"

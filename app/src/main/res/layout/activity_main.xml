@@ -4,10 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backg"
+    android:background="@drawable/back3"
     android:orientation="vertical"
     tools:context=".MainActivity"
-    tools:viewBindingIgnore="false">
+    tools:viewBindingIgnore="false"
+    >
 
 
 
@@ -77,6 +78,7 @@
         android:background="@drawable/borders"
         android:orientation="vertical">
 
+
         <TextView
             android:id="@+id/textViewAutoText"
             android:layout_width="178dp"
@@ -89,22 +91,11 @@
             android:textColorHint="@color/white"/>
 
 
-        <Button
-            android:id="@+id/whatsapp_send"
-            android:layout_width="110dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="5dp"
-            android:layout_marginBottom="2dp"
-            android:layout_weight="0"
-            android:backgroundTint="#3A3E42"
-            android:gravity="end"
-            android:text="send" />
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_margin="12dip"
-            android:background="@drawable/borders"
             android:orientation="horizontal">
 
             <EditText
@@ -149,9 +140,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:text="@string/add_time"
-            android:textColor="#000000"
+            android:textColor="#000109"
             android:textStyle="bold"
-            android:backgroundTint="#595757"/>
+            android:backgroundTint="#C9D4DF"
+            android:layout_marginStart="123dp"/>
 
 
         <TextView
@@ -159,15 +151,15 @@
             android:layout_width="116dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:background="#7476CD"
             android:ems="10"
+            android:gravity="center"
             android:hint="@string/til"
             android:inputType="time"
             android:text="Time"
-            android:gravity="center"
             android:textColor="@color/black"
             android:textSize="30dp"
-            android:textStyle="bold"
-            android:background="#33929E"/>
+            android:textStyle="bold" />
 
 
     </LinearLayout>
@@ -189,7 +181,7 @@
             android:layout_height="100dp"
             android:layout_marginHorizontal="3dp"
             android:layout_marginStart="140dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="5dp"
             android:background="@drawable/goandstop" />
 
         <ImageButton
@@ -197,7 +189,7 @@
             style="@style/availableAppsItem"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginHorizontal="100dp"
+            android:layout_marginHorizontal="80dp"
             android:layout_marginTop="0dp"
             android:background="@drawable/settingsb" />
 

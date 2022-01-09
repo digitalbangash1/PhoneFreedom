@@ -87,7 +87,7 @@ class MainActivity : AppCompatActivity() {
                 binding.editTextFreeTo.setText(SimpleDateFormat("HH : mm").format(cal.time))
             }
             TimePickerDialog(
-                this,android.R.style.Theme_Holo_Dialog,
+                this,android.R.style.Theme_Holo_Light_Dialog,
                 timeListen,
                 cal.get(Calendar.HOUR_OF_DAY),
                 cal.get(Calendar.MINUTE),
@@ -103,7 +103,7 @@ class MainActivity : AppCompatActivity() {
                     binding.editTextFreeTo.setText(SimpleDateFormat("HH : mm").format(cal.time))
                 }
                 TimePickerDialog(
-                    this,android.R.style.Theme_Holo_Dialog,
+                    this,android.R.style.Theme_Holo_Light_Dialog,
                     timeListen,
                     cal.get(Calendar.HOUR_OF_DAY),
                     cal.get(Calendar.MINUTE),

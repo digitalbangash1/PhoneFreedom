@@ -25,11 +25,14 @@
         <entry key="..\:/Users/eldre/AndroidStudioProjects/PhoneFreedom2/app/src/main/res/layout/fragment_menu.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/eldre/AndroidStudioProjects/PhoneFreedom2/app/src/main/res/layout/fragment_time.xml" value="0.1598731884057971" />
         <entry key="..\:/Users/salim/StudioProjects/PhoneFreedom/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.37864583333333335" />
+        <entry key="..\:/Users/salim/StudioProjects/PhoneFreedom/app/src/main/res/drawable/background.xml" value="0.35885416666666664" />
         <entry key="..\:/Users/salim/StudioProjects/PhoneFreedom/app/src/main/res/drawable/borders.xml" value="0.3260416666666667" />
         <entry key="..\:/Users/salim/StudioProjects/PhoneFreedom/app/src/main/res/drawable/call.xml" value="0.36302083333333335" />
         <entry key="..\:/Users/salim/StudioProjects/PhoneFreedom/app/src/main/res/drawable/email.xml" value="0.36302083333333335" />
         <entry key="..\:/Users/salim/StudioProjects/PhoneFreedom/app/src/main/res/drawable/goandstop.xml" value="0.2838541666666667" />
         <entry key="..\:/Users/salim/StudioProjects/PhoneFreedom/app/src/main/res/drawable/ic_launcher_background.xml" value="0.37864583333333335" />
+        <entry key="..\:/Users/salim/StudioProjects/PhoneFreedom/app/src/main/res/drawable/message.xml" value="0.278125" />
+        <entry key="..\:/Users/salim/StudioProjects/PhoneFreedom/app/src/main/res/drawable/messenger.xml" value="0.23177083333333334" />
         <entry key="..\:/Users/salim/StudioProjects/PhoneFreedom/app/src/main/res/drawable/settingsb.xml" value="0.37864583333333335" />
         <entry key="..\:/Users/salim/StudioProjects/PhoneFreedom/app/src/main/res/drawable/snapchat.xml" value="0.2838541666666667" />
         <entry key="..\:/Users/salim/StudioProjects/PhoneFreedom/app/src/main/res/drawable/whatsapp.xml" value="0.36302083333333335" />
@@ -47,7 +50,9 @@
         <entry key="..\:/Users/salim/StudioProjects/PhoneFreedom/app/src/main/res/layout/edit_text_layout.xml" value="0.3625" />
         <entry key="..\:/Users/salim/StudioProjects/PhoneFreedom/app/src/main/res/layout/fragment_menu.xml" value="0.3625" />
         <entry key="..\:/Users/salim/StudioProjects/PhoneFreedom/app/src/main/res/layout/fragment_second.xml" value="0.32447916666666665" />
+        <entry key="..\:/Users/salim/StudioProjects/PhoneFreedom/app/src/main/res/layout/open_settings_tab.xml" value="0.34270833333333334" />
         <entry key="..\:/Users/salim/StudioProjects/PhoneFreedom/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.36302083333333335" />
+        <entry key="..\:/Users/salim/StudioProjects/PhoneFreedom/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.2421875" />
         <entry key="..\:/Users/salim/StudioProjects/PhoneFreedom1/app/src/main/res/drawable/borders.xml" value="0.21875" />
         <entry key="..\:/Users/salim/StudioProjects/PhoneFreedom1/app/src/main/res/drawable/button.xml" value="0.36944444444444446" />
         <entry key="..\:/Users/salim/StudioProjects/PhoneFreedom1/app/src/main/res/drawable/call.xml" value="0.21875" />
