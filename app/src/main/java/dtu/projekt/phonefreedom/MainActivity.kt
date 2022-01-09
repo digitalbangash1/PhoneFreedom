@@ -48,8 +48,8 @@ class MainActivity : AppCompatActivity() {
         appButton()
         showMenu()
         sendWhatsapp()
+        showVideo()
     }
-
 
     private fun addClickListeners() {
         binding.buttonSelectPredefinedMessage.setOnClickListener {
@@ -57,7 +57,6 @@ class MainActivity : AppCompatActivity() {
             this.startActivityForResult(myIntent, 1)
         }
     }
-
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
@@ -195,29 +194,19 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-
-    /*fun MediaPlayer() {
-        var videoView : VideoView? =null
-        var mediaController : MediaController? = null
-       // videoView = findViewById()
-
-        binding.goandstopButton.setOnClickListener {
-
+    private fun showVideo() {
+        if (!binding.goandstopButton.isSelected) {
+            binding.goandstopButton.setOnClickListener {
+                val intent = Intent(this, VideoClipActivity::class.java)
+                this.startActivity(intent)
+                binding.goandstopButton.isSelected
+            }
         }
-
     }
-    fun GoStopKnap(){
-    var videoView : VideoView? =null
-    var mediaController : MediaController? = null
-    binding.goandstopButton.setOnClickListener {
-
-    }
-    }*/
-
-
-
-
-
 
 
 }
+
+
+
+
