@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
 
 
     }
-
+// FIX ME
  private fun settings() {
      binding.btnOpensettings.setOnClickListener {
          val myFragment = Settings()
