@@ -8,9 +8,6 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 import android.content.Intent
-import android.net.Uri
-import android.os.Build
-import android.provider.Settings
 import android.widget.EditText
 import androidx.navigation.findNavController
 import kotlinx.coroutines.NonCancellable.start
@@ -50,8 +47,6 @@ class MainActivity : AppCompatActivity() {
         appButton()
         showMenu()
         sendWhatsapp()
-        sendWhatsapp();
-        launchNotificationAccessSettings()
     }
 
 
@@ -115,7 +110,6 @@ class MainActivity : AppCompatActivity() {
     private fun appButton() {
         binding.whatsappButton.setOnClickListener {
             binding.whatsappButton.isSelected = !binding.whatsappButton.isSelected
-
         }
         binding.CallButton.setOnClickListener {
             binding.CallButton.isSelected = !binding.CallButton.isSelected
@@ -138,7 +132,7 @@ class MainActivity : AppCompatActivity() {
         binding.MessageButton.setOnClickListener {
             binding.MessageButton.isSelected = !binding.MessageButton.isSelected
         }
-//
+
 
     }
 
@@ -149,48 +143,15 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-   private fun launchNotificationAccessSettings() {
-        val NOTIFICATION_LISTENER_SETTINGS: String
-        NOTIFICATION_LISTENER_SETTINGS =
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1) {
-                Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS
-            } else {
-                "android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS"
-            }
-        val i = Intent(NOTIFICATION_LISTENER_SETTINGS)
-        startActivity(i)
-    }
-
-    private fun sendWhatsapp(message: String) {
-        val sendIntent = Intent()
-        sendIntent.action = Intent.ACTION_SEND
-        sendIntent.putExtra(Intent.EXTRA_TEXT, "this is ")
-        sendIntent.type = "text/plain"
-        sendIntent.setPackage("com.whatsapp")
-        if (sendIntent.resolveActivity(packageManager) != null) {
-            startActivity(sendIntent)
-        }
-    }
-
     private fun sendWhatsapp() {
         binding.whatsappSend.setOnClickListener {
-
-            val sendIntent = Intent() // this works
+            val sendIntent = Intent()
             sendIntent.action = Intent.ACTION_SEND
-            sendIntent.putExtra(Intent.EXTRA_TEXT, "This is my text to send.")
+            sendIntent.putExtra(
+                Intent.EXTRA_TEXT,
+                "This is the testing of the new intent that sends intent to the selected app package"
+            )
             sendIntent.type = "text/plain"
-           sendIntent.setPackage("com.whatsapp")
-            startActivity(sendIntent)
-
-           /* val sendIntent = Intent()
-            sendIntent.action = Intent.ACTION_SEND
-            sendIntent.putExtra(Intent.EXTRA_TEXT, "this is a test")
-            sendIntent.type = "text/plain"
-            sendIntent.setPackage("com.whatsapp")
-            if (sendIntent.resolveActivity(packageManager) != null) {
-                startActivity(sendIntent)
-            }*/
-        }
 
 
 //Here we tell android to only send it to whatsapp by setting the package to whatsapp's package.
@@ -200,17 +161,19 @@ class MainActivity : AppCompatActivity() {
 //Here we tell android to only send it to whatsapp by setting the package to whatsapp's package.
 //This will not open the app selection dialog as we specifically send to whatsapp
 
-            //sendIntent.setPackage("com.whatsapp") // whatsapp
+             //sendIntent.setPackage("com.whatsapp") // whatsapp
             // sendIntent.setPackage("com.facebook.orca") // facebook messeger
             //sendIntent.setPackage("org.telegram.messenger") // telegram
             // sendIntent.setPackage("com.snapchat.android") //snapchat
-            //sendIntent.setPackage("com.instagram.android") //instagram
+             sendIntent.setPackage("com.instagram.android") //instagram
             //  sendIntent.setPackage("com.samsung.android.messaging") // messages
-            //sendIntent.setPackage("com.android.server.telecom") Phone call not working // telefon
+             //sendIntent.setPackage("com.android.server.telecom") Phone call not working // telefon
             //
 
 
-            // startActivity(sendIntent)
+            startActivity(sendIntent)
         }
     }
 
+
+}

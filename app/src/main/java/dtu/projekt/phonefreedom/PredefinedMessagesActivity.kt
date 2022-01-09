@@ -9,15 +9,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import dtu.projekt.phonefreedom.databinding.ActivityPredefinedMessagesBinding
-import android.R.attr.data
-import android.R.attr.width
 import android.app.Dialog
-import android.util.Log
 import android.view.Window
-import android.widget.Toast.LENGTH_LONG
-import android.widget.Toast
-import androidx.recyclerview.widget.RecyclerView
+
 
 
 class PredefinedMessagesActivity : AppCompatActivity() {
