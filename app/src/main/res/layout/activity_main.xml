@@ -72,48 +72,32 @@
     </HorizontalScrollView>
 
     <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="178dp"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
         android:layout_margin="12dip"
         android:background="@drawable/borders"
         android:orientation="vertical">
 
-        <Button
-            android:id="@+id/button_on"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Turn On Do Not Disturb"
-            android:layout_gravity="center_horizontal"
-            android:layout_margin="10dp"
-            />
-        <Button
-            android:id="@+id/button_off"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Turn Off Do Not Disturb"
-            android:layout_gravity="center_horizontal"
-            android:layout_margin="10dp"
-            />
-
-
         <TextView
             android:id="@+id/textViewAutoText"
-            android:layout_width="178dp"
+            android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_marginTop="12dp"
             android:text="@string/autosvar"
             android:textColor="#000"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:textColorHint="@color/white"/>
+            android:textColorHint="@color/white"
+            android:background="#546AE6"/>
 
 
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="12dip"
-            android:orientation="horizontal">
+            android:layout_margin="12dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="100dp">
 
             <EditText
                 android:id="@+id/editTextAutoText"
@@ -123,50 +107,61 @@
                 android:ems="10"
                 android:hint="@string/write_msg"
                 android:inputType="textPersonName"
-                android:text="" />
+                android:text=""
+                android:layout_marginTop="30dp"/>
 
             <ImageButton
                 android:id="@+id/buttonSelectPredefinedMessage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_marginLeft="30dip"
+                android:layout_marginTop="30dp"
                 android:background="@drawable/history" />
         </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="385dp"
-        android:layout_height="189dp"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
         android:layout_margin="12dip"
         android:background="@drawable/borders"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/textViewFree"
-            android:layout_width="308dp"
+            android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_marginTop="12dp"
             android:text="@string/holderfrifratlf"
             android:textColor="#000000"
             android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:background="#546AE6"/>
 
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dip"
+            android:layout_gravity="center"
+            android:background="@drawable/borders"
+            android:orientation="vertical">
         <Button
             android:id="@+id/textViewFreeAddTime"
-            android:layout_width="116dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_width="150dp"
+            android:layout_height="70dp"
+
+            android:backgroundTint="#C9D4DF"
             android:text="@string/add_time"
             android:textColor="#000109"
             android:textStyle="bold"
-            android:backgroundTint="#C9D4DF"
-            android:layout_marginStart="123dp"/>
-
+            android:textSize="18dp"/>
 
         <TextView
             android:id="@+id/editTextFreeTo"
-            android:layout_width="116dp"
-            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:layout_height="70dp"
             android:layout_gravity="center"
             android:background="#7476CD"
             android:ems="10"
@@ -177,38 +172,84 @@
             android:textColor="@color/black"
             android:textSize="30dp"
             android:textStyle="bold" />
+        </LinearLayout>
 
 
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="386dp"
-        android:layout_height="129dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dip"
         android:layout_marginStart="12dp"
         android:layout_marginTop="70dp"
-
+        android:layout_marginBottom="0dp"
         android:background="@drawable/bottombordes"
         android:orientation="horizontal">
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dip"
+            android:orientation="vertical"
+            android:background="@drawable/borders"
+            android:layout_gravity="center">
 
+            <TextView
+                android:id="@+id/Do_not_Disturb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Don't-Disturb:"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="normal"
+                android:gravity="center"
+                android:background="#546AE6"/>
+
+            <Switch
+                android:id="@+id/SwitchOnOff"
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:gravity="bottom"
+                android:showText="true"
+                android:textOff="OFF"
+                android:textOn="ON"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:thumb="@drawable/switch_on_of"
+                tools:ignore="UseSwitchCompatOrMaterialXml" />
+        </LinearLayout>
         <ImageButton
             android:id="@+id/goandstopButton"
             style="@style/availableAppsItem"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginHorizontal="3dp"
-            android:layout_marginStart="140dp"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/goandstop" />
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginStart="0dp"
+            android:background="@drawable/goandstop"
+            android:layout_gravity="center"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="0dp"
+            android:background="@drawable/borders"
+            android:orientation="vertical"
+            android:layout_margin="10dip">
 
         <ImageButton
             android:id="@+id/toSettings"
             style="@style/availableAppsItem"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginHorizontal="80dp"
-            android:layout_marginTop="60dp"
-            android:background="@drawable/settingsb" />
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_margin= "0dp"
+            android:background="@drawable/settingsb"
+            android:layout_gravity="center"/>
+        </LinearLayout>
+
+
 
     </LinearLayout>
+
 </LinearLayout>

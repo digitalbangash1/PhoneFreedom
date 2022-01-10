@@ -60,8 +60,7 @@ class MainActivity : AppCompatActivity() {
         //sendWhatsapp()
         showVideo()
         launchNotificationAccessSettings()
-        dndon()
-        dndoff()
+
     }
 
     private fun addClickListeners() {
@@ -174,6 +173,23 @@ class MainActivity : AppCompatActivity() {
             binding.goandstopButton.isSelected = !binding.goandstopButton.isSelected
         }
 
+        val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+
+
+        binding.SwitchOnOff.setOnCheckedChangeListener { buttonView, isChecked ->
+            if (checkNotificationPolicyAccess(notificationManager)) {
+                if (isChecked) {
+                    notificationManager.onDOD()
+                    Toast.makeText(this, "Don't-Disturb turned on.", Toast.LENGTH_SHORT).show()
+
+                } else {
+                    notificationManager.offDOD()
+                    Toast.makeText(this, "Don't-Disturb turned off.", Toast.LENGTH_SHORT).show()
+                }
+
+            }
+        }
+
 
     }
 
@@ -259,27 +275,7 @@ class MainActivity : AppCompatActivity() {
         }*/
 
 
-    private fun dndon() {
-        val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
-        binding.buttonOn.setOnClickListener {
-            if (checkNotificationPolicyAccess(notificationManager)) {
-                notificationManager.onDOD()
-                Toast.makeText(this, "Do Not Disturb turned on.", Toast.LENGTH_SHORT).show()
-            }
-        }
 
-    }
-
-    private fun dndoff(){
-        val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
-
-        binding.buttonOff.setOnClickListener {
-            if (checkNotificationPolicyAccess(notificationManager)) {
-                notificationManager.offDOD()
-                Toast.makeText(this, "Do Not Disturb turned OFF.", Toast.LENGTH_SHORT).show()
-            }
-        }
-    }
 
     private fun checkNotificationPolicyAccess(notificationManager: NotificationManager): Boolean {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -299,6 +295,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun NotificationManager.onDOD(){
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             this.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_NONE)
         }
