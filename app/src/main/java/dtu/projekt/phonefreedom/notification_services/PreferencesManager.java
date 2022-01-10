@@ -11,11 +11,11 @@ import java.util.Set;
 public class PreferencesManager {
 
     //These are all the supported apps
-    private final String WHATSAPP_PACKAGE_NAME = "pref_service_enabled";
-    private final String MESSENGER_PACKAGE_NAME = "pref_service_enabled";
-    private final String SNAPCHAT_PACKAGE_NAME = "pref_service_enabled";
-    private final String TELEGRAM_PACKAGE_NAME = "pref_service_enabled";
-    private final String INSTAGRAM_PACKAGE_NAME = "pref_service_enabled";
+    private final String WHATSAPP_PACKAGE_NAME = "com.whatsapp";
+    private final String MESSENGER_PACKAGE_NAME = "";
+    private final String SNAPCHAT_PACKAGE_NAME = "";
+    private final String TELEGRAM_PACKAGE_NAME = "";
+    private final String INSTAGRAM_PACKAGE_NAME = "";
 
     public final SupportedApp[] supportedApps = new SupportedApp[]{
             new SupportedApp("WhatsApp", WHATSAPP_PACKAGE_NAME),
@@ -47,7 +47,7 @@ public class PreferencesManager {
     }
 
     public boolean isServiceEnabled() {
-        return sharedPrefs.getBoolean(KEY_SERVICE_ENABLED, false);
+        return sharedPrefs.getBoolean(KEY_SERVICE_ENABLED, true);
     }
 
     public void setServiceEnabled(boolean enabled) {
@@ -88,7 +88,10 @@ public class PreferencesManager {
             }
             enabledApps.add(supportedApp);
         }
-        return (SupportedApp[]) enabledApps.toArray();
+
+        SupportedApp[] allEnabledApps = new SupportedApp[enabledApps.size()];
+        enabledApps.toArray(allEnabledApps);
+        return allEnabledApps;
     }
 
     public void setEnabledApp(String packageName) {
@@ -166,7 +169,7 @@ public class PreferencesManager {
 
     public SupportedApp getSupportedApp(String packageName) {
         for (SupportedApp app : supportedApps) {
-            if (app.getName().equalsIgnoreCase(packageName)) {
+            if (app.getPackageName().equalsIgnoreCase(packageName)) {
                 return app;
             }
         }
