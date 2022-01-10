@@ -12,8 +12,6 @@ import androidx.core.app.RemoteInput;
 
 import static java.lang.Math.max;
 
-
-
 public class NotificationService extends NotificationListenerService {
     private final String TAG = NotificationService.class.getSimpleName();
     //private DbUtils dbUtils;
@@ -21,6 +19,11 @@ public class NotificationService extends NotificationListenerService {
     @Override
     public void onNotificationPosted(StatusBarNotification sbn) {
         super.onNotificationPosted(sbn);
+
+        //TEST only
+        PreferencesManager prefs = PreferencesManager.getPreferencesInstance(this);
+        prefs.setWhatsAppEnabled(true);
+
         if (canReply(sbn) && shouldReply(sbn)) {
             sendReply(sbn);
         }
