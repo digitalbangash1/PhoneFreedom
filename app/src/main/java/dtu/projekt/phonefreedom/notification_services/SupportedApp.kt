@@ -1,6 +1,6 @@
 package dtu.projekt.phonefreedom.notification_services;
 
-data class App(
+data class SupportedApp(
         val name: String,
         val packageName: String,
 )

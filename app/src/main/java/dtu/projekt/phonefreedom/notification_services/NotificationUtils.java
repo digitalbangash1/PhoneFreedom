@@ -7,7 +7,7 @@ import android.service.notification.StatusBarNotification;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.RemoteInput;
 
-import com.example.myapplication.NotificationWear;import java.util.ArrayList;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 

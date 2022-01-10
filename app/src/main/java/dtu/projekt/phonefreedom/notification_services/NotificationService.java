@@ -7,48 +7,42 @@ import android.service.notification.NotificationListenerService;
 import android.service.notification.StatusBarNotification;
 import android.text.SpannableString;
 import android.util.Log;
+
 import androidx.core.app.RemoteInput;
 
 import static java.lang.Math.max;
-import dtu.projekt.phonefreedom.notification_services.NotificationUtils;
-import com.example.myapplication.NotificationWear;
-import dtu.projekt.phonefreedom.notification_services.PreferencesManager;
+
+
 
 public class NotificationService extends NotificationListenerService {
     private final String TAG = NotificationService.class.getSimpleName();
-    //CustomRepliesData customRepliesData;
-    private DbUtils dbUtils;
+    //private DbUtils dbUtils;
 
     @Override
     public void onNotificationPosted(StatusBarNotification sbn) {
         super.onNotificationPosted(sbn);
-
-        String packageName = sbn.getPackageName();
-
-//        if (canReply(sbn) && shouldReply(sbn)) {
-//            sendReply(sbn);
-//        }
-        sendReply(sbn);
+        if (canReply(sbn) && shouldReply(sbn)) {
+            sendReply(sbn);
+        }
     }
 
     private boolean canReply(StatusBarNotification sbn) {
-        boolean canReply = isServiceEnabled() &&
+        return isServiceEnabled() &&
                 isSupportedPackage(sbn) &&
                 NotificationUtils.isNewNotification(sbn) &&
-                isGroupMessageAndReplyAllowed(sbn) &&
+                //isGroupMessageAndReplyAllowed(sbn) &&
                 canSendReplyNow(sbn);
-        return canReply;
     }
 
     private boolean shouldReply(StatusBarNotification sbn) {
+        PreferencesManager prefs = PreferencesManager.getPreferencesInstance(this);
+        boolean isGroup = sbn.getNotification().extras.getBoolean("android.isGroupConversation");
 
-
-
-        //PreferencesManager prefs = PreferencesManager.getPreferencesInstance(this);
-        //boolean isGroup = sbn.getNotification().extras.getBoolean("android.isGroupConversation");
+        if (isGroup && !prefs.isGroupReplyEnabled()) {
+            return false;
+        }
 
 //        boolean isContactReplyEnabled = true;
-//
 //        //Check contact based replies
 //        if (isContactReplyEnabled && !isGroup) {
 //            //Title contains sender name (at least on WhatsApp)
@@ -113,7 +107,7 @@ public class NotificationService extends NotificationListenerService {
 //                dbUtils.logReply(sbn, NotificationUtils.getTitle(sbn));
                 notificationWear.getPendingIntent().send(this, 0, localIntent);
                 //if (PreferencesManager.getPreferencesInstance(this).isShowNotificationEnabled()) {
-                    //NotificationHelper.getInstance(getApplicationContext()).sendNotification(sbn.getNotification().extras.getString("android.title"), sbn.getNotification().extras.getString("android.text"), sbn.getPackageName());
+                //NotificationHelper.getInstance(getApplicationContext()).sendNotification(sbn.getNotification().extras.getString("android.title"), sbn.getNotification().extras.getString("android.text"), sbn.getPackageName());
                 //}
                 cancelNotification(sbn.getKey());
 //                if (canPurgeMessages()) {
@@ -126,20 +120,9 @@ public class NotificationService extends NotificationListenerService {
         }
     }
 
-//    private boolean canPurgeMessages() {
-//        //Added L to avoid numeric overflow expression
-//        //https://stackoverflow.com/questions/43801874/numeric-overflow-in-expression-manipulating-timestamps
-//        long daysBeforePurgeInMS = 30 * 24 * 60 * 60 * 1000L;
-//        return (System.currentTimeMillis() - PreferencesManager.getPreferencesInstance(this).getLastPurgedTime()) > daysBeforePurgeInMS;
-//    }
-
     private boolean isSupportedPackage(StatusBarNotification sbn) {
-        //String[] supportedApps = new String[]{"com.whatsapp"};
-        //return Arrays.asList(supportedApps).contains(sbn.getPackageName());
-
-        boolean isSupported = PreferencesManager.getPreferencesInstance(this)
-                .getEnabledApps().contains(sbn.getPackageName());
-        return isSupported;
+        PreferencesManager prefs = PreferencesManager.getPreferencesInstance(this);
+        return prefs.isSupportedAppEnabled(sbn.getPackageName());
     }
 
     private boolean canSendReplyNow(StatusBarNotification sbn) {
@@ -156,8 +139,9 @@ public class NotificationService extends NotificationListenerService {
 //            dbUtils = new DbUtils(getApplicationContext());
 //        }
         //long timeDelay = PreferencesManager.getPreferencesInstance(this).getAutoReplyDelay();
-        long timeDelay = 10*1000; // 10 seconds
-        return (System.currentTimeMillis() - dbUtils.getLastRepliedTime(sbn.getPackageName(), title) >= max(timeDelay, DELAY_BETWEEN_REPLY_IN_MILLISEC));
+        //long timeDelay = 10 * 1000; // 10 seconds
+        //return (System.currentTimeMillis() - dbUtils.getLastRepliedTime(sbn.getPackageName(), title) >= max(timeDelay, DELAY_BETWEEN_REPLY_IN_MILLISEC));
+        return true;
     }
 
     private boolean isGroupMessageAndReplyAllowed(StatusBarNotification sbn) {
@@ -176,7 +160,6 @@ public class NotificationService extends NotificationListenerService {
     }
 
     private boolean isServiceEnabled() {
-        //return PreferencesManager.getPreferencesInstance(this).isServiceEnabled();
-        return true;
+        return PreferencesManager.getPreferencesInstance(this).isServiceEnabled();
     }
 }

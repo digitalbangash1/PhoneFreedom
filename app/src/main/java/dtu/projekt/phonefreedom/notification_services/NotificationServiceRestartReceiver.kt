@@ -6,9 +6,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.util.Log
-import dtu.projekt.phonefreedom.notification_services.KeepAliveService
-import dtu.projekt.phonefreedom.notification_services.NotificationService
-import dtu.projekt.phonefreedom.notification_services.PreferencesManager
 
 class NotificationServiceRestartReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context?, intent: Intent?) {
@@ -21,17 +18,17 @@ class NotificationServiceRestartReceiver : BroadcastReceiver() {
 
     private fun restartService(context: Context) {
         val preferencesManager = PreferencesManager.getPreferencesInstance(context)
-        if (preferencesManager.isForegroundServiceNotificationEnabled) {
-            val serviceIntent = Intent(context, KeepAliveService::class.java)
-            // ToDo: Should probably start using foreground service to prevent IllegalState exception below
-            try {
-                context.startService(serviceIntent)
-            } catch (e: IllegalStateException) {
-                Log.e("NotifServiceRestart", "Unable to restart notification service")
-            }
-        } else {
-            enableService(context)
-        }
+//        if (preferencesManager.isForegroundServiceNotificationEnabled) {
+//            val serviceIntent = Intent(context, KeepAliveService::class.java)
+//            // ToDo: Should probably start using foreground service to prevent IllegalState exception below
+//            try {
+//                context.startService(serviceIntent)
+//            } catch (e: IllegalStateException) {
+//                Log.e("NotifServiceRestart", "Unable to restart notification service")
+//            }
+//        } else {
+//enableService(context)
+//        }
     }
 
     private fun enableService(context: Context) {

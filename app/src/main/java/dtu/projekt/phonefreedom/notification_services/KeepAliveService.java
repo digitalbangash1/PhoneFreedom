@@ -1,5 +1,4 @@
 package dtu.projekt.phonefreedom.notification_services;
-
 import android.app.ActivityManager;
 import android.app.Service;
 import android.content.Context;
@@ -9,10 +8,6 @@ import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
-import dtu.projekt.phonefreedom.notification_services.NotificationHelper;
-import dtu.projekt.phonefreedom.notification_services.NotificationService;
-
-import dtu.projekt.phonefreedom.notification_services.PreferencesManager;
 
 public class KeepAliveService extends Service {
     private static final int FOREGROUND_NOTIFICATION_ID = 10;
@@ -61,8 +56,7 @@ public class KeepAliveService extends Service {
     }
 
     public void tryReconnectService() {
-        if (PreferencesManager.getPreferencesInstance(getApplicationContext()).isServiceEnabled()
-                && PreferencesManager.getPreferencesInstance(getApplicationContext()).isForegroundServiceNotificationEnabled()) {
+        if (PreferencesManager.getPreferencesInstance(getApplicationContext()).isServiceEnabled()) {
             Log.d("DEBUG", "KeepAliveService tryReconnectService");
             //Send broadcast to restart service
             Intent broadcastIntent = new Intent(getApplicationContext(), NotificationServiceRestartReceiver.class);

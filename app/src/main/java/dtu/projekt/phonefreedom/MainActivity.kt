@@ -11,12 +11,17 @@ import android.content.Intent
 import android.media.MediaPlayer
 import android.os.Build
 import android.provider.Settings
+import android.view.View
 
 import android.widget.EditText
-
+import dtu.projekt.phonefreedom.notification_services.PreferencesManager
+import android.view.View.OnFocusChangeListener
+import android.app.NotificationManager
+import android.widget.Toast
 
 
 class MainActivity : AppCompatActivity() {
+
 
     //TODO Forbind API Til Messenger          (Ali J)
     //TODO Forbind API Til Telegram           /*ALi D*/
@@ -36,12 +41,15 @@ class MainActivity : AppCompatActivity() {
     //TODO Slå alle applikationer til / fr  /*salim*/
 
     private lateinit var binding: ActivityMainBinding
+    private lateinit var editText: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         val intent = Intent("android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS")
+
+
         startActivity(intent)
         //   val navController = findNavController(R.id.settings)
         setContentView(view)
@@ -52,6 +60,8 @@ class MainActivity : AppCompatActivity() {
         //sendWhatsapp()
         showVideo()
         launchNotificationAccessSettings()
+        dndon()
+        dndoff()
     }
 
     private fun addClickListeners() {
@@ -60,6 +70,7 @@ class MainActivity : AppCompatActivity() {
             this.startActivityForResult(myIntent, 1)
         }
     }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
@@ -87,7 +98,7 @@ class MainActivity : AppCompatActivity() {
                 binding.editTextFreeTo.setText(SimpleDateFormat("HH : mm").format(cal.time))
             }
             TimePickerDialog(
-                this,android.R.style.Theme_Holo_Light_Dialog,
+                this, android.R.style.Theme_Holo_Light_Dialog,
                 timeListen,
                 cal.get(Calendar.HOUR_OF_DAY),
                 cal.get(Calendar.MINUTE),
@@ -103,7 +114,7 @@ class MainActivity : AppCompatActivity() {
                     binding.editTextFreeTo.setText(SimpleDateFormat("HH : mm").format(cal.time))
                 }
                 TimePickerDialog(
-                    this,android.R.style.Theme_Holo_Light_Dialog,
+                    this, android.R.style.Theme_Holo_Light_Dialog,
                     timeListen,
                     cal.get(Calendar.HOUR_OF_DAY),
                     cal.get(Calendar.MINUTE),
@@ -117,8 +128,26 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun appButton() {
+        editText = findViewById(R.id.editTextAutoText)
+        editText.setOnFocusChangeListener(object : OnFocusChangeListener {
+            override fun onFocusChange(v: View, hasFocus: Boolean) {
+                if (!hasFocus) {
+                    val prefs: PreferencesManager =
+                        PreferencesManager.getPreferencesInstance(this@MainActivity)
+                    prefs.setAutoReplyText(editText.text.toString())
+                }
+            }
+        })
+
+
+
+
+
+
         binding.whatsappButton.setOnClickListener {
             binding.whatsappButton.isSelected = !binding.whatsappButton.isSelected
+            val prefs: PreferencesManager = PreferencesManager.getPreferencesInstance(this)
+            prefs.setWhatsAppEnabled(binding.whatsappButton.isSelected)
         }
         binding.CallButton.setOnClickListener {
             binding.CallButton.isSelected = !binding.CallButton.isSelected
@@ -146,15 +175,15 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-
     }
 
     private fun showMenu() {
         binding.toSettings.setOnClickListener {
             val intent = Intent(this, LanguageActivity::class.java)
-            this.startActivity(intent)
+            startActivity(intent)
         }
     }
+
     private fun showVideo() {
         if (!binding.goandstopButton.isSelected) {
             binding.goandstopButton.setOnClickListener {
@@ -230,8 +259,66 @@ class MainActivity : AppCompatActivity() {
         }*/
 
 
+    private fun dndon() {
+        val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+        binding.buttonOn.setOnClickListener {
+            if (checkNotificationPolicyAccess(notificationManager)) {
+                notificationManager.onDOD()
+                Toast.makeText(this, "Do Not Disturb turned on.", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+    }
+
+    private fun dndoff(){
+        val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+
+        binding.buttonOff.setOnClickListener {
+            if (checkNotificationPolicyAccess(notificationManager)) {
+                notificationManager.offDOD()
+                Toast.makeText(this, "Do Not Disturb turned OFF.", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun checkNotificationPolicyAccess(notificationManager: NotificationManager): Boolean {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (notificationManager.isNotificationPolicyAccessGranted) {
+                //toast("Notification policy access granted.")
+                return true
+            } else {
+                Toast.makeText(this,"You need to grant notification policy access.",Toast.LENGTH_SHORT).show()
+                // If notification policy access not granted for this package
+                val intent = Intent(Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS)
+                startActivity(intent)
+            }
+        } else {
+            Toast.makeText(this,"Device does not support this feature" ,Toast.LENGTH_SHORT).show()
+        }
+        return false
+    }
+
+    fun NotificationManager.onDOD(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            this.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_NONE)
+        }
+    }
+
+
+    // Extension function to turn off do not disturb
+    fun NotificationManager.offDOD(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            this.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_ALL)
+        }
+    }
 
 }
+
+
+
+
+
+
 
 
 

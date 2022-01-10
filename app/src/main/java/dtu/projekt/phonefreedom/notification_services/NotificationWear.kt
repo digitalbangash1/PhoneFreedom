@@ -1,4 +1,4 @@
-package com.example.myapplication
+package dtu.projekt.phonefreedom.notification_services;
 
 import android.app.PendingIntent
 import android.os.Bundle
