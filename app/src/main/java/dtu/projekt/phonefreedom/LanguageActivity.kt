@@ -1,5 +1,6 @@
 package dtu.projekt.phonefreedom
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -48,6 +49,8 @@ class LanguageActivity : AppCompatActivity() {
             }
             override fun onNothingSelected(parent: AdapterView<*>) {}
         }
+
+
     }
     private fun setLocale(localeName: String) {
         if (localeName != currentLanguage) {
@@ -57,12 +60,9 @@ class LanguageActivity : AppCompatActivity() {
             val conf = res.configuration
             conf.locale = locale
             res.updateConfiguration(conf, dm)
-            val refresh = Intent(
-                this,
-                LanguageActivity::class.java
-            )
+            val refresh = Intent(this, LanguageActivity::class.java)
             refresh.putExtra(currentLang, localeName)
-            startActivity(refresh)
+            //startActivity(refresh)
         } else {
             Toast.makeText(
                 this, "Language, , already, , selected)!", Toast.LENGTH_SHORT).show();
@@ -73,8 +73,12 @@ class LanguageActivity : AppCompatActivity() {
         val myIntent = Intent(this, MainActivity::class.java)
         myIntent.addCategory(Intent.CATEGORY_HOME)
         myIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
-        startActivity(myIntent)
         finish()
-        exitProcess(0)
+//        val myIntent = Intent(this, MainActivity::class.java)
+//        myIntent.addCategory(Intent.CATEGORY_HOME)
+//        myIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+//        startActivity(myIntent)
+//        finish()
+//        exitProcess(0)
     }
 }
