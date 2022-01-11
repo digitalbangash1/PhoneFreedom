@@ -144,6 +144,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.whatsappButton.isSelected = prefs.isWhatsAppEnabled
         binding.MessageButton.isSelected = prefs.isSMSEnabled
+        binding.SnapchatButton.isSelected = prefs.isSignalEnabled
 
 
 
@@ -158,6 +159,7 @@ class MainActivity : AppCompatActivity() {
         }
         binding.SnapchatButton.setOnClickListener {
             binding.SnapchatButton.isSelected = !binding.SnapchatButton.isSelected
+            prefs.setSignalEnabled(binding.SnapchatButton.isSelected)
         }
         binding.EmailButton.setOnClickListener {
             binding.EmailButton.isSelected = !binding.EmailButton.isSelected

@@ -18,7 +18,9 @@ public class PreferencesManager {
     private final String TELEGRAM_PACKAGE_NAME = "org.telegram.messenger";
     private final String INSTAGRAM_PACKAGE_NAME = "com.instagram.android";
     private final String OUTLOOK_PACKAGE_NAME = "com.microsoft.office.outlook";
-    private  String SMS_Package_Name = "";
+    private final  String SMS_Package_Name = "com.google.android.apps.messaging";
+    private final  String SIGNAL_PACKAGE_NAME = "org.thoughtcrime.securesms";
+
 
     public final SupportedApp[] supportedApps = new SupportedApp[]{
             new SupportedApp("WhatsApp", WHATSAPP_PACKAGE_NAME),
@@ -27,7 +29,8 @@ public class PreferencesManager {
             new SupportedApp("Telegram", TELEGRAM_PACKAGE_NAME),
             new SupportedApp("Instagram", INSTAGRAM_PACKAGE_NAME),
             new SupportedApp("Outlook", OUTLOOK_PACKAGE_NAME),
-            new SupportedApp("Sms", SMS_Package_Name)
+            new SupportedApp("Sms", SMS_Package_Name),
+            new SupportedApp("Signal",SIGNAL_PACKAGE_NAME)
     };
 
     private final String KEY_SERVICE_ENABLED = "pref_service_enabled";
@@ -42,7 +45,7 @@ public class PreferencesManager {
     public PreferencesManager(Context context) {
         this.context = context;
         sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
-        SMS_Package_Name = Telephony.Sms.getDefaultSmsPackage(context);
+        //SMS_Package_Name = Telephony.Sms.getDefaultSmsPackage(context);
     }
 
     public static PreferencesManager getPreferencesInstance(Context context) {
@@ -148,8 +151,10 @@ public class PreferencesManager {
         return isSupportedAppEnabled(INSTAGRAM_PACKAGE_NAME);
     }
 
-    public boolean isSMSEnabled() {
-        return isSupportedAppEnabled(SMS_Package_Name);
+    public boolean isSMSEnabled() { return isSupportedAppEnabled(SMS_Package_Name); }
+
+    public boolean isSignalEnabled() {
+        return isSupportedAppEnabled(SIGNAL_PACKAGE_NAME);
     }
 
     public boolean isOutlookEnabled() {
@@ -175,6 +180,11 @@ public class PreferencesManager {
     public void setSmsEnabled(boolean enabled) {
         setAppEnabled(SMS_Package_Name, enabled);
     }
+    public void setSignalEnabled(boolean enabled) {
+        setAppEnabled(SIGNAL_PACKAGE_NAME, enabled);
+    }
+
+
     public void setOutlookEnabled(boolean enabled) {
         setAppEnabled(OUTLOOK_PACKAGE_NAME, enabled);
     }
