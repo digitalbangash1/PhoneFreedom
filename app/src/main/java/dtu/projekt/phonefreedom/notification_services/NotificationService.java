@@ -20,9 +20,9 @@ public class NotificationService extends NotificationListenerService {
     public void onNotificationPosted(StatusBarNotification sbn) {
         super.onNotificationPosted(sbn);
 
-        //TEST only
+      /*  //TEST only
         PreferencesManager prefs = PreferencesManager.getPreferencesInstance(this);
-        prefs.setWhatsAppEnabled(true);
+        prefs.setWhatsAppEnabled(true);*/
 
         if (canReply(sbn) && shouldReply(sbn)) {
             sendReply(sbn);
@@ -78,6 +78,7 @@ public class NotificationService extends NotificationListenerService {
     }
 
     private void sendReply(StatusBarNotification sbn) {
+        PreferencesManager prefs = PreferencesManager.getPreferencesInstance(this);
         NotificationWear notificationWear = NotificationUtils.extractWearNotification(sbn);
         // Possibly transient or non-user notification from WhatsApp like
         // "Checking for new messages" or "WhatsApp web is Active"
@@ -87,6 +88,8 @@ public class NotificationService extends NotificationListenerService {
 
         //customRepliesData = CustomRepliesData.getInstance(this);
         String myText = "My test text";
+
+
 
         RemoteInput[] remoteInputs = new RemoteInput[notificationWear.getRemoteInputs().size()];
 

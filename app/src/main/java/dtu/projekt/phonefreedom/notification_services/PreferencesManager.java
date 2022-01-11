@@ -2,6 +2,7 @@ package dtu.projekt.phonefreedom.notification_services;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.provider.Telephony;
 
 import androidx.preference.PreferenceManager;
 
@@ -12,17 +13,24 @@ public class PreferencesManager {
 
     //These are all the supported apps
     private final String WHATSAPP_PACKAGE_NAME = "com.whatsapp";
-    private final String MESSENGER_PACKAGE_NAME = "";
-    private final String SNAPCHAT_PACKAGE_NAME = "";
-    private final String TELEGRAM_PACKAGE_NAME = "";
-    private final String INSTAGRAM_PACKAGE_NAME = "";
+    private final String MESSENGER_PACKAGE_NAME = "com.facebook.orca";
+    private final String SNAPCHAT_PACKAGE_NAME = "com.snapchat.android";
+    private final String TELEGRAM_PACKAGE_NAME = "org.telegram.messenger";
+    private final String INSTAGRAM_PACKAGE_NAME = "com.instagram.android";
+    private final String OUTLOOK_PACKAGE_NAME = "com.microsoft.office.outlook";
+    private final  String SMS_Package_Name = "com.google.android.apps.messaging";
+    private final  String SIGNAL_PACKAGE_NAME = "org.thoughtcrime.securesms";
+
 
     public final SupportedApp[] supportedApps = new SupportedApp[]{
             new SupportedApp("WhatsApp", WHATSAPP_PACKAGE_NAME),
             new SupportedApp("Messenger", MESSENGER_PACKAGE_NAME),
             new SupportedApp("Snapchat", SNAPCHAT_PACKAGE_NAME),
             new SupportedApp("Telegram", TELEGRAM_PACKAGE_NAME),
-            new SupportedApp("Instagram", INSTAGRAM_PACKAGE_NAME)
+            new SupportedApp("Instagram", INSTAGRAM_PACKAGE_NAME),
+            new SupportedApp("Outlook", OUTLOOK_PACKAGE_NAME),
+            new SupportedApp("Sms", SMS_Package_Name),
+            new SupportedApp("Signal",SIGNAL_PACKAGE_NAME)
     };
 
     private final String KEY_SERVICE_ENABLED = "pref_service_enabled";
@@ -37,6 +45,7 @@ public class PreferencesManager {
     public PreferencesManager(Context context) {
         this.context = context;
         sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
+        //SMS_Package_Name = Telephony.Sms.getDefaultSmsPackage(context);
     }
 
     public static PreferencesManager getPreferencesInstance(Context context) {
@@ -67,7 +76,7 @@ public class PreferencesManager {
     }
 
     public String getAutoReplyText() {
-        return sharedPrefs.getString(KEY_AUTO_REPLY_TEXT, "Test reply");
+        return sharedPrefs.getString(KEY_AUTO_REPLY_TEXT,"This is a default automated message.");
     }
 
     public void setAutoReplyText(String text) {
@@ -142,6 +151,16 @@ public class PreferencesManager {
         return isSupportedAppEnabled(INSTAGRAM_PACKAGE_NAME);
     }
 
+    public boolean isSMSEnabled() { return isSupportedAppEnabled(SMS_Package_Name); }
+
+    public boolean isSignalEnabled() {
+        return isSupportedAppEnabled(SIGNAL_PACKAGE_NAME);
+    }
+
+    public boolean isOutlookEnabled() {
+        return isSupportedAppEnabled(OUTLOOK_PACKAGE_NAME);
+    }
+
 
     public void setWhatsAppEnabled(boolean enabled) {
         setAppEnabled(WHATSAPP_PACKAGE_NAME, enabled);
@@ -157,6 +176,17 @@ public class PreferencesManager {
     }
     public void setInstagramEnabled(boolean enabled) {
         setAppEnabled(INSTAGRAM_PACKAGE_NAME, enabled);
+    }
+    public void setSmsEnabled(boolean enabled) {
+        setAppEnabled(SMS_Package_Name, enabled);
+    }
+    public void setSignalEnabled(boolean enabled) {
+        setAppEnabled(SIGNAL_PACKAGE_NAME, enabled);
+    }
+
+
+    public void setOutlookEnabled(boolean enabled) {
+        setAppEnabled(OUTLOOK_PACKAGE_NAME, enabled);
     }
 
     public void setAppEnabled(String packageName, boolean enabled) {

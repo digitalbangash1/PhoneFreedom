@@ -127,18 +127,25 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun appButton() {
+        val prefs: PreferencesManager = PreferencesManager.getPreferencesInstance(this)
         editText = findViewById(R.id.editTextAutoText)
+
         editText.setOnFocusChangeListener(object : OnFocusChangeListener {
             override fun onFocusChange(v: View, hasFocus: Boolean) {
                 if (!hasFocus) {
                     val prefs: PreferencesManager =
                         PreferencesManager.getPreferencesInstance(this@MainActivity)
                     prefs.setAutoReplyText(editText.text.toString())
+
                 }
+
             }
+
         })
 
-
+        binding.whatsappButton.isSelected = prefs.isWhatsAppEnabled
+        binding.MessageButton.isSelected = prefs.isSMSEnabled
+        binding.SnapchatButton.isSelected = prefs.isSignalEnabled
 
 
 
@@ -153,21 +160,27 @@ class MainActivity : AppCompatActivity() {
         }
         binding.SnapchatButton.setOnClickListener {
             binding.SnapchatButton.isSelected = !binding.SnapchatButton.isSelected
+            prefs.setSignalEnabled(binding.SnapchatButton.isSelected)
         }
         binding.EmailButton.setOnClickListener {
             binding.EmailButton.isSelected = !binding.EmailButton.isSelected
+            prefs.setOutlookEnabled(binding.EmailButton.isSelected)
         }
         binding.messengerButton.setOnClickListener {
             binding.messengerButton.isSelected = !binding.messengerButton.isSelected
+            prefs.setMessengerEnabled(binding.messengerButton.isSelected)
         }
         binding.TelegramButton.setOnClickListener {
             binding.TelegramButton.isSelected = !binding.TelegramButton.isSelected
+            prefs.setTelegramEnabled(binding.TelegramButton.isSelected)
         }
         binding.InstagramButton.setOnClickListener {
             binding.InstagramButton.isSelected = !binding.InstagramButton.isSelected
+            prefs.setInstagramEnabled(binding.InstagramButton.isSelected)
         }
         binding.MessageButton.setOnClickListener {
             binding.MessageButton.isSelected = !binding.MessageButton.isSelected
+            prefs.setSmsEnabled(binding.MessageButton.isSelected)
         }
         binding.goandstopButton.setOnClickListener {
             binding.goandstopButton.isSelected = !binding.goandstopButton.isSelected
