@@ -132,14 +132,18 @@ class MainActivity : AppCompatActivity() {
     private fun appButton() {
         val prefs: PreferencesManager = PreferencesManager.getPreferencesInstance(this)
         editText = findViewById(R.id.editTextAutoText)
+
         editText.setOnFocusChangeListener(object : OnFocusChangeListener {
             override fun onFocusChange(v: View, hasFocus: Boolean) {
                 if (!hasFocus) {
                     val prefs: PreferencesManager =
                         PreferencesManager.getPreferencesInstance(this@MainActivity)
                     prefs.setAutoReplyText(editText.text.toString())
+
                 }
+
             }
+
         })
 
         binding.whatsappButton.isSelected = prefs.isWhatsAppEnabled

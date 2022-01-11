@@ -76,7 +76,7 @@ public class PreferencesManager {
     }
 
     public String getAutoReplyText() {
-        return sharedPrefs.getString(KEY_AUTO_REPLY_TEXT, "Test reply");
+        return sharedPrefs.getString(KEY_AUTO_REPLY_TEXT,"This is a default automated message.");
     }
 
     public void setAutoReplyText(String text) {
