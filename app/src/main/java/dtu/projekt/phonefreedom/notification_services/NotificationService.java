@@ -20,9 +20,9 @@ public class NotificationService extends NotificationListenerService {
     public void onNotificationPosted(StatusBarNotification sbn) {
         super.onNotificationPosted(sbn);
 
-        //TEST only
+      /*  //TEST only
         PreferencesManager prefs = PreferencesManager.getPreferencesInstance(this);
-        prefs.setWhatsAppEnabled(true);
+        prefs.setWhatsAppEnabled(true);*/
 
         if (canReply(sbn) && shouldReply(sbn)) {
             sendReply(sbn);

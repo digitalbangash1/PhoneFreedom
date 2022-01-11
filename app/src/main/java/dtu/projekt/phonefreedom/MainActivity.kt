@@ -43,6 +43,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var editText: EditText
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -51,6 +52,7 @@ class MainActivity : AppCompatActivity() {
 
 
         startActivity(intent)
+
         //   val navController = findNavController(R.id.settings)
         setContentView(view)
         addTime()
@@ -60,8 +62,8 @@ class MainActivity : AppCompatActivity() {
         //sendWhatsapp()
         showVideo()
         launchNotificationAccessSettings()
-        dndon()
-        dndoff()
+        /*dndon()
+        dndoff()*/
     }
 
     private fun addClickListeners() {
@@ -128,6 +130,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun appButton() {
+        val prefs: PreferencesManager = PreferencesManager.getPreferencesInstance(this)
         editText = findViewById(R.id.editTextAutoText)
         editText.setOnFocusChangeListener(object : OnFocusChangeListener {
             override fun onFocusChange(v: View, hasFocus: Boolean) {
@@ -139,14 +142,15 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-
+        binding.whatsappButton.isSelected = prefs.isWhatsAppEnabled
+        binding.MessageButton.isSelected = prefs.isSMSEnabled
 
 
 
 
         binding.whatsappButton.setOnClickListener {
             binding.whatsappButton.isSelected = !binding.whatsappButton.isSelected
-            val prefs: PreferencesManager = PreferencesManager.getPreferencesInstance(this)
+
             prefs.setWhatsAppEnabled(binding.whatsappButton.isSelected)
         }
         binding.CallButton.setOnClickListener {
@@ -157,18 +161,23 @@ class MainActivity : AppCompatActivity() {
         }
         binding.EmailButton.setOnClickListener {
             binding.EmailButton.isSelected = !binding.EmailButton.isSelected
+            prefs.setOutlookEnabled(binding.EmailButton.isSelected)
         }
         binding.messengerButton.setOnClickListener {
             binding.messengerButton.isSelected = !binding.messengerButton.isSelected
+            prefs.setMessengerEnabled(binding.messengerButton.isSelected)
         }
         binding.TelegramButton.setOnClickListener {
             binding.TelegramButton.isSelected = !binding.TelegramButton.isSelected
+            prefs.setTelegramEnabled(binding.TelegramButton.isSelected)
         }
         binding.InstagramButton.setOnClickListener {
             binding.InstagramButton.isSelected = !binding.InstagramButton.isSelected
+            prefs.setInstagramEnabled(binding.InstagramButton.isSelected)
         }
         binding.MessageButton.setOnClickListener {
             binding.MessageButton.isSelected = !binding.MessageButton.isSelected
+            prefs.setSmsEnabled(binding.MessageButton.isSelected)
         }
         binding.goandstopButton.setOnClickListener {
             binding.goandstopButton.isSelected = !binding.goandstopButton.isSelected
@@ -259,18 +268,18 @@ class MainActivity : AppCompatActivity() {
         }*/
 
 
-    private fun dndon() {
-        val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
-        binding.buttonOn.setOnClickListener {
-            if (checkNotificationPolicyAccess(notificationManager)) {
-                notificationManager.onDOD()
-                Toast.makeText(this, "Do Not Disturb turned on.", Toast.LENGTH_SHORT).show()
-            }
-        }
+    /* private fun dndon() {
+         val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+        // binding.buttonOn.setOnClickListener {
+             if (checkNotificationPolicyAccess(notificationManager)) {
+                 notificationManager.onDOD()
+                 Toast.makeText(this, "Do Not Disturb turned on.", Toast.LENGTH_SHORT).show()
+             }
+         }
 
-    }
+     }*/
 
-    private fun dndoff(){
+    /*private fun dndoff(){
         val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
 
         binding.buttonOff.setOnClickListener {
@@ -296,9 +305,9 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this,"Device does not support this feature" ,Toast.LENGTH_SHORT).show()
         }
         return false
-    }
+    }*/
 
-    fun NotificationManager.onDOD(){
+    fun NotificationManager.onDOD() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             this.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_NONE)
         }
@@ -306,7 +315,7 @@ class MainActivity : AppCompatActivity() {
 
 
     // Extension function to turn off do not disturb
-    fun NotificationManager.offDOD(){
+    fun NotificationManager.offDOD() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             this.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_ALL)
         }
