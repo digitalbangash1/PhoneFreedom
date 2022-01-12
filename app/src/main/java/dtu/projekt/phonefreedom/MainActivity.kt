@@ -17,6 +17,8 @@ import android.widget.EditText
 import dtu.projekt.phonefreedom.notification_services.PreferencesManager
 import android.view.View.OnFocusChangeListener
 import android.app.NotificationManager
+import android.util.DisplayMetrics
+import android.view.ViewGroup
 import android.widget.Toast
 
 
