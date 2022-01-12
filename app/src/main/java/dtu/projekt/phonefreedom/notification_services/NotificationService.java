@@ -87,7 +87,7 @@ public class NotificationService extends NotificationListenerService {
         }
 
         //customRepliesData = CustomRepliesData.getInstance(this);
-        String myText = "My test text";
+        String myText = prefs.getAutoReplyText();
 
 
 

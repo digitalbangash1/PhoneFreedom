@@ -17,7 +17,16 @@ import android.widget.EditText
 import dtu.projekt.phonefreedom.notification_services.PreferencesManager
 import android.view.View.OnFocusChangeListener
 import android.app.NotificationManager
+import android.content.pm.PackageManager
+import android.provider.Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS
 import android.widget.Toast
+import androidx.core.content.ContextCompat
+import android.text.Editable
+
+import android.text.TextWatcher
+
+
+
 
 
 class MainActivity : AppCompatActivity() {
@@ -124,21 +133,39 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun appButton() {
-        val prefs: PreferencesManager = PreferencesManager.getPreferencesInstance(this)
+       val prefs: PreferencesManager = PreferencesManager.getPreferencesInstance(this)
         editText = findViewById(R.id.editTextAutoText)
 
-        editText.setOnFocusChangeListener(object : OnFocusChangeListener {
+
+        editText.addTextChangedListener(object : TextWatcher {
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+
+
+                val text = s.toString()
+                prefs.setAutoReplyText(text)
+
+            }
+
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+            override fun afterTextChanged(s: Editable) {
+
+
+            }
+        })
+
+       /* editText.setOnFocusChangeListener(object : OnFocusChangeListener {
             override fun onFocusChange(v: View, hasFocus: Boolean) {
                 if (!hasFocus) {
                     val prefs: PreferencesManager =
                         PreferencesManager.getPreferencesInstance(this@MainActivity)
                     prefs.setAutoReplyText(editText.text.toString())
 
+
                 }
 
             }
 
-        })
+        })*/
 
         binding.whatsappButton.isSelected = prefs.isWhatsAppEnabled
         binding.MessageButton.isSelected = prefs.isSMSEnabled
