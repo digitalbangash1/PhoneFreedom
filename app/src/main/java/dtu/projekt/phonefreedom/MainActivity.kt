@@ -140,9 +140,17 @@ class MainActivity : AppCompatActivity() {
         editText.addTextChangedListener(object : TextWatcher {
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
 
+                val default = "This is default message "
 
-                val text = s.toString()
-                prefs.setAutoReplyText(text)
+                val text = s.toString().trim()
+
+                if (s.length == 0){
+                    prefs.setAutoReplyText(default)
+
+                } else{
+                    prefs.setAutoReplyText(text)
+                }
+
 
             }
 

@@ -76,10 +76,12 @@ public class PreferencesManager {
     }
 
     public String getAutoReplyText() {
+
         return sharedPrefs.getString(KEY_AUTO_REPLY_TEXT,"This is a default automated message.");
     }
 
     public void setAutoReplyText(String text) {
+
         SharedPreferences.Editor editor = sharedPrefs.edit();
         editor.putString(KEY_AUTO_REPLY_TEXT, text);
         editor.commit();
