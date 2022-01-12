@@ -6,21 +6,18 @@ import android.os.Bundle
 import dtu.projekt.phonefreedom.databinding.ActivityMainBinding
 import java.text.SimpleDateFormat
 import java.util.*
+
 import android.content.Intent
 import android.media.MediaPlayer
 import android.os.Build
 import android.provider.Settings
 import android.view.View
+
 import android.widget.EditText
 import dtu.projekt.phonefreedom.notification_services.PreferencesManager
 import android.view.View.OnFocusChangeListener
 import android.app.NotificationManager
-import android.content.pm.PackageManager
-import android.provider.Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS
 import android.widget.Toast
-import androidx.annotation.RequiresApi
-import androidx.core.content.ContextCompat
-import java.util.jar.Manifest
 
 
 class MainActivity : AppCompatActivity() {
@@ -223,7 +220,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
     private fun launchNotificationAccessSettings() {
         val result: Int = ContextCompat.checkSelfPermission(
             this, ACTION_NOTIFICATION_LISTENER_SETTINGS
@@ -322,28 +318,26 @@ class MainActivity : AppCompatActivity() {
         }*/
 
 
+
+
     private fun checkNotificationPolicyAccess(notificationManager: NotificationManager): Boolean {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (notificationManager.isNotificationPolicyAccessGranted) {
                 //toast("Notification policy access granted.")
                 return true
             } else {
-                Toast.makeText(
-                    this,
-                    "You need to grant notification policy access.",
-                    Toast.LENGTH_SHORT
-                ).show()
+                Toast.makeText(this,"You need to grant notification policy access.",Toast.LENGTH_SHORT).show()
                 // If notification policy access not granted for this package
                 val intent = Intent(Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS)
                 startActivity(intent)
             }
         } else {
-            Toast.makeText(this, "Device does not support this feature", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,"Device does not support this feature" ,Toast.LENGTH_SHORT).show()
         }
         return false
     }
 
-    fun NotificationManager.onDOD() {
+    fun NotificationManager.onDOD(){
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             this.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_NONE)
@@ -352,7 +346,7 @@ class MainActivity : AppCompatActivity() {
 
 
     // Extension function to turn off do not disturb
-    fun NotificationManager.offDOD() {
+    fun NotificationManager.offDOD(){
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             this.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_ALL)
         }
