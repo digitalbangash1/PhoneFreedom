@@ -53,6 +53,7 @@ class LanguageActivity : AppCompatActivity() {
 
     }
     private fun setLocale(localeName: String) {
+
         if (localeName != currentLanguage) {
             locale = Locale(localeName)
             val res = resources
