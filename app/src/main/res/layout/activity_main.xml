@@ -29,12 +29,6 @@
                 android:background="@drawable/messenger" />
 
             <ImageButton
-                android:id="@+id/SnapchatButton"
-                style="@style/availableAppsItem"
-                android:layout_marginHorizontal="3dp"
-                android:background="@drawable/snapchat" />
-
-            <ImageButton
                 android:id="@+id/CallButton"
                 style="@style/availableAppsItem"
                 android:layout_marginHorizontal="3dp"
@@ -56,7 +50,7 @@
                 android:id="@+id/EmailButton"
                 style="@style/availableAppsItem"
                 android:layout_marginHorizontal="3dp"
-                android:background="@drawable/email" />
+                android:background="@drawable/signal" />
 
             <ImageButton
                 android:id="@+id/InstagramButton"
