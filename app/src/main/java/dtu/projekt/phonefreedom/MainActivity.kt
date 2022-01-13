@@ -19,6 +19,7 @@ import android.view.View.OnFocusChangeListener
 import android.app.NotificationManager
 import android.content.pm.PackageManager
 import android.provider.Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS
+import android.provider.SyncStateContract.Helpers.update
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import android.text.Editable
@@ -110,45 +111,54 @@ class MainActivity : AppCompatActivity() {
                 true
             ).show()
 
-            binding.editTextFreeTo.setOnClickListener {
-                val cal = Calendar.getInstance()
-                val timeListen = TimePickerDialog.OnTimeSetListener { timePicker, hour, minute ->
-                    cal.set(Calendar.HOUR_OF_DAY, hour)
-                    cal.set(Calendar.MINUTE, minute)
-
-                    binding.editTextFreeTo.setText(SimpleDateFormat("HH : mm").format(cal.time))
-                }
-                TimePickerDialog(
-                    this, android.R.style.Theme_Holo_Light_Dialog,
-                    timeListen,
-                    cal.get(Calendar.HOUR_OF_DAY),
-                    cal.get(Calendar.MINUTE),
-                    true
-                ).show()
-
-
-            }
+        }
+        binding.editTextFreeTo.setOnClickListener {
+            addTime()
 
         }
     }
 
+//        binding.textViewFreeAddTime.text
+//            binding.editTextFreeTo.setOnClickListener {
+//                val cal = Calendar.getInstance()
+//                val timeListen = TimePickerDialog.OnTimeSetListener { timePicker, hour, minute ->
+//                    cal.set(Calendar.HOUR_OF_DAY, hour)
+//                    cal.set(Calendar.MINUTE, minute)
+//
+//                    binding.editTextFreeTo.setText(SimpleDateFormat("HH : mm").format(cal.time))
+//
+//
+//                }
+//                TimePickerDialog(
+//                    this, android.R.style.Theme_Holo_Light_Dialog,
+//                    timeListen,
+//                    cal.get(Calendar.HOUR_OF_DAY),
+//                    cal.get(Calendar.MINUTE),
+//                    true
+//                ).show()
+//            }
+//        binding.textViewFreeAddTime.text
+//    }
+
     private fun appButton() {
        val prefs: PreferencesManager = PreferencesManager.getPreferencesInstance(this)
         editText = findViewById(R.id.editTextAutoText)
+        val TimeforApp = binding.editTextFreeTo.text.toString()
+
 
 
         editText.addTextChangedListener(object : TextWatcher {
-            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+            override fun onTextChanged( s: CharSequence, start: Int, before: Int, count: Int) {
 
                 val default = "This is default message "
 
                 val text = s.toString().trim()
 
                 if (s.length == 0){
-                    prefs.setAutoReplyText(default)
+                    prefs.setAutoReplyText(default + "jeg tjekker min telefon igen kl:"+TimeforApp )
 
                 } else{
-                    prefs.setAutoReplyText(text)
+                    prefs.setAutoReplyText(text+ "jeg tjekker min telefon igen kl:"+TimeforApp )
                 }
 
 
@@ -161,25 +171,9 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-       /* editText.setOnFocusChangeListener(object : OnFocusChangeListener {
-            override fun onFocusChange(v: View, hasFocus: Boolean) {
-                if (!hasFocus) {
-                    val prefs: PreferencesManager =
-                        PreferencesManager.getPreferencesInstance(this@MainActivity)
-                    prefs.setAutoReplyText(editText.text.toString())
-
-
-                }
-
-            }
-
-        })*/
 
         binding.whatsappButton.isSelected = prefs.isWhatsAppEnabled
         binding.MessageButton.isSelected = prefs.isSMSEnabled
-
-
-
 
 
         binding.whatsappButton.setOnClickListener {
@@ -386,6 +380,12 @@ class MainActivity : AppCompatActivity() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             this.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_ALL)
         }
+    }
+    fun AddTimeToMessage(){
+       val Timeforapp = binding.editTextFreeTo.text.toString()
+        Toast.makeText(this,Timeforapp ,Toast.LENGTH_SHORT).show()
+
+
     }
 
 }
