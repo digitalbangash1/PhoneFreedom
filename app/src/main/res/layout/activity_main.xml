@@ -7,9 +7,7 @@
     android:background="@drawable/back3"
     android:orientation="vertical"
     tools:context=".MainActivity"
-    tools:viewBindingIgnore="false"
-    >
-
+    tools:viewBindingIgnore="false">
 
 
     <HorizontalScrollView
@@ -78,32 +76,31 @@
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_marginTop="12dp"
+            android:background="#546AE6"
             android:text="@string/autosvar"
             android:textColor="#000"
-            android:textSize="18sp"
-            android:textStyle="bold"
             android:textColorHint="@color/white"
-            android:background="#546AE6"/>
-
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:orientation="horizontal"
-            android:layout_marginTop="100dp">
+            android:layout_marginTop="100dp"
+            android:orientation="horizontal">
 
             <EditText
                 android:id="@+id/editTextAutoText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:layout_weight="1"
                 android:ems="10"
                 android:hint="@string/write_msg"
                 android:inputType="textPersonName"
-                android:text=""
-                android:layout_marginTop="10dp"/>
+                android:text="" />
 
             <ImageButton
                 android:id="@+id/buttonSelectPredefinedMessage"
@@ -127,46 +124,46 @@
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_marginTop="12dp"
+            android:background="#546AE6"
             android:text="@string/holderfrifratlf"
             android:textColor="#000000"
             android:textSize="18sp"
-            android:textStyle="bold"
-            android:background="#546AE6"/>
-
+            android:textStyle="bold" />
 
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="12dip"
             android:layout_gravity="center"
+            android:layout_margin="12dip"
             android:background="@drawable/borders"
             android:orientation="vertical">
-        <Button
-            android:id="@+id/btn_AddTime"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
 
-            android:backgroundTint="#C9D4DF"
-            android:text="@string/add_time"
-            android:textColor="#000109"
-            android:textStyle="bold"
-            android:textSize="18dp"/>
+            <Button
+                android:id="@+id/btn_AddTime"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
 
-        <TextView
-            android:id="@+id/timeTxtView"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:background="#7476CD"
-            android:ems="10"
-            android:gravity="center"
-            android:hint="@string/til"
-            android:inputType="time"
-            android:text=""
-            android:textColor="@color/black"
-            android:textSize="30dp"
-            android:textStyle="bold" />
+                android:backgroundTint="#C9D4DF"
+                android:text="@string/add_time"
+                android:textColor="#000109"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/timeTxtView"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:background="#7476CD"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="@string/til"
+                android:inputType="time"
+                android:text=""
+                android:textColor="@color/black"
+                android:textSize="30dp"
+                android:textStyle="bold" />
         </LinearLayout>
 
 
@@ -185,21 +182,21 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_margin="10dip"
-            android:orientation="vertical"
             android:background="@drawable/borders"
-            android:layout_gravity="center">
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/Do_not_Disturb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="#546AE6"
+                android:gravity="center"
                 android:text="Don't-Disturb:"
                 android:textColor="#000000"
                 android:textSize="14sp"
-                android:textStyle="bold"
-                android:gravity="center"
-                android:background="#546AE6"/>
+                android:textStyle="bold" />
 
             <Switch
                 android:id="@+id/SwitchOnOff"
@@ -215,36 +212,52 @@
                 android:thumb="@drawable/switch_on_of"
                 tools:ignore="UseSwitchCompatOrMaterialXml" />
         </LinearLayout>
+
         <ImageButton
             android:id="@+id/goandstopButton"
             style="@style/availableAppsItem"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:layout_gravity="center_horizontal"
             android:layout_marginHorizontal="30dp"
             android:layout_marginStart="7dp"
-            android:layout_marginEnd="7dp"
 
-            android:background="@drawable/goandstop"
-            android:layout_gravity="center_horizontal"/>
+            android:layout_marginEnd="7dp"
+            android:background="@drawable/goandstop" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="10dip"
             android:layout_marginEnd="0dp"
             android:background="@drawable/borders"
-            android:orientation="vertical"
-            android:layout_margin="10dip">
+            android:orientation="vertical">
 
-        <ImageButton
-            android:id="@+id/toSettings"
-            style="@style/availableAppsItem"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_margin= "0dp"
-            android:background="@drawable/settingsb"
-            android:layout_gravity="center"/>
+            <ImageButton
+                android:id="@+id/toSettings"
+                style="@style/availableAppsItem"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:layout_margin="0dp"
+                android:background="@drawable/settingsb" />
         </LinearLayout>
 
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/btn_setting_dnd"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                >
+
+            </Button>
+
+        </LinearLayout>
 
 
     </LinearLayout>

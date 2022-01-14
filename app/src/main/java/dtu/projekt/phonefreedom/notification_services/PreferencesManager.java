@@ -87,6 +87,7 @@ public class PreferencesManager {
         editor.commit();
     }
 
+
     //Returns all supported apps that are enabled
     public SupportedApp[] getEnabledApps() {
         Set<String> enabledAppsPackageNames =

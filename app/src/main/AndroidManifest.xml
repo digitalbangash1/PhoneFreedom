@@ -10,6 +10,7 @@
 
 
 
+
     <supports-screens
         android:resizeable="true"
         android:smallScreens="true"

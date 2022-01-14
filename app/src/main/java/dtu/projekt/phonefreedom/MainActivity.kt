@@ -18,8 +18,9 @@ import android.widget.EditText
 import dtu.projekt.phonefreedom.notification_services.PreferencesManager
 import android.view.View.OnFocusChangeListener
 import android.app.NotificationManager
+import android.content.ComponentName
 import android.content.pm.PackageManager
-import android.provider.Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS
+import android.provider.Settings.*
 import android.provider.SyncStateContract.Helpers.update
 import android.widget.Toast
 import androidx.core.content.ContextCompat
@@ -67,6 +68,7 @@ class MainActivity : AppCompatActivity() {
         //sendWhatsapp()
         showVideo()
         launchNotificationAccessSettings()
+        accessDndSetting()
     }
 
     private fun addClickListeners() {
@@ -269,6 +271,19 @@ class MainActivity : AppCompatActivity() {
     fun NotificationManager.offDOD() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             this.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_ALL)
+        }
+    }
+
+    private fun accessDndSetting() {
+        binding.btnSettingDnd?.setOnClickListener {
+            val settingdnd = Intent()
+            settingdnd.component = ComponentName("com.android.settings", "com.android.settings.Settings\$ZenModeSettingsActivity")
+            /*settingdnd.putExtra("android.provider.extra.APP_PACKAGE", getPackageName())
+            settingdnd.putExtra("app_uid", getApplicationInfo().uid);*/
+
+
+
+            startActivity(settingdnd)
         }
     }
 
