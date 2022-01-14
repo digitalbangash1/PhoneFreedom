@@ -18,6 +18,7 @@ import android.widget.EditText
 import dtu.projekt.phonefreedom.notification_services.PreferencesManager
 import android.view.View.OnFocusChangeListener
 import android.app.NotificationManager
+import android.app.admin.DevicePolicyManager
 import android.content.Context
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
@@ -58,6 +59,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var editTextFreeTo: TextView
     private var showtime : String ="no time"
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -70,7 +73,7 @@ class MainActivity : AppCompatActivity() {
         appButton()
         showMenu()
         //sendWhatsapp()
-        showVideo()
+        //showVideo()
         launchNotificationAccessSettings()
 
     }
@@ -216,10 +219,12 @@ class MainActivity : AppCompatActivity() {
         }
         binding.goandstopButton.setOnClickListener {
             binding.goandstopButton.isSelected = !binding.goandstopButton.isSelected
+            showVideo()
+
         }
 
-        val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
 
+        val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
 
         binding.SwitchOnOff.setOnCheckedChangeListener { buttonView, isChecked ->
             if (checkNotificationPolicyAccess(notificationManager)) {
@@ -244,12 +249,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showVideo() {
-        if (!binding.goandstopButton.isSelected) {
-            binding.goandstopButton.setOnClickListener {
-                val intent = Intent(this, VideoActivity2::class.java)
-                this.startActivity(intent)
-                binding.goandstopButton.isSelected
-            }
+        if ( binding.goandstopButton.isSelected) {
+            val intent = Intent(this, VideoActivity2::class.java)
+            this.startActivity(intent)
+            binding.goandstopButton.isSelected
         }
     }
 
