@@ -24,30 +24,10 @@ import androidx.core.content.ContextCompat
 import android.text.Editable
 
 import android.text.TextWatcher
-
-
-
+import android.widget.ImageButton
 
 
 class MainActivity : AppCompatActivity() {
-
-
-    //TODO Forbind API Til Messenger          (Ali J)
-    //TODO Forbind API Til Telegram           /*ALi D*/
-    //TODO Forbind API Til Snapchat
-    //TODO Forbind API Til Whatsapp          /*salim*/
-    //TODO Forbind API Til Instagram         /*Thomas*/
-    //TODO Forbind API Til Besked            /*salim*/
-    //TODO Forbind API Til Opkald
-    //TODO Forbind API Til E-mail             ( Ali J)
-    //TODO Settings fragment
-
-    //TODO Settings -> Sprogindstillinger
-    //TODO Settings -> Animationer ON / OFF
-    //TODO Som bruger, ønsker jeg at kunne slå appen til med en On / Off funktion så appen er let at anvende.
-    //TODO Ny urfunktion i henhold til PO's ønske på discord
-    //TODO Billede / Logo med link i auto reply, som bruges til at videresende til enten App store / Play store.
-    //TODO Slå alle applikationer til / fr  /*salim*/
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var editText: EditText
@@ -62,17 +42,23 @@ class MainActivity : AppCompatActivity() {
         addTime()
         addClickListeners()
         appButton()
-        showMenu()
         //sendWhatsapp()
         showVideo()
         launchNotificationAccessSettings()
-
+        settingsScreen()
     }
 
     private fun addClickListeners() {
         binding.buttonSelectPredefinedMessage.setOnClickListener {
             val myIntent = Intent(this, PredefinedMessagesActivity::class.java)
             this.startActivityForResult(myIntent, 1)
+        }
+    }
+
+    private fun settingsScreen(){
+        binding.toSettings.setOnClickListener {
+            val myIntent = Intent(this,SettingsScreen::class.java)
+            startActivity(myIntent)
         }
     }
 
@@ -91,6 +77,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
 
 
     private fun addTime() {
@@ -238,12 +225,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun showMenu() {
-        binding.toSettings.setOnClickListener {
-            val intent = Intent(this, LanguageActivity::class.java)
-            startActivity(intent)
-        }
-    }
+
 
     private fun showVideo() {
         if (!binding.goandstopButton.isSelected) {

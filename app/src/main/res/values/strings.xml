@@ -21,6 +21,14 @@
     <string name="pref_is_append_watomatic_attribution" translatable="false">pref_is_append_watomatic_attribution</string>
     <string name="pref_show_foreground_service_notification" translatable="false">pref_show_foreground_service_notification</string>
 
+    <!--Settings.Language selector-->
+    <string-array name="Languages">
+        <item>English</item>
+        <item>Danish</item>
+        <item>Spanish</item>
+        <item>German</item>
+    </string-array>
+
     <!--Autostart Permission Dialog-->
     <string name="auto_start_permission_dialog_title">AutoStart Permission</string>
     <string name="running_in_the_background">Running in the background</string>

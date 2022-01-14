@@ -15,27 +15,4 @@
         android:name="dtu.projekt.phonefreedom.PredefinedMessagesActivity"
         android:label="activity_predefined_messages"
         tools:layout="@layout/activity_predefined_messages" />
-    <fragment
-        android:id="@+id/menuFragment"
-        android:name="dtu.projekt.phonefreedom.MenuFragment"
-        android:label="fragment_menu"
-        tools:layout="@layout/fragment_menu" >
-        <action
-            android:id="@+id/action_menuFragment_to_languageActivity"
-            app:destination="@id/languageActivity" />
-    </fragment>
-    <activity
-        android:id="@+id/languageActivity"
-        android:name="dtu.projekt.phonefreedom.LanguageActivity"
-        android:label="activity_language"
-        tools:layout="@layout/activity_language" />
-    <fragment
-        android:id="@+id/settings"
-        android:name="dtu.projekt.phonefreedom.Settings"
-        android:label="open_settings_tab"
-        tools:layout="@layout/open_settings_tab" >
-        <action
-            android:id="@+id/action_settings_to_mainActivity"
-            app:destination="@id/mainActivity" />
-    </fragment>
 </navigation>
