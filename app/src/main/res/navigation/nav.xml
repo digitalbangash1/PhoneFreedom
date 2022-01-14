@@ -29,4 +29,13 @@
         android:name="dtu.projekt.phonefreedom.LanguageActivity"
         android:label="activity_language"
         tools:layout="@layout/activity_language" />
+    <fragment
+        android:id="@+id/settings"
+        android:name="dtu.projekt.phonefreedom.Settings"
+        android:label="open_settings_tab"
+        tools:layout="@layout/open_settings_tab" >
+        <action
+            android:id="@+id/action_settings_to_mainActivity"
+            app:destination="@id/mainActivity" />
+    </fragment>
 </navigation>

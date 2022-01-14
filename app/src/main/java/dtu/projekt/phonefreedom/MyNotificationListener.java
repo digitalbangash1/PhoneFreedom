@@ -38,13 +38,5 @@ import androidx.core.app.NotificationCompat;
         public void onNotificationRemoved(StatusBarNotification sbn) {
             Log.i("SevenNLS","Notification removed");
         }
-
-
-
-
-
     }
-
-
-
 
