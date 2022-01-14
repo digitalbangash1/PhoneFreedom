@@ -149,7 +149,7 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/textViewFreeAddTime"
+                android:id="@+id/btn_AddTime"
                 android:layout_width="300dp"
                 android:layout_height="70dp"
                 android:backgroundTint="#C9D4DF"
@@ -159,7 +159,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/editTextFreeTo"
+                android:id="@+id/timeTxtView"
                 android:layout_width="300dp"
                 android:layout_height="70dp"
                 android:layout_gravity="center"

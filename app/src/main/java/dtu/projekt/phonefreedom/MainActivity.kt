@@ -1,5 +1,6 @@
 package dtu.projekt.phonefreedom
 
+import android.annotation.SuppressLint
 import android.app.TimePickerDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -27,9 +28,6 @@ import android.text.Editable
 import android.text.TextWatcher
 
 
-
-
-
 class MainActivity : AppCompatActivity() {
 
 
@@ -52,6 +50,8 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var editText: EditText
+    private var showTime: String = "no time"
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,7 +67,6 @@ class MainActivity : AppCompatActivity() {
         //sendWhatsapp()
         showVideo()
         launchNotificationAccessSettings()
-
     }
 
     private fun addClickListeners() {
@@ -93,15 +92,17 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
     private fun addTime() {
-        binding.textViewFreeAddTime.setOnClickListener {
+        binding.btnAddTime.setOnClickListener {
             val cal = Calendar.getInstance()
-            val timeListen = TimePickerDialog.OnTimeSetListener { timePicker, hour, minute ->
+            val timeListen = TimePickerDialog.OnTimeSetListener { _, hour, minute ->
                 cal.set(Calendar.HOUR_OF_DAY, hour)
                 cal.set(Calendar.MINUTE, minute)
 
-                binding.editTextFreeTo.setText(SimpleDateFormat("HH : mm").format(cal.time))
+
+                showTime = SimpleDateFormat("HH :mm").format(cal.time).toString()
+                binding.timeTxtView.setText(showTime)
+
             }
             TimePickerDialog(
                 this, android.R.style.Theme_Holo_Light_Dialog,
@@ -112,63 +113,31 @@ class MainActivity : AppCompatActivity() {
             ).show()
 
         }
-        binding.editTextFreeTo.setOnClickListener {
+        binding.timeTxtView.setOnClickListener() {
             addTime()
 
         }
     }
 
-//        binding.textViewFreeAddTime.text
-//            binding.editTextFreeTo.setOnClickListener {
-//                val cal = Calendar.getInstance()
-//                val timeListen = TimePickerDialog.OnTimeSetListener { timePicker, hour, minute ->
-//                    cal.set(Calendar.HOUR_OF_DAY, hour)
-//                    cal.set(Calendar.MINUTE, minute)
-//
-//                    binding.editTextFreeTo.setText(SimpleDateFormat("HH : mm").format(cal.time))
-//
-//
-//                }
-//                TimePickerDialog(
-//                    this, android.R.style.Theme_Holo_Light_Dialog,
-//                    timeListen,
-//                    cal.get(Calendar.HOUR_OF_DAY),
-//                    cal.get(Calendar.MINUTE),
-//                    true
-//                ).show()
-//            }
-//        binding.textViewFreeAddTime.text
-//    }
-
     private fun appButton() {
-       val prefs: PreferencesManager = PreferencesManager.getPreferencesInstance(this)
+        val prefs: PreferencesManager = PreferencesManager.getPreferencesInstance(this)
         editText = findViewById(R.id.editTextAutoText)
-        val TimeforApp = binding.editTextFreeTo.text.toString()
-
-
-
         editText.addTextChangedListener(object : TextWatcher {
-            override fun onTextChanged( s: CharSequence, start: Int, before: Int, count: Int) {
-
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                 val default = "This is default message "
-
                 val text = s.toString().trim()
+                if (s.length == 0) {
+                    prefs.setAutoReplyText(default)
 
-                if (s.length == 0){
-                    prefs.setAutoReplyText(default + "jeg tjekker min telefon igen kl:"+TimeforApp )
-
-                } else{
-                    prefs.setAutoReplyText(text+ "jeg tjekker min telefon igen kl:"+TimeforApp )
+                } else {
+                    prefs.setAutoReplyText(text + "Jeg tjekker min tlf" + showTime)
+                    Toast.makeText(this@MainActivity, showTime, Toast.LENGTH_SHORT).show()
                 }
-
-
             }
 
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
-            override fun afterTextChanged(s: Editable) {
 
-
-            }
+            override fun afterTextChanged(s: Editable) {}
         })
 
 
@@ -184,10 +153,10 @@ class MainActivity : AppCompatActivity() {
         binding.CallButton.setOnClickListener {
             binding.CallButton.isSelected = !binding.CallButton.isSelected
         }
-      /*  binding.SnapchatButton.setOnClickListener {
-            binding.SnapchatButton.isSelected = !binding.SnapchatButton.isSelected
-            prefs.setSignalEnabled(binding.SnapchatButton.isSelected)
-        }*/
+        /*  binding.SnapchatButton.setOnClickListener {
+              binding.SnapchatButton.isSelected = !binding.SnapchatButton.isSelected
+              prefs.setSignalEnabled(binding.SnapchatButton.isSelected)
+          }*/
         binding.EmailButton.setOnClickListener {
             binding.EmailButton.isSelected = !binding.EmailButton.isSelected
             prefs.setOutlookEnabled(binding.EmailButton.isSelected)
@@ -229,8 +198,6 @@ class MainActivity : AppCompatActivity() {
 
             }
         }
-
-
     }
 
     private fun showMenu() {
@@ -267,8 +234,48 @@ class MainActivity : AppCompatActivity() {
         val i = Intent(NOTIFICATION_LISTENER_SETTINGS)
         startActivity(i)
 
+    }
 
-        /* val result: Int
+    private fun checkNotificationPolicyAccess(notificationManager: NotificationManager): Boolean {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (notificationManager.isNotificationPolicyAccessGranted) {
+                //toast("Notification policy access granted.")
+                return true
+            } else {
+                Toast.makeText(
+                    this,
+                    "You need to grant notification policy access.",
+                    Toast.LENGTH_SHORT
+                ).show()
+                // If notification policy access not granted for this package
+                val intent = Intent(Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS)
+                startActivity(intent)
+            }
+        } else {
+            Toast.makeText(this, "Device does not support this feature", Toast.LENGTH_SHORT).show()
+        }
+        return false
+    }
+
+    fun NotificationManager.onDOD() {
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            this.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_NONE)
+        }
+    }
+
+
+    // Extension function to turn off do not disturb
+    fun NotificationManager.offDOD() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            this.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_ALL)
+        }
+    }
+
+
+}
+
+/* val result: Int
          result = ContextCompat.checkSelfPermission(this, ACTION_NOTIFICATION_LISTENER_SETTINGS)
          if (result == PERMISSION_GRANTED) {
              return
@@ -293,30 +300,29 @@ class MainActivity : AppCompatActivity() {
              }
          val i = Intent(NOTIFICATION_LISTENER_SETTINGS)
          startActivity(i)*/
-    }
 
-    /*private fun sendWhatsapp(message: String) {
-        val sendIntent = Intent()
-        sendIntent.action = Intent.ACTION_SEND
-        sendIntent.putExtra(Intent.EXTRA_TEXT, "this is ")
-        sendIntent.type = "text/plain"
-        sendIntent.setPackage("com.whatsapp")
-        if (sendIntent.resolveActivity(packageManager) != null) {
-            startActivity(sendIntent)
-        }
-    }
+/*private fun sendWhatsapp(message: String) {
+       val sendIntent = Intent()
+       sendIntent.action = Intent.ACTION_SEND
+       sendIntent.putExtra(Intent.EXTRA_TEXT, "this is ")
+       sendIntent.type = "text/plain"
+       sendIntent.setPackage("com.whatsapp")
+       if (sendIntent.resolveActivity(packageManager) != null) {
+           startActivity(sendIntent)
+       }
+   }
 
-    private fun sendWhatsapp() {
-        binding.whatsappSend.setOnClickListener {
+   private fun sendWhatsapp() {
+       binding.whatsappSend.setOnClickListener {
 
-            val sendIntent = Intent() // this works
-            sendIntent.action = Intent.ACTION_SEND
-            sendIntent.putExtra(Intent.EXTRA_TEXT, "This is my text to send.")
-            sendIntent.type = "text/plain"
-            sendIntent.setPackage("com.whatsapp")
-            startActivity(sendIntent)
+           val sendIntent = Intent() // this works
+           sendIntent.action = Intent.ACTION_SEND
+           sendIntent.putExtra(Intent.EXTRA_TEXT, "This is my text to send.")
+           sendIntent.type = "text/plain"
+           sendIntent.setPackage("com.whatsapp")
+           startActivity(sendIntent)
 
-            *//* val sendIntent = Intent()
+           *//* val sendIntent = Intent()
              sendIntent.action = Intent.ACTION_SEND
              sendIntent.putExtra(Intent.EXTRA_TEXT, "this is a test")
              sendIntent.type = "text/plain"
@@ -346,49 +352,6 @@ class MainActivity : AppCompatActivity() {
 
             //startActivity(sendIntent)
         }*/
-
-
-
-
-    private fun checkNotificationPolicyAccess(notificationManager: NotificationManager): Boolean {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (notificationManager.isNotificationPolicyAccessGranted) {
-                //toast("Notification policy access granted.")
-                return true
-            } else {
-                Toast.makeText(this,"You need to grant notification policy access.",Toast.LENGTH_SHORT).show()
-                // If notification policy access not granted for this package
-                val intent = Intent(Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS)
-                startActivity(intent)
-            }
-        } else {
-            Toast.makeText(this,"Device does not support this feature" ,Toast.LENGTH_SHORT).show()
-        }
-        return false
-    }
-
-    fun NotificationManager.onDOD(){
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            this.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_NONE)
-        }
-    }
-
-
-    // Extension function to turn off do not disturb
-    fun NotificationManager.offDOD(){
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            this.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_ALL)
-        }
-    }
-    fun AddTimeToMessage(){
-       val Timeforapp = binding.editTextFreeTo.text.toString()
-        Toast.makeText(this,Timeforapp ,Toast.LENGTH_SHORT).show()
-
-
-    }
-
-}
 
 
 
