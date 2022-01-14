@@ -168,7 +168,6 @@
                 android:gravity="center"
                 android:hint="@string/til"
                 android:inputType="time"
-                android:text="Time"
                 android:textColor="@color/black"
                 android:textSize="40dp"
                 android:textStyle="bold" />
