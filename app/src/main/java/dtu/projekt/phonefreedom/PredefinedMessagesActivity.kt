@@ -1,6 +1,7 @@
 package dtu.projekt.phonefreedom
 
 import android.R.attr
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -10,8 +11,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import android.app.Dialog
+import android.content.Context
+import android.content.SharedPreferences
+import android.provider.Contacts.SettingsColumns.KEY
 import android.view.Window
-
+import androidx.preference.PreferenceManager
+import java.util.*
 
 
 class PredefinedMessagesActivity : AppCompatActivity() {
@@ -22,9 +27,9 @@ class PredefinedMessagesActivity : AppCompatActivity() {
     lateinit var messages: Array<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_predefined_messages)
-
 
         messages = arrayOf<String>(
             "Fordi jeg spiser",
@@ -45,15 +50,25 @@ class PredefinedMessagesActivity : AppCompatActivity() {
             var message = "Jeg holder mobilfri  " + messages[position]
             val myIntent = Intent(this, MainActivity::class.java)
             myIntent.putExtra("Extra_SelectedPredefinedMessage", message)
-            setResult(Activity.RESULT_OK, myIntent);
-            finish();
+            setResult(Activity.RESULT_OK, myIntent)
+            finish()
+
+
+
         }
+
+
     }
+
+
+
+
 
     class PredefinedMessagesAdapter(
         private val context: Activity,
         private val messages: Array<String>
     ) : ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, messages) {
+
 
 
         override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
@@ -80,10 +95,6 @@ class PredefinedMessagesActivity : AppCompatActivity() {
 
         showDialogForEditingMessage(messageToEdit, messageIndex)
 
-
-
-
-
     }
 
     private fun showDialogForEditingMessage(message: String, position: Int) {
@@ -101,11 +112,26 @@ class PredefinedMessagesActivity : AppCompatActivity() {
         val noButton = dialog.findViewById<Button>(R.id.buttonNoForEditingPredefinedMessage) // <-- a button with this id
 
         yesButton.setOnClickListener {
-            messages[position] =
-                editText.text.toString() // update text when users clicks on ok button and then close dialog
+            messages[position] =  editText.text.toString() // update text when users clicks on ok button and then close dialog
             dialog.dismiss()
-        }
 
+            SaveMessage()
+
+        }
+        /*************************/
+
+        val sharedPreferences = getSharedPreferences("message", Context.MODE_PRIVATE)
+        messages[position]= sharedPreferences.getString("STRING_KEY",toString()).toString()
+
+        /*val prefs = getSharedPreferences(
+            "com.example.app", MODE_PRIVATE
+        )
+
+        val dateTimeKey = "com.example.app.datetime"
+        val l = prefs.getLong(dateTimeKey, Date().time)
+        val dt: Date
+        prefs.edit().putLong(dateTimeKey, dt.time).apply()*/
+        /***********************************/
         noButton.setOnClickListener { dialog.dismiss() } // just close dialog and do nothing when no button is clicked
 
 
@@ -117,4 +143,16 @@ class PredefinedMessagesActivity : AppCompatActivity() {
         window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         dialog.show()
     }
+
+
+    fun SaveMessage(){
+
+        val sharedPreferences = getSharedPreferences("message", Context.MODE_PRIVATE)
+        val edtior = sharedPreferences.edit()
+        edtior.apply {
+            putString("STRING_KEY", messages.toString())
+        }.apply()
+    }
+
+
 }
