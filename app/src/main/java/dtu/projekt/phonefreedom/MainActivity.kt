@@ -59,6 +59,7 @@ class MainActivity : AppCompatActivity() {
         //showVideo()
         launchNotificationAccessSettings()
         settingsScreen()
+        accessDndSetting()
     }
 
     private fun addClickListeners() {
@@ -261,18 +262,19 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun accessDndSetting() {
-        //  binding.btnSettingDnd?.setOnClickListener {
-        val settingdnd = Intent()
-        settingdnd.component = ComponentName(
-            "com.android.settings",
-            "com.android.settings.Settings\$ZenModeSettingsActivity"
-        )
-        /*settingdnd.putExtra("android.provider.extra.APP_PACKAGE", getPackageName())
+        binding.btnSettingDnd?.setOnClickListener {
+            val settingdnd = Intent()
+            settingdnd.component = ComponentName(
+                "com.android.settings",
+                "com.android.settings.Settings\$ZenModeSettingsActivity"
+            )
+            /*settingdnd.putExtra("android.provider.extra.APP_PACKAGE", getPackageName())
             settingdnd.putExtra("app_uid", getApplicationInfo().uid);*/
 
 
 
-        startActivity(settingdnd)
+            startActivity(settingdnd)
+        }
     }
 
 
