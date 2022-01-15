@@ -20,6 +20,8 @@ import android.app.NotificationManager
 import android.content.pm.PackageManager
 import android.provider.Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS
 import android.provider.SyncStateContract.Helpers.update
+import android.service.notification.NotificationListenerService
+import android.service.notification.StatusBarNotification
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import android.text.Editable
@@ -381,6 +383,7 @@ class MainActivity : AppCompatActivity() {
             this.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_ALL)
         }
     }
+
     fun AddTimeToMessage(){
        val Timeforapp = binding.editTextFreeTo.text.toString()
         Toast.makeText(this,Timeforapp ,Toast.LENGTH_SHORT).show()
