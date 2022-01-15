@@ -71,17 +71,23 @@ class MainActivity : AppCompatActivity() {
         addTime()
         addClickListeners()
         appButton()
-        showMenu()
         //sendWhatsapp()
         //showVideo()
         launchNotificationAccessSettings()
-
+        settingsScreen()
     }
 
     private fun addClickListeners() {
         binding.buttonSelectPredefinedMessage.setOnClickListener {
             val myIntent = Intent(this, PredefinedMessagesActivity::class.java)
             this.startActivityForResult(myIntent, 1)
+        }
+    }
+
+    private fun settingsScreen(){
+        binding.toSettings.setOnClickListener {
+            val myIntent = Intent(this,SettingsScreen::class.java)
+            startActivity(myIntent)
         }
     }
 
@@ -241,12 +247,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun showMenu() {
-        binding.toSettings.setOnClickListener {
-            val intent = Intent(this, LanguageActivity::class.java)
-            startActivity(intent)
-        }
-    }
+
 
     private fun showVideo() {
         if ( binding.goandstopButton.isSelected) {
