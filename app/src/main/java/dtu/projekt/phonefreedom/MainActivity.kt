@@ -1,5 +1,6 @@
 package dtu.projekt.phonefreedom
 
+import android.annotation.SuppressLint
 import android.app.TimePickerDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -17,21 +18,48 @@ import android.widget.EditText
 import dtu.projekt.phonefreedom.notification_services.PreferencesManager
 import android.view.View.OnFocusChangeListener
 import android.app.NotificationManager
+import android.app.admin.DevicePolicyManager
+import android.content.Context
+import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.provider.Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS
+import android.provider.SyncStateContract.Helpers.insert
+import android.provider.SyncStateContract.Helpers.update
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import android.text.Editable
 
 import android.text.TextWatcher
-import android.widget.ImageButton
+import android.widget.TextView
+import java.util.Arrays.fill
 
 
 class MainActivity : AppCompatActivity() {
 
 
+    //TODO Forbind API Til Messenger          (Ali J)
+    //TODO Forbind API Til Telegram           /*ALi D*/
+    //TODO Forbind API Til Snapchat
+    //TODO Forbind API Til Whatsapp          /*salim*/
+    //TODO Forbind API Til Instagram         /*Thomas*/
+    //TODO Forbind API Til Besked            /*salim*/
+    //TODO Forbind API Til Opkald
+    //TODO Forbind API Til E-mail             ( Ali J)
+    //TODO Settings fragment
+
+    //TODO Settings -> Sprogindstillinger
+    //TODO Settings -> Animationer ON / OFF
+    //TODO Som bruger, ønsker jeg at kunne slå appen til med en On / Off funktion så appen er let at anvende.
+    //TODO Ny urfunktion i henhold til PO's ønske på discord
+    //TODO Billede / Logo med link i auto reply, som bruges til at videresende til enten App store / Play store.
+    //TODO Slå alle applikationer til / fr  /*salim*/
+
     private lateinit var binding: ActivityMainBinding
     private lateinit var editText: EditText
+    private lateinit var editTextFreeTo: TextView
+    private var showtime : String ="no time"
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,23 +71,17 @@ class MainActivity : AppCompatActivity() {
         addTime()
         addClickListeners()
         appButton()
+        showMenu()
         //sendWhatsapp()
-        showVideo()
+        //showVideo()
         launchNotificationAccessSettings()
-        settingsScreen()
+
     }
 
     private fun addClickListeners() {
         binding.buttonSelectPredefinedMessage.setOnClickListener {
             val myIntent = Intent(this, PredefinedMessagesActivity::class.java)
             this.startActivityForResult(myIntent, 1)
-        }
-    }
-
-    private fun settingsScreen(){
-        binding.toSettings.setOnClickListener {
-            val myIntent = Intent(this,SettingsScreen::class.java)
-            startActivity(myIntent)
         }
     }
 
@@ -80,31 +102,16 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-
-    private fun addTime() {
-        binding.textViewFreeAddTime.setOnClickListener {
-            val cal = Calendar.getInstance()
-            val timeListen = TimePickerDialog.OnTimeSetListener { timePicker, hour, minute ->
-                cal.set(Calendar.HOUR_OF_DAY, hour)
-                cal.set(Calendar.MINUTE, minute)
-
-                binding.editTextFreeTo.setText(SimpleDateFormat("HH : mm").format(cal.time))
-            }
-            TimePickerDialog(
-                this, android.R.style.Theme_Holo_Light_Dialog,
-                timeListen,
-                cal.get(Calendar.HOUR_OF_DAY),
-                cal.get(Calendar.MINUTE),
-                true
-            ).show()
-
-            binding.editTextFreeTo.setOnClickListener {
+        private fun addTime() {
+            binding.textViewFreeAddTime.setOnClickListener {
                 val cal = Calendar.getInstance()
                 val timeListen = TimePickerDialog.OnTimeSetListener { timePicker, hour, minute ->
                     cal.set(Calendar.HOUR_OF_DAY, hour)
                     cal.set(Calendar.MINUTE, minute)
+                    showtime = SimpleDateFormat("HH:mm").format(cal.time)
+                    binding.editTextFreeTo.setText(showtime)
 
-                    binding.editTextFreeTo.setText(SimpleDateFormat("HH : mm").format(cal.time))
+                    Toast.makeText(this, "Time saved at $showtime",Toast.LENGTH_SHORT).show()
                 }
                 TimePickerDialog(
                     this, android.R.style.Theme_Holo_Light_Dialog,
@@ -113,61 +120,68 @@ class MainActivity : AppCompatActivity() {
                     cal.get(Calendar.MINUTE),
                     true
                 ).show()
-
+            }
+            binding.editTextFreeTo.setOnClickListener {
+                addTime()
 
             }
 
         }
-    }
+
+
+
 
     private fun appButton() {
+
        val prefs: PreferencesManager = PreferencesManager.getPreferencesInstance(this)
         editText = findViewById(R.id.editTextAutoText)
+        editTextFreeTo = findViewById(R.id.editTextFreeTo)
+
+        editTextFreeTo.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+
+
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                showtime =  s.toString()
+                var showMyTimeOnAutoText = findViewById<EditText>(R.id.editTextAutoText)
+                showMyTimeOnAutoText.setText(editText.text.toString() +"jeg tjekker min telefon kl:"+ showtime)
+            }
+            override fun afterTextChanged(s: Editable) {
+            }
+        })
 
 
         editText.addTextChangedListener(object : TextWatcher {
-            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
+            }
+            override fun onTextChanged( s: CharSequence, start: Int, before: Int, count: Int) {
 
                 val default = "This is default message "
 
                 val text = s.toString().trim()
 
+
+
                 if (s.length == 0){
-                    prefs.setAutoReplyText(default)
+
+                    prefs.setAutoReplyText(default )
 
                 } else{
-                    prefs.setAutoReplyText(text)
-                }
 
+                    prefs.setAutoReplyText(text )
+
+                   // Toast.makeText(this@MainActivity, showtime,Toast.LENGTH_SHORT).show()
+                }
 
             }
 
-            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
             override fun afterTextChanged(s: Editable) {
-
 
             }
         })
 
-       /* editText.setOnFocusChangeListener(object : OnFocusChangeListener {
-            override fun onFocusChange(v: View, hasFocus: Boolean) {
-                if (!hasFocus) {
-                    val prefs: PreferencesManager =
-                        PreferencesManager.getPreferencesInstance(this@MainActivity)
-                    prefs.setAutoReplyText(editText.text.toString())
-
-
-                }
-
-            }
-
-        })*/
-
         binding.whatsappButton.isSelected = prefs.isWhatsAppEnabled
         binding.MessageButton.isSelected = prefs.isSMSEnabled
-        binding.SnapchatButton.isSelected = prefs.isSignalEnabled
-
-
 
 
         binding.whatsappButton.setOnClickListener {
@@ -178,14 +192,15 @@ class MainActivity : AppCompatActivity() {
         binding.CallButton.setOnClickListener {
             binding.CallButton.isSelected = !binding.CallButton.isSelected
         }
-        binding.SnapchatButton.setOnClickListener {
+      /*  binding.SnapchatButton.setOnClickListener {
             binding.SnapchatButton.isSelected = !binding.SnapchatButton.isSelected
             prefs.setSignalEnabled(binding.SnapchatButton.isSelected)
-        }
+        }*/
         binding.EmailButton.setOnClickListener {
             binding.EmailButton.isSelected = !binding.EmailButton.isSelected
             prefs.setOutlookEnabled(binding.EmailButton.isSelected)
         }
+
         binding.messengerButton.setOnClickListener {
             binding.messengerButton.isSelected = !binding.messengerButton.isSelected
             prefs.setMessengerEnabled(binding.messengerButton.isSelected)
@@ -204,10 +219,12 @@ class MainActivity : AppCompatActivity() {
         }
         binding.goandstopButton.setOnClickListener {
             binding.goandstopButton.isSelected = !binding.goandstopButton.isSelected
+            showVideo()
+
         }
 
-        val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
 
+        val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
 
         binding.SwitchOnOff.setOnCheckedChangeListener { buttonView, isChecked ->
             if (checkNotificationPolicyAccess(notificationManager)) {
@@ -222,19 +239,20 @@ class MainActivity : AppCompatActivity() {
 
             }
         }
-
-
     }
 
-
+    private fun showMenu() {
+        binding.toSettings.setOnClickListener {
+            val intent = Intent(this, LanguageActivity::class.java)
+            startActivity(intent)
+        }
+    }
 
     private fun showVideo() {
-        if (!binding.goandstopButton.isSelected) {
-            binding.goandstopButton.setOnClickListener {
-                val intent = Intent(this, VideoActivity2::class.java)
-                this.startActivity(intent)
-                binding.goandstopButton.isSelected
-            }
+        if ( binding.goandstopButton.isSelected) {
+            val intent = Intent(this, VideoActivity2::class.java)
+            this.startActivity(intent)
+            binding.goandstopButton.isSelected
         }
     }
 
@@ -370,6 +388,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
+
+
 }
 
 
@@ -379,8 +400,18 @@ class MainActivity : AppCompatActivity() {
 
 
 
+/*  val sharedPreferences = getSharedPreferences("shared time", Context.MODE_PRIVATE)
+        showtime = sharedPreferences.getString("STRING_KEY",toString()).toString()
+        binding.editTextFreeTo.text = showtime
+ */
 
 
-
+/* val sharedPreferences =
+                        getSharedPreferences("shared time", Context.MODE_PRIVATE)
+                    val edtior = sharedPreferences.edit()
+                    edtior.apply {
+                        putString("STRING_KEY", showtime)
+                    }.apply()
+ */
 
 

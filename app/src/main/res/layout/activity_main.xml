@@ -28,12 +28,6 @@
                 android:background="@drawable/messenger" />
 
             <ImageButton
-                android:id="@+id/SnapchatButton"
-                style="@style/availableAppsItem"
-                android:layout_marginHorizontal="3dp"
-                android:background="@drawable/snapchat" />
-
-            <ImageButton
                 android:id="@+id/CallButton"
                 style="@style/availableAppsItem"
                 android:layout_marginHorizontal="3dp"
@@ -55,7 +49,7 @@
                 android:id="@+id/EmailButton"
                 style="@style/availableAppsItem"
                 android:layout_marginHorizontal="3dp"
-                android:background="@drawable/email" />
+                android:background="@drawable/signal" />
 
             <ImageButton
                 android:id="@+id/InstagramButton"
@@ -158,20 +152,19 @@
             android:textStyle="bold"
             android:textSize="18dp"/>
 
-        <TextView
-            android:id="@+id/editTextFreeTo"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:background="#7476CD"
-            android:ems="10"
-            android:gravity="center"
-            android:hint="@string/til"
-            android:inputType="time"
-            android:text="Time"
-            android:textColor="@color/black"
-            android:textSize="30dp"
-            android:textStyle="bold" />
+            <TextView
+                android:id="@+id/editTextFreeTo"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:background="#7476CD"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="@string/til"
+                android:inputType="time"
+                android:textColor="@color/black"
+                android:textSize="30dp"
+                android:textStyle="bold" />
         </LinearLayout>
 
 

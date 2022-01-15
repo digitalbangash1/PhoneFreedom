@@ -9,6 +9,8 @@ import androidx.preference.PreferenceManager;
 import java.util.HashSet;
 import java.util.Set;
 
+import dtu.projekt.phonefreedom.MainActivity;
+
 public class PreferencesManager {
 
     //These are all the supported apps
@@ -81,10 +83,10 @@ public class PreferencesManager {
     }
 
     public void setAutoReplyText(String text) {
-
         SharedPreferences.Editor editor = sharedPrefs.edit();
         editor.putString(KEY_AUTO_REPLY_TEXT, text);
         editor.commit();
+
     }
 
     //Returns all supported apps that are enabled
