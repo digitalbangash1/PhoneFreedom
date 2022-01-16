@@ -13,4 +13,12 @@
 
 
     </style>
+
+        <style name="buttomlayout">
+            <item name="android:layout_width">100dp</item>
+            <item name="android:layout_height">100dp</item>
+
+
+        </style>
+
 </resources>
