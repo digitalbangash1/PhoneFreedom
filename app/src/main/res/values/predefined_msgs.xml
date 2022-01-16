@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="msgs">
+        <item>Jeg holder mobilfri og har kvalitetstid med mine børn</item>
+        <item>Jeg holder mobilfri og har kvalitetstid med min familie.</item>
+        <item>Jeg holder mobilfri og har kvalitetstid med mine venner.</item>
+        <item>Jeg holder mobilfri og læser til eksamen.</item>
+    </string-array>
+</resources>

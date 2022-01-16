@@ -21,7 +21,10 @@ import androidx.core.content.ContextCompat
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.TextView
-
+import androidx.core.content.ContextCompat.startActivity
+import androidx.core.app.ActivityCompat.startActivityForResult
+import android.app.Activity
+import dtu.projekt.phonefreedom.notification_services.InstalledAppsActivity
 
 
 class MainActivity : AppCompatActivity() {
@@ -64,7 +67,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(myIntent)
         }
     }
-
+    var SELECT_SMS_APP_RESULT = 5
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
@@ -75,11 +78,46 @@ class MainActivity : AppCompatActivity() {
                 var predefinedMessageEditText = findViewById<EditText>(R.id.editTextAutoText)
                 predefinedMessageEditText.setText(predefinedMessage)
             }
+
+
             if (resultCode === RESULT_CANCELED) {
 
             }
         }
+        if (requestCode == SELECT_SMS_APP_RESULT) {
+            if (resultCode == RESULT_OK) {
+                val smsPackageName =
+                    data?.getStringExtra(InstalledAppsActivity.SMS_APP_PACKAGE_NAME_RESULT)
+                val prefs = PreferencesManager.getPreferencesInstance(this)
+                prefs.setSmsPackageName(smsPackageName)
+                prefs.setSmsEnabled(true);
+                Toast.makeText(this, smsPackageName, Toast.LENGTH_LONG).show()
+            }
+            if (resultCode == RESULT_CANCELED) {
+                // user cancelled
+            }
+        }
+
     }
+
+
+
+ /*   @JvmName("onActivityResult1")
+    protected fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == SELECT_SMS_APP_RESULT) {
+            if (resultCode == RESULT_OK) {
+                val smsPackageName =
+                    data.getStringExtra(InstalledAppsActivity.SMS_APP_PACKAGE_NAME_RESULT)
+                val prefs = PreferencesManager.getPreferencesInstance(this)
+                prefs.setSmsPackageName(smsPackageName)
+                Toast.makeText(this, smsPackageName, Toast.LENGTH_LONG).show()
+            }
+            if (resultCode == RESULT_CANCELED) {
+                // user cancelled
+            }
+        }
+    }*/
 
 
     private fun addTime() {
@@ -161,7 +199,7 @@ class MainActivity : AppCompatActivity() {
         })
 
         binding.whatsappButton.isSelected = prefs.isWhatsAppEnabled
-        binding.MessageButton.isSelected = prefs.isSMSEnabled
+        binding.MessageButton.isSelected = prefs.isSmsEnabled
        // binding.whatsappButton.isSelected = prefs.isGroupReplyEnabled
 
 
@@ -198,7 +236,18 @@ class MainActivity : AppCompatActivity() {
         }
         binding.MessageButton.setOnClickListener {
             binding.MessageButton.isSelected = !binding.MessageButton.isSelected
+            val prefs = PreferencesManager.getPreferencesInstance(this)
+            val smsPackageName = prefs.smsPackageName
+            if (smsPackageName == null || smsPackageName.length == 0) {
+                val i = Intent(this, InstalledAppsActivity::class.java)
+                startActivityForResult(i, SELECT_SMS_APP_RESULT)
+            } else {
+                prefs.setSmsEnabled(binding.MessageButton.isSelected)
+            }
+            /*val i = Intent(this, InstalledAppsActivity::class.java)
+            startActivityForResult(i, SELECT_SMS_APP_RESULT)
             prefs.setSmsEnabled(binding.MessageButton.isSelected)
+*/
         }
         binding.goandstopButton.setOnClickListener {
             binding.goandstopButton.isSelected = !binding.goandstopButton.isSelected

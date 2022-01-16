@@ -13,7 +13,6 @@ import android.app.Dialog
 import android.view.Window
 
 
-
 class PredefinedMessagesActivity : AppCompatActivity() {
 
 
@@ -69,7 +68,7 @@ class PredefinedMessagesActivity : AppCompatActivity() {
     }
 
     fun editClickListner(view: View) {
-       // val toast = Toast.makeText(applicationContext, "Hello Javatpoint", Toast.LENGTH_SHORT)
+        // val toast = Toast.makeText(applicationContext, "Hello Javatpoint", Toast.LENGTH_SHORT)
         //toast.show()
 
 
@@ -79,9 +78,6 @@ class PredefinedMessagesActivity : AppCompatActivity() {
         var messageToEdit = messages[messageIndex]
 
         showDialogForEditingMessage(messageToEdit, messageIndex)
-
-
-
 
 
     }
@@ -94,15 +90,21 @@ class PredefinedMessagesActivity : AppCompatActivity() {
 // dialog will show this layout from xml file
         dialog.setContentView(R.layout.edit_predefined_message) // <--------- define am xml file with this id that has an editText with ok and cancel buttons
 
-        var editText = dialog.findViewById<EditText>(R.id.editTextForEditingPredefinedMessage) // <-- with this id for editText
+        var editText =
+            dialog.findViewById<EditText>(R.id.editTextForEditingPredefinedMessage) // <-- with this id for editText
         editText.setText(message)
 
-        val yesButton = dialog.findViewById<Button>(R.id.buttonYesForEditingPredefinedMessage) // <-- a button with name id
-        val noButton = dialog.findViewById<Button>(R.id.buttonNoForEditingPredefinedMessage) // <-- a button with this id
+        val yesButton =
+            dialog.findViewById<Button>(R.id.buttonYesForEditingPredefinedMessage) // <-- a button with name id
+        val noButton =
+            dialog.findViewById<Button>(R.id.buttonNoForEditingPredefinedMessage) // <-- a button with this id
 
         yesButton.setOnClickListener {
             messages[position] =
                 editText.text.toString() // update text when users clicks on ok button and then close dialog
+
+
+
             dialog.dismiss()
         }
 
