@@ -33,8 +33,8 @@
     <string name="auto_start_permission_dialog_message" translatable="false">Enable \"Auto Start\" permission in device settings to allow Watomatic to start on device restart.</string>
     <string name="device_based_settings_message" translatable="false">Note: Settings may vary or may not be available based on your device</string>
     <string name="setting_not_available_for_device" translatable="false">This setting is not available or may not be needed for your device.</string>
-    <string name="enable_auto_start_setting">Proceed</string>
-    <string name="decline_auto_start_setting">Cancel</string>
+    <string name="enable_auto_start_setting" translatable="false">Proceed</string>
+    <string name="decline_auto_start_setting" translatable="false">Cancel</string>
     <string name="app_not_installed_text" translatable="false">Not installed</string>
     <string name="advanced_settings" translatable="false">Advanced settings</string>
     <string name="key_pref_advanced_settings" translatable="false">pref_advanced_settings</string>
@@ -63,8 +63,8 @@
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label" translatable="false">First Fragment</string>
     <string name="second_fragment_label" translatable="false">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
+    <string name="next" translatable="false">Next</string>
+    <string name="previous" translatable="false">Previous</string>
 
     <string name="hello_first_fragment" translatable="false">Hello first fragment</string>
     <string name="hello_second_fragment" translatable="false">Hello second fragment. Arg: %1$s</string>

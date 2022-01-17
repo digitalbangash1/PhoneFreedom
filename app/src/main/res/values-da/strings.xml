@@ -1,18 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">PhoneFreedom</string>
-    <string name="autosvar">Auto-svar tekst</string>
-    <string name="holderfrifratlf">Jeg tjekker min telefon igen Kl:</string>
-    <string name="write_msg">Skriv beskeden her</string>
-    <string name="fra">Fra</string>
-    <string name="til">Time</string>
-    <string name="start"> </string>
-    <string name="end"> </string>
-    <string name="settings">Indstillinger</string>
-    <string name="add_time">Tilføj tid</string>
-    <string name="auto_reply">Auto svar tekst</string>
-    <string name="title_activity_predefined_messages">PredefinedMessagesActivity</string>
-
     <string name="standart">Jeg holder mobilfri og tjekker min tlf igen kl:</string>
     <string name="children">Jeg holder mobilfri og har kvalitetstid med mine børn. Jeg tjekker min tlf igen kl:</string>
     <string name="family">Jeg holder mobilfri og har kvalitetstid med min familie. Jeg tjekker min tlf igen kl:</string>
@@ -21,4 +9,12 @@
     <string name="exam">Jeg holder mobilfri og læser til eksamen. Jeg tjekker min tlf igen kl:</string>
     <string name="holiday">Jeg holder mobilfri og lader op på min ferie. Jeg tjekker min tlf igen kl:</string>
     <string name="free_time">Jeg holder mobilfri og fordyber mig i min fritidsaktivitet. Jeg tjekker min tlf igen kl:</string>
+    <string name="autosvar">Auto-svar tekst</string>
+    <string name="holderfrifratlf">Jeg tjekker min telefon igen Kl:</string>
+    <string name="write_msg">Skriv beskeden her</string>
+    <string name="fra">Fra</string>
+    <string name="til">Time</string>
+    <string name="settings">Indstillinger</string>
+    <string name="add_time">Tilføj tid</string>
+    <string name="auto_reply">Auto svar tekst</string>
 </resources>
