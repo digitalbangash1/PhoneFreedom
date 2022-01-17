@@ -1,6 +1,7 @@
 package dtu.projekt.phonefreedom
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.app.AlertDialog
 import android.app.TimePickerDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -63,6 +64,15 @@ class MainActivity : AppCompatActivity() {
         //showVideo()
         launchNotificationAccessSettings()
         settingsScreen()
+
+        val actionBar = supportActionBar
+        actionBar!!.title = resources.getString(R.string.app_name)
+
+        mBtn = findViewById(R.id.myChangeLang)
+
+        mBtn.setOnClickListener {
+            showChangeLang()
+        }
     }
 
     private fun addClickListeners() {
@@ -71,6 +81,8 @@ class MainActivity : AppCompatActivity() {
             this.startActivityForResult(myIntent, 1)
         }
     }
+
+
 
     private fun settingsScreen() {
         binding.toSettings.setOnClickListener {
@@ -100,7 +112,6 @@ class MainActivity : AppCompatActivity() {
         val mDialog = mBuilder.create()
 
         mDialog.show()
-
     }
 
     private fun setLocate(Lang: String) {
@@ -109,7 +120,20 @@ class MainActivity : AppCompatActivity() {
 
         Locale.setDefault(locale)
         val config = Configuration()
-        config
+        config.locale = locale
+        baseContext.resources.updateConfiguration(config, baseContext.resources.displayMetrics)
+
+        val editor = getSharedPreferences("Settings", Context.MODE_PRIVATE).edit()
+        editor.putString("My Lang", Lang)
+        editor.apply()
+    }
+
+    private fun loadLocate() {
+        val sharedPreferences = getSharedPreferences("Settings", Activity.MODE_PRIVATE)
+        val language = sharedPreferences.getString("My_Lang", "")
+        if (language != null) {
+            setLocate(language)
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
