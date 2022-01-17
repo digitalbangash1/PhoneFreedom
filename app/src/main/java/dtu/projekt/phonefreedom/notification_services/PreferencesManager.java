@@ -22,7 +22,7 @@ public class PreferencesManager {
     private final String OUTLOOK_PACKAGE_NAME = "com.microsoft.office.outlook";
     private final  String SMS_Package_Name = "com.google.android.apps.messaging";
     private final  String SIGNAL_PACKAGE_NAME = "org.thoughtcrime.securesms";
-
+    private final  String KEY_PREDEFINED_MESSAGE = "prefs_predefined_messages";
 
     public final SupportedApp[] supportedApps = new SupportedApp[]{
             new SupportedApp("WhatsApp", WHATSAPP_PACKAGE_NAME),
@@ -47,7 +47,7 @@ public class PreferencesManager {
     public PreferencesManager(Context context) {
         this.context = context;
         sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
-        //SMS_Package_Name = Telephony.Sms.getDefaultSmsPackage(context);
+        initializePredefinedMessages();
     }
 
     public static PreferencesManager getPreferencesInstance(Context context) {
@@ -56,6 +56,38 @@ public class PreferencesManager {
         }
         return instance;
     }
+    public String[] getPredefinedMessages () {
+        Set<String> messagesSet = sharedPrefs.getStringSet(KEY_PREDEFINED_MESSAGE, new HashSet<String>());
+        String[] messages = new String[messagesSet.size()];
+        messagesSet.toArray(messages);
+        return messages;
+    }
+    public void setPredefinedMessages (String[] messages){
+        Set<String> set = new HashSet<>();
+        for (String message : messages){
+            set.add(message);
+        }
+        SharedPreferences.Editor editor = sharedPrefs.edit();
+        editor.putStringSet(KEY_PREDEFINED_MESSAGE, set);
+        editor.commit();
+
+    }
+    private void initializePredefinedMessages () {
+        String[] currentMessages = getPredefinedMessages();
+        if (currentMessages.length>0){
+            return;
+        }
+        String[] predefinedMessages = new String[5];
+        predefinedMessages[0] = "one";
+        predefinedMessages[1] = "Tow";
+        predefinedMessages[2] = "Three";
+        predefinedMessages[3] = "Four";
+        predefinedMessages[4] = "Five";
+        setPredefinedMessages(predefinedMessages);
+
+    }
+
+
 
     public boolean isServiceEnabled() {
         return sharedPrefs.getBoolean(KEY_SERVICE_ENABLED, true);

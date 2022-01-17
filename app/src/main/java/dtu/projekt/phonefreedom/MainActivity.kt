@@ -1,8 +1,6 @@
 package dtu.projekt.phonefreedom
 
 import android.annotation.SuppressLint
-import android.app.Activity
-import android.app.AlertDialog
 import android.app.TimePickerDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -25,7 +23,6 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
-import android.content.res.Configuration
 import android.provider.Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS
 import android.provider.SyncStateContract.Helpers.insert
 import android.provider.SyncStateContract.Helpers.update
@@ -34,7 +31,6 @@ import androidx.core.content.ContextCompat
 import android.text.Editable
 
 import android.text.TextWatcher
-import android.widget.Button
 import android.widget.TextView
 import androidx.core.content.ContextCompat.startActivity
 import java.util.Arrays.fill
@@ -46,7 +42,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var editText: EditText
     private lateinit var editTextFreeTo: TextView
-    private lateinit var mBtn: Button
     private var showtime: String = "no time"
 
 
@@ -60,20 +55,11 @@ class MainActivity : AppCompatActivity() {
         addTime()
         addClickListeners()
         appButton()
-        loadLocate() // Call Locate
         //sendWhatsapp()
         //showVideo()
         launchNotificationAccessSettings()
         settingsScreen()
-
-        val actionBar = supportActionBar
-        actionBar!!.title = resources.getString(R.string.app_name)
-
-        mBtn = findViewById(R.id.myChangeLang)
-
-        mBtn.setOnClickListener {
-            showChangeLang()
-        }
+        accessDndSetting()
     }
 
     private fun addClickListeners() {
@@ -83,57 +69,10 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
-
     private fun settingsScreen() {
         binding.toSettings.setOnClickListener {
             val myIntent = Intent(this, SettingsScreen::class.java)
             startActivity(myIntent)
-        }
-    }
-
-    private fun showChangeLang(){
-
-        val listItems = arrayOf("English","Danish")
-
-        val mBuilder = AlertDialog.Builder(this@MainActivity)
-        mBuilder.setTitle("Choose Language")
-        mBuilder.setSingleChoiceItems(listItems,-1) { dialog, which ->
-            if (which == 0) {
-                setLocate("en")
-                recreate()
-            } else if (which == 1) {
-                setLocate("da")
-                recreate()
-            }
-
-            dialog.dismiss()
-
-        }
-        val mDialog = mBuilder.create()
-
-        mDialog.show()
-    }
-
-    private fun setLocate(Lang: String) {
-
-        val locale = Locale(Lang)
-
-        Locale.setDefault(locale)
-        val config = Configuration()
-        config.locale = locale
-        baseContext.resources.updateConfiguration(config, baseContext.resources.displayMetrics)
-
-        val editor = getSharedPreferences("Settings", Context.MODE_PRIVATE).edit()
-        editor.putString("My Lang", Lang)
-        editor.apply()
-    }
-
-    private fun loadLocate() {
-        val sharedPreferences = getSharedPreferences("Settings", Activity.MODE_PRIVATE)
-        val language = sharedPreferences.getString("My_Lang", "")
-        if (language != null) {
-            setLocate(language)
         }
     }
 
@@ -323,18 +262,19 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun accessDndSetting() {
-        //  binding.btnSettingDnd?.setOnClickListener {
-        val settingdnd = Intent()
-        settingdnd.component = ComponentName(
-            "com.android.settings",
-            "com.android.settings.Settings\$ZenModeSettingsActivity"
-        )
-        /*settingdnd.putExtra("android.provider.extra.APP_PACKAGE", getPackageName())
-            settingdnd.putExtra("app_uid", getApplicationInfo().uid);*/
+       /* binding.btnSettingDnd?.setOnClickListener {
+            val settingdnd = Intent()
+            settingdnd.component = ComponentName(
+                "com.android.settings",
+                "com.android.settings.Settings\$ZenModeSettingsActivity"
+            )
+            *//*settingdnd.putExtra("android.provider.extra.APP_PACKAGE", getPackageName())
+            settingdnd.putExtra("app_uid", getApplicationInfo().uid);*//*
 
 
 
-        startActivity(settingdnd)
+            startActivity(settingdnd)
+        }*/
     }
 
 
@@ -373,6 +313,9 @@ class MainActivity : AppCompatActivity() {
             this.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_ALL)
         }
     }
+
+
+
 
 
 }
