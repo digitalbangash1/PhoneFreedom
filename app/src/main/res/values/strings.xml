@@ -22,11 +22,9 @@
     <string name="pref_show_foreground_service_notification" translatable="false">pref_show_foreground_service_notification</string>
 
     <!--Settings.Language selector-->
-    <string-array name="Languages">
-        <item>English</item>
-        <item>Danish</item>
-        <item>Spanish</item>
-        <item>German</item>
+    <string-array name="Animation_selector">
+        <item>ON</item>
+        <item>OFF</item>
     </string-array>
 
     <!--Autostart Permission Dialog-->

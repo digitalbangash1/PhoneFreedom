@@ -18,7 +18,7 @@ public class SettingsScreen extends AppCompatActivity {
         AutoCompleteTextView LangSet = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
 
         ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(SettingsScreen.this,
-                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.Languages));
+                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.Animation_selector));
         myAdapter.setDropDownViewResource(R.layout.dropdown_item);
         LangSet.setAdapter(myAdapter);
 
