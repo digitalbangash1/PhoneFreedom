@@ -71,8 +71,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun settingsScreen() {
         binding.toSettings.setOnClickListener {
-            val myIntent = Intent(this, SettingsScreen::class.java)
-            startActivity(myIntent)
+            val myIntent = Intent(this, ShowSettingActivity::class.java)
+           startActivity(myIntent)
         }
     }
 

@@ -17,31 +17,31 @@ import java.util.*
 
 class SettingsScreen : AppCompatActivity() {
 
-    val ChangeLang = findViewById<View>(R.id.myChangeLang) as Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
-       /* setContentView(R.layout.activity_settings_screen)
-        val LangSet = findViewById<View>(R.id.autoCompleteTextView) as AutoCompleteTextView
+        setContentView(R.layout.activity_settings_screen)
+/*        val LangSet = findViewById<View>(R.id.autoCompleteTextView) as AutoCompleteTextView*//*
         val myAdapter = ArrayAdapter(
             this@SettingsScreen,
             android.R.layout.simple_list_item_1, resources.getStringArray(R.array.)
-        )
-        myAdapter.setDropDownViewResource(R.layout.dropdown_item)
-        LangSet.setAdapter(myAdapter)*/
-        // val DoNot = findViewById<View>(R.id.Do_not_disturb) as Button
-       /*DoNot.setOnClickListener {
+        )*//*
+       *//* myAdapter.setDropDownViewResource(R.layout.dropdown_item)
+        LangSet.setAdapter(myAdapter)
+        val DoNot = findViewById<View>(R.id.Do_not_disturb) as Button
+       DoNot.setOnClickListener {
             val settingdnd = Intent()
             settingdnd.component = ComponentName(
                 "com.android.settings",
                 "com.android.settings.Settings\$ZenModeSettingsActivity"
             )
             startActivity(settingdnd)
-        } */
+        } *//*
 
         val actionBar = supportActionBar
         actionBar!!.title = resources.getString(R.string.app_name)
+        val ChangeLang = findViewById<Button>(R.id.myChangeLang)
 
         ChangeLang.setOnClickListener {
             showChangeLang()
@@ -86,6 +86,7 @@ class SettingsScreen : AppCompatActivity() {
             val editor = getSharedPreferences("Settings", Context.MODE_PRIVATE).edit()
             editor.putString("My Lang", Lang)
             editor.apply()
+            loadLocate()
         }
 
         private fun loadLocate() {
@@ -94,8 +95,8 @@ class SettingsScreen : AppCompatActivity() {
             if (language != null) {
                 setLocate(language)
             }
-        }
+        }*/
 
 
-
+    }
 }

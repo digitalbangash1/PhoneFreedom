@@ -32,6 +32,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PhoneFreedom">
         <activity
+            android:name=".ShowSettingActivity"
+            android:exported="false" />
+        <activity
             android:name=".VideoActivity2"
             android:exported="false"
             android:label="@string/title_activity_video2"
@@ -53,7 +56,7 @@
         </activity>
         <activity
             android:name=".notification_services.NotificationIntentActivity"
-            android:launchMode="singleTop"></activity>
+            android:launchMode="singleTop" />
 
         <service
             android:name=".notification_services.NotificationService"
