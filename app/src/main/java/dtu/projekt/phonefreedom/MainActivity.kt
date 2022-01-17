@@ -60,6 +60,7 @@ class MainActivity : AppCompatActivity() {
         addTime()
         addClickListeners()
         appButton()
+        loadLocate() // Call Locate
         //sendWhatsapp()
         //showVideo()
         launchNotificationAccessSettings()
