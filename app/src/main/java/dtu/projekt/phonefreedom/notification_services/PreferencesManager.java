@@ -23,6 +23,7 @@ public class PreferencesManager {
     private final String OUTLOOK_PACKAGE_NAME = "com.microsoft.office.outlook";
     private final String KEY_SMS_PACKAGE_NAME = "prefs_sms_package_name";
     private final String SIGNAL_PACKAGE_NAME = "org.thoughtcrime.securesms";
+    private final String KEY_PREDEFINED_MESSAGE = "prefs_predefined_messages";
 
     private ArrayList<SupportedApp> supportedApps = new ArrayList<>();
 
@@ -56,7 +57,8 @@ public class PreferencesManager {
         supportedApps.add(new SupportedApp("Telegram", TELEGRAM_PACKAGE_NAME));
         supportedApps.add(new SupportedApp("Instagram", INSTAGRAM_PACKAGE_NAME));
         supportedApps.add(new SupportedApp("Signal", SIGNAL_PACKAGE_NAME));
-        addSmsSuppertedApp(getSmsPackageName());
+        addSmsSuppertedApp(getSmsPackageName())
+        ;
         //SMS_Package_Name = Telephony.Sms.getDefaultSmsPackage(context);
     }
 
@@ -103,6 +105,7 @@ public class PreferencesManager {
         editor.commit();
     }
 */
+
 
     public boolean isServiceEnabled() {
         return sharedPrefs.getBoolean(KEY_SERVICE_ENABLED, true);

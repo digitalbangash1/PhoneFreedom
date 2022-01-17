@@ -1,5 +1,6 @@
 package dtu.projekt.phonefreedom
 
+import android.Manifest
 import android.annotation.SuppressLint
 import android.app.TimePickerDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -205,7 +206,8 @@ class MainActivity : AppCompatActivity() {
 
         binding.whatsappButton.setOnClickListener {
             binding.whatsappButton.isSelected = !binding.whatsappButton.isSelected
-            val prefs: PreferencesManager = PreferencesManager.getPreferencesInstance(this)
+
+
             prefs.setWhatsAppEnabled(binding.whatsappButton.isSelected)
             prefs.isGroupReplyEnabled = true
         }
@@ -281,6 +283,7 @@ class MainActivity : AppCompatActivity() {
             binding.goandstopButton.isSelected
         }
     }
+
 
     private fun launchNotificationAccessSettings() {
         val result: Int = ContextCompat.checkSelfPermission(
