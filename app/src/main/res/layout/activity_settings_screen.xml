@@ -26,4 +26,12 @@
             android:inputType="none"
             android:text="Select" />
     </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/myChangeLang"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Change Language"
+        tools:layout_editor_absoluteX="114dp"
+        tools:layout_editor_absoluteY="161dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
