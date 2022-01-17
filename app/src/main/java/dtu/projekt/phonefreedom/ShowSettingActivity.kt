@@ -12,6 +12,7 @@ import java.util.*
 class ShowSettingActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        loadLocate()
         setContentView(R.layout.activity_show_setting)
 
         val actionBar = supportActionBar
@@ -34,13 +35,11 @@ class ShowSettingActivity : AppCompatActivity() {
         mBuilder.setSingleChoiceItems(listItems,-1) { dialog, which ->
             if (which == 0) {
                 setLocate("en")
-                loadLocate()
                 recreate()
 
 
             } else if (which == 1) {
                 setLocate("da")
-                loadLocate()
                 recreate()
 
             }
