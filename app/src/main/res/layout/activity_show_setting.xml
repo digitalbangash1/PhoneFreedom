@@ -24,8 +24,8 @@
         android:layout_height="wrap_content"
         android:text="Change Language"
         android:background="@drawable/borders"
-        android:textStyle="italic|normal"
-        android:textSize="15dp"
+        android:textStyle="normal|bold"
+        android:textSize="15sp"
         style="@style/Widget.MaterialComponents.Button.Icon"
         android:textColor="#0E0E0E"
         app:icon="@drawable/ic_language"
@@ -46,17 +46,17 @@
         android:orientation="vertical"
         >
         <Button
-            android:id="@+id/btn_changelang1"
+            android:id="@+id/btn_DontDisturb"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Don't disturb sittings"
             android:background="@drawable/borders"
-            android:textStyle="italic|normal"
+            android:textStyle="normal|bold"
             style="@style/Widget.MaterialComponents.Button.Icon"
             app:icon="@drawable/do_not_disturb_pic"
             android:textAlignment="textStart"
             android:textColor="#0E0E0E"
-            android:textSize="15dp"
+            android:textSize="15sp"
             />
     </LinearLayout>
 
@@ -75,12 +75,12 @@
             android:layout_height="wrap_content"
             android:text="Screen animation"
             android:background="@drawable/borders"
-            android:textStyle="italic|normal"
+            android:textStyle="normal|bold"
             style="@style/Widget.MaterialComponents.Button.Icon"
             android:textColor="#0E0E0E"
             app:icon="@drawable/ic_screen_animation"
             android:textAlignment="textStart"
-            android:textSize="15dp"
+            android:textSize="15sp"
             />
     </LinearLayout>
 

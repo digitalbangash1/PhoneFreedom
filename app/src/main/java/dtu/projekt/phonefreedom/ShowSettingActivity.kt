@@ -1,8 +1,11 @@
 package dtu.projekt.phonefreedom
 
+
 import android.app.Activity
 import android.app.AlertDialog
+import android.content.ComponentName
 import android.content.Context
+import android.content.Intent
 import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -11,6 +14,9 @@ import android.widget.Toast
 import java.util.*
 
 class ShowSettingActivity : AppCompatActivity() {
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         loadLocate()
@@ -24,8 +30,21 @@ class ShowSettingActivity : AppCompatActivity() {
         btn_changeLang.setOnClickListener {
             showChangeLang()
         }
+
+
         val btn_animation= findViewById<Button>(R.id.Animation1)
-            btn_animation.setOnClickListener { showAnimation()}
+        btn_animation.setOnClickListener {
+                showAnimation()
+        }
+
+
+        val btn_DoNot = findViewById<Button>(R.id.btn_DontDisturb)
+        btn_DoNot.setOnClickListener {
+            val settingdnd = Intent()
+            settingdnd.component = ComponentName("com.android.settings", "com.android.settings.Settings\$ZenModeSettingsActivity")
+            startActivity(settingdnd)
+        }
+
     }
 
     private fun showChangeLang(){
@@ -38,12 +57,13 @@ class ShowSettingActivity : AppCompatActivity() {
             if (which == 0) {
                 setLocate("en")
                 recreate()
-                    Toast.makeText(this, "English selected.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "English selected.", Toast.LENGTH_SHORT).show()
+
 
             } else if (which == 1) {
                 setLocate("da")
                 recreate()
-                    Toast.makeText(this, "Danish selected.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Danish selected.", Toast.LENGTH_SHORT).show()
             }
             dialog.dismiss()
 
