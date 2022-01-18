@@ -1,8 +1,6 @@
 package dtu.projekt.phonefreedom
 
-import android.Manifest
-import android.Manifest.permission.ACCESS_NOTIFICATION_POLICY
-import android.annotation.SuppressLint
+
 import android.app.TimePickerDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -15,31 +13,21 @@ import android.provider.Settings
 import android.widget.EditText
 import dtu.projekt.phonefreedom.notification_services.PreferencesManager
 import android.app.NotificationManager
-import android.content.ComponentName
-import android.content.pm.PackageManager
 import android.provider.Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS
 import android.widget.Toast
-import androidx.core.content.ContextCompat
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.TextView
-import androidx.core.content.ContextCompat.startActivity
-import androidx.core.app.ActivityCompat.startActivityForResult
-import android.app.Activity
-import android.app.Instrumentation
-import android.widget.Switch
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
-import androidx.core.app.ActivityCompat
-import androidx.core.app.ActivityCompat.checkSelfPermission
 import dtu.projekt.phonefreedom.notification_services.InstalledAppsActivity
+
+
+
 
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var permissionLuncher :ActivityResultLauncher<Array<String>>
-    private var isNotificationGranted= false
+
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var editText: EditText
@@ -48,6 +36,7 @@ class MainActivity : AppCompatActivity() {
     val requestNr= 1
 
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -58,31 +47,30 @@ class MainActivity : AppCompatActivity() {
         addTime()
         addClickListeners()
         appButton()
-        //sendWhatsapp()
-        //showVideo()
-        //checkIfOrNot()
-       //launchNotificationAccessSettings()
         settingsScreen()
 
-      permissionLuncher =registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()){permissions ->
-          isNotificationGranted = permissions[Manifest.permission.ACCESS_NOTIFICATION_POLICY] ?: isNotificationGranted
-      }
+
+        isNotificationServiceRunning()
         requestPermission()
+    }
+
+    private fun isNotificationServiceRunning(): Boolean {
+        val contentResolver = contentResolver
+        val enabledNotificationListeners =
+            Settings.Secure.getString(contentResolver, "enabled_notification_listeners")
+        val packageName = getPackageName()
+        return enabledNotificationListeners != null && enabledNotificationListeners.contains(
+            packageName)
 
     }
 
     private fun requestPermission(){
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            isNotificationGranted = ContextCompat.checkSelfPermission(this,
-                Manifest.permission.ACCESS_NOTIFICATION_POLICY) == PackageManager.PERMISSION_GRANTED
-            val permissionRequest : MutableList<String> = ArrayList()
-            if(!isNotificationGranted){
-                permissionRequest.add(Manifest.permission.ACCESS_NOTIFICATION_POLICY)
-            }
-            if (permissionRequest.isNotEmpty()){
-                permissionLuncher.launch(permissionRequest.toTypedArray())
-            }
+
+        val isNotificationServiceRunning = isNotificationServiceRunning()
+        if (!isNotificationServiceRunning) {
+            startActivity(Intent(ACTION_NOTIFICATION_LISTENER_SETTINGS))
         }
+
     }
 
 
@@ -139,22 +127,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
- /*   @JvmName("onActivityResult1")
-    protected fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == SELECT_SMS_APP_RESULT) {
-            if (resultCode == RESULT_OK) {
-                val smsPackageName =
-                    data.getStringExtra(InstalledAppsActivity.SMS_APP_PACKAGE_NAME_RESULT)
-                val prefs = PreferencesManager.getPreferencesInstance(this)
-                prefs.setSmsPackageName(smsPackageName)
-                Toast.makeText(this, smsPackageName, Toast.LENGTH_LONG).show()
-            }
-            if (resultCode == RESULT_CANCELED) {
-                // user cancelled
-            }
-        }
-    }*/
+
 
 
     private fun addTime() {
@@ -330,11 +303,10 @@ class MainActivity : AppCompatActivity() {
            ContextCompat.checkSelfPermission(this, ACTION_NOTIFICATION_LISTENER_SETTINGS)
 
        val NOTIFICATION_LISTENER_SETTINGS: String
-       if (Build.VERSION.SDK_INT >= 23 && result != PackageManager.PERMISSION_GRANTED) {
+       if (Build.VERSION.SDK_INT >= 23) {
            NOTIFICATION_LISTENER_SETTINGS = ACTION_NOTIFICATION_LISTENER_SETTINGS
 
-           val i = Intent(NOTIFICATION_LISTENER_SETTINGS)
-           startActivity(i)
+
 
        } else {
            NOTIFICATION_LISTENER_SETTINGS =
@@ -342,72 +314,11 @@ class MainActivity : AppCompatActivity() {
            Toast.makeText(this, "hello", Toast.LENGTH_SHORT).show()
 
        }
-
+       val i = Intent(NOTIFICATION_LISTENER_SETTINGS)
+       startActivity(i)
    }*/
 
 
-  /*  fun checkIfOrNot(){
-
-
-        if (Build.VERSION.SDK_INT >= 23){
-            if (checkSelfPermission(this, ACTION_NOTIFICATION_LISTENER_SETTINGS)!=PackageManager.PERMISSION_GRANTED){
-                if (!shouldShowRequestPermissionRationale(ACTION_NOTIFICATION_LISTENER_SETTINGS)){
-                  requestPermissions(arrayOf(ACTION_NOTIFICATION_LISTENER_SETTINGS),requestNr)
-
-                }
-
-              return
-
-            }
-        }
-    }*/
-
- /*   @RequiresApi(Build.VERSION_CODES.M)
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String?>, grantResults: IntArray) {
-
-
-        when (requestCode) {
-
-                requestNr  -> {
-                if (grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                    Toast.makeText(this, "hello", Toast.LENGTH_SHORT).show()
-                }
-               *//* else if (grantResults[0] != PackageManager.PERMISSION_GRANTED){
-                    Toast.makeText(this, "bababa", Toast.LENGTH_SHORT).show()
-                }*//*
-                else {
-                    Toast.makeText(this, "no no  ", Toast.LENGTH_SHORT).show()
-                    val NOTIFICATION_LISTENER_SETTINGS: String =
-                        ACTION_NOTIFICATION_LISTENER_SETTINGS
-                    val i = Intent(NOTIFICATION_LISTENER_SETTINGS)
-                    startActivity(i)
-
-                }
-            }
-
-            else -> {
-                super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-
-            }
-        }
-    }*/
-
-
-    private fun accessDndSetting() {
-       /* binding.btnSettingDnd?.setOnClickListener {
-            val settingdnd = Intent()
-            settingdnd.component = ComponentName(
-                "com.android.settings",
-                "com.android.settings.Settings\$ZenModeSettingsActivity"
-            )
-            *//*settingdnd.putExtra("android.provider.extra.APP_PACKAGE", getPackageName())
-            settingdnd.putExtra("app_uid", getApplicationInfo().uid);*//*
-
-
-
-            startActivity(settingdnd)
-        }*/
-    }
 
 
     private fun checkNotificationPolicyAccess(notificationManager: NotificationManager): Boolean {
@@ -449,19 +360,9 @@ class MainActivity : AppCompatActivity() {
 }
 
 
-/*  val sharedPreferences = getSharedPreferences("shared time", Context.MODE_PRIVATE)
-        showtime = sharedPreferences.getString("STRING_KEY",toString()).toString()
-        binding.editTextFreeTo.text = showtime
- */
 
 
-/* val sharedPreferences =
-                        getSharedPreferences("shared time", Context.MODE_PRIVATE)
-                    val edtior = sharedPreferences.edit()
-                    edtior.apply {
-                        putString("STRING_KEY", showtime)
-                    }.apply()
- */
+
 /*private fun sendWhatsapp(message: String) {
       val sendIntent = Intent()
       sendIntent.action = Intent.ACTION_SEND
@@ -543,21 +444,3 @@ class MainActivity : AppCompatActivity() {
 
 
 
-//private fun launchNotificationAccessSettings() {
-//    val result: Int = ContextCompat.checkSelfPermission(
-//        this, ACTION_NOTIFICATION_LISTENER_SETTINGS
-//    )
-//    if (result == PackageManager.PERMISSION_GRANTED) {
-//        return
-//    }
-//    val NOTIFICATION_LISTENER_SETTINGS: String
-//    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1) {
-//        NOTIFICATION_LISTENER_SETTINGS = ACTION_NOTIFICATION_LISTENER_SETTINGS
-//    } else {
-//        NOTIFICATION_LISTENER_SETTINGS =
-//            "android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS"
-//    }
-//    val i = Intent(NOTIFICATION_LISTENER_SETTINGS)
-//    startActivity(i)
-//
-//}
