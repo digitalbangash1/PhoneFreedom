@@ -16,52 +16,9 @@
         android:id="@+id/animation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Animation"
-        android:layout_below="@+id/btn_changelang"/>
+        android:layout_below="@+id/btn_changelang"
+        android:text="Animation" />
 
 
-    <!--<CheckBox
-        android:id="@+id/animation_On_Off"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="450dp"
-        android:text="Screen animaton"
-        android:textAlignment="textStart"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"-->
-
-
-
-
-
-    <!--
-        <Switch
-            android:onClick="toastMe"
-            android:id="@+id/switch51"
-            android:layout_width="346dp"
-            android:layout_height="60dp"
-            android:backgroundTint="#00FFFFFF"
-            android:inputType="none"
-            android:showText="true"
-            android:text="@string/animation"
-            android:textStyle="bold"
-            android:textOff="Off"
-            android:textOn="On"
-            android:textAlignment="textStart"
-            android:thumb="@drawable/switch_on_of"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.507"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:strokeColor="#4A4A4A"
-            app:strokeWidth="3dp"
-            tools:ignore="MissingConstraints,UseSwitchCompatOrMaterialXml" />
-    -->
 
 </RelativeLayout>
