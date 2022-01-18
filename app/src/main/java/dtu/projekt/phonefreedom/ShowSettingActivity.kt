@@ -6,7 +6,9 @@ import android.content.Context
 import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
+import android.widget.Toast
 import java.util.*
 
 class ShowSettingActivity : AppCompatActivity() {
@@ -75,7 +77,10 @@ class ShowSettingActivity : AppCompatActivity() {
             setLocate(language)
         }
     }
+    fun toastMe(view: View){
+        val myToast = Toast.makeText(this, "Animation On", Toast.LENGTH_SHORT)
+        myToast.show()
 
 
-
+   }
 }
