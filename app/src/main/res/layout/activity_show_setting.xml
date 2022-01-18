@@ -4,14 +4,82 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ShowSettingActivity">
+    android:background="@drawable/back3"
+    tools:context=".ShowSettingActivity"
+    android:orientation="vertical">
 
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/borders"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
     <Button
         android:id="@+id/btn_changelang"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Change Language">
+        android:text="Change Language"
+        android:background="@drawable/borders"
+        android:textStyle="italic"
+        android:textSize="18dp"
+        style="@style/Widget.MaterialComponents.Button.Icon"
+        android:textColor="#0E0E0E"
+        app:icon="@drawable/ic_language"
+        android:textAlignment="textStart"
+        />
 
-    </Button>
+    </LinearLayout>
 
-</LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/borders"
+        android:layout_margin="10dp"
+        android:orientation="vertical"
+        >
+        <Button
+            android:id="@+id/btn_changelang1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Don't disturb sittings"
+            android:background="@drawable/borders"
+            android:textStyle="bold"
+            style="@style/Widget.MaterialComponents.Button.Icon"
+            app:icon="@drawable/do_not_disturb_pic"
+            android:textAlignment="textStart"
+            android:textColor="#0E0E0E"
+            />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/borders"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btn_changelang2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Change Language"
+            android:background="@drawable/borders"
+            android:textStyle="bold"
+            style="@style/Widget.MaterialComponents.Button.Icon"
+            android:textColor="#0E0E0E"
+            />
+    </LinearLayout>
+
+    </LinearLayout>
+
+

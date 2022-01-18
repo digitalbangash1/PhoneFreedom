@@ -43,7 +43,6 @@ class ShowSettingActivity : AppCompatActivity() {
                 recreate()
 
             }
-
             dialog.dismiss()
 
         }
@@ -76,6 +75,8 @@ class ShowSettingActivity : AppCompatActivity() {
             setLocate(language)
         }
     }
+
+
 
 
 
