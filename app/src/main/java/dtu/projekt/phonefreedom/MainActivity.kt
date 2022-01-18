@@ -1,5 +1,6 @@
 package dtu.projekt.phonefreedom
 
+import android.Manifest
 import android.annotation.SuppressLint
 import android.app.TimePickerDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -7,33 +8,24 @@ import android.os.Bundle
 import dtu.projekt.phonefreedom.databinding.ActivityMainBinding
 import java.text.SimpleDateFormat
 import java.util.*
-
 import android.content.Intent
-import android.media.MediaPlayer
 import android.os.Build
 import android.provider.Settings
-import android.view.View
-
 import android.widget.EditText
 import dtu.projekt.phonefreedom.notification_services.PreferencesManager
-import android.view.View.OnFocusChangeListener
 import android.app.NotificationManager
-import android.app.admin.DevicePolicyManager
 import android.content.ComponentName
-import android.content.Context
-import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.provider.Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS
-import android.provider.SyncStateContract.Helpers.insert
-import android.provider.SyncStateContract.Helpers.update
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import android.text.Editable
-
 import android.text.TextWatcher
 import android.widget.TextView
 import androidx.core.content.ContextCompat.startActivity
-import java.util.Arrays.fill
+import androidx.core.app.ActivityCompat.startActivityForResult
+import android.app.Activity
+import dtu.projekt.phonefreedom.notification_services.InstalledAppsActivity
 
 
 class MainActivity : AppCompatActivity() {
@@ -57,6 +49,7 @@ class MainActivity : AppCompatActivity() {
         appButton()
         //sendWhatsapp()
         //showVideo()
+
         launchNotificationAccessSettings()
         settingsScreen()
         accessDndSetting()
@@ -75,7 +68,7 @@ class MainActivity : AppCompatActivity() {
            startActivity(myIntent)
         }
     }
-
+    var SELECT_SMS_APP_RESULT = 5
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
@@ -86,11 +79,46 @@ class MainActivity : AppCompatActivity() {
                 var predefinedMessageEditText = findViewById<EditText>(R.id.editTextAutoText)
                 predefinedMessageEditText.setText(predefinedMessage)
             }
+
+
             if (resultCode === RESULT_CANCELED) {
 
             }
         }
+        if (requestCode == SELECT_SMS_APP_RESULT) {
+            if (resultCode == RESULT_OK) {
+                val smsPackageName =
+                    data?.getStringExtra(InstalledAppsActivity.SMS_APP_PACKAGE_NAME_RESULT)
+                val prefs = PreferencesManager.getPreferencesInstance(this)
+                prefs.setSmsPackageName(smsPackageName)
+                prefs.setSmsEnabled(true);
+                Toast.makeText(this, smsPackageName, Toast.LENGTH_LONG).show()
+            }
+            if (resultCode == RESULT_CANCELED) {
+                // user cancelled
+            }
+        }
+
     }
+
+
+
+ /*   @JvmName("onActivityResult1")
+    protected fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == SELECT_SMS_APP_RESULT) {
+            if (resultCode == RESULT_OK) {
+                val smsPackageName =
+                    data.getStringExtra(InstalledAppsActivity.SMS_APP_PACKAGE_NAME_RESULT)
+                val prefs = PreferencesManager.getPreferencesInstance(this)
+                prefs.setSmsPackageName(smsPackageName)
+                Toast.makeText(this, smsPackageName, Toast.LENGTH_LONG).show()
+            }
+            if (resultCode == RESULT_CANCELED) {
+                // user cancelled
+            }
+        }
+    }*/
 
 
     private fun addTime() {
@@ -140,7 +168,6 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-
         editText.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
             }
@@ -150,9 +177,6 @@ class MainActivity : AppCompatActivity() {
                 val default = "This is default message "
 
                 val text = s.toString().trim()
-
-
-
                 if (s.length == 0) {
 
                     prefs.setAutoReplyText(default)
@@ -161,6 +185,7 @@ class MainActivity : AppCompatActivity() {
 
                     prefs.setAutoReplyText(text)
 
+
                     // Toast.makeText(this@MainActivity, showtime,Toast.LENGTH_SHORT).show()
                 }
 
@@ -168,17 +193,23 @@ class MainActivity : AppCompatActivity() {
 
             override fun afterTextChanged(s: Editable) {
 
+
             }
+
+
         })
 
         binding.whatsappButton.isSelected = prefs.isWhatsAppEnabled
-        binding.MessageButton.isSelected = prefs.isSMSEnabled
+        binding.MessageButton.isSelected = prefs.isSmsEnabled
+       // binding.whatsappButton.isSelected = prefs.isGroupReplyEnabled
 
 
         binding.whatsappButton.setOnClickListener {
             binding.whatsappButton.isSelected = !binding.whatsappButton.isSelected
-            val prefs: PreferencesManager = PreferencesManager.getPreferencesInstance(this)
+
+
             prefs.setWhatsAppEnabled(binding.whatsappButton.isSelected)
+            prefs.isGroupReplyEnabled = true
         }
         binding.CallButton.setOnClickListener {
             binding.CallButton.isSelected = !binding.CallButton.isSelected
@@ -195,6 +226,7 @@ class MainActivity : AppCompatActivity() {
         binding.messengerButton.setOnClickListener {
             binding.messengerButton.isSelected = !binding.messengerButton.isSelected
             prefs.setMessengerEnabled(binding.messengerButton.isSelected)
+            prefs.isGroupReplyEnabled= true
         }
         binding.TelegramButton.setOnClickListener {
             binding.TelegramButton.isSelected = !binding.TelegramButton.isSelected
@@ -206,7 +238,18 @@ class MainActivity : AppCompatActivity() {
         }
         binding.MessageButton.setOnClickListener {
             binding.MessageButton.isSelected = !binding.MessageButton.isSelected
+            val prefs = PreferencesManager.getPreferencesInstance(this)
+            val smsPackageName = prefs.smsPackageName
+            if (smsPackageName == null || smsPackageName.length == 0) {
+                val i = Intent(this, InstalledAppsActivity::class.java)
+                startActivityForResult(i, SELECT_SMS_APP_RESULT)
+            } else {
+                prefs.setSmsEnabled(binding.MessageButton.isSelected)
+            }
+            /*val i = Intent(this, InstalledAppsActivity::class.java)
+            startActivityForResult(i, SELECT_SMS_APP_RESULT)
             prefs.setSmsEnabled(binding.MessageButton.isSelected)
+*/
         }
         binding.goandstopButton.setOnClickListener {
             binding.goandstopButton.isSelected = !binding.goandstopButton.isSelected
@@ -240,6 +283,7 @@ class MainActivity : AppCompatActivity() {
             binding.goandstopButton.isSelected
         }
     }
+
 
     private fun launchNotificationAccessSettings() {
         val result: Int = ContextCompat.checkSelfPermission(
