@@ -3,6 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/PhoneFreedom/app/src/main/res/drawable/ic_screen_animation.xml" value="0.5661458333333333" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/PhoneFreedom/app/src/main/res/layout-large/activity_main.xml" value="0.4125" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/PhoneFreedom/app/src/main/res/layout-small/activity_main.xml" value="2.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/PhoneFreedom/app/src/main/res/layout/activity_main.xml" value="0.4230072463768116" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/PhoneFreedom/app/src/main/res/layout/activity_settings_screen.xml" value="0.32665330661322645" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/PhoneFreedom/app/src/main/res/layout/activity_show_setting.xml" value="0.55" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/PhoneFreedom/app/src/main/res/layout/dropdown_item.xml" value="0.55" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/PhoneFreedom/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.5661458333333333" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/PhoneFreedom/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.5661458333333333" />
+        <entry key="..\:/Users/alija/AndroidStudioProjects/PhoneFreedom11111/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/alija/AndroidStudioProjects/PhoneFreedom11111/app/src/main/res/layout/activity_predefined_messages.xml" value="0.25" />
+        <entry key="..\:/Users/alija/AndroidStudioProjects/PhoneFreedom11111/app/src/main/res/layout/activity_predefined_messages_list_item.xml" value="0.25" />
+        <entry key="..\:/Users/alija/AndroidStudioProjects/PhoneFreedom11111/app/src/main/res/layout/activity_settings_screen.xml" value="0.25" />
         <entry key="..\:/Users/digit/StudioProjects/PhoneFreedom/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.14010416666666667" />
         <entry key="..\:/Users/digit/StudioProjects/PhoneFreedom/app/src/main/res/drawable/borders.xml" value="0.18541666666666667" />
         <entry key="..\:/Users/digit/StudioProjects/PhoneFreedom/app/src/main/res/drawable/ic_launcher_background.xml" value="0.14010416666666667" />
@@ -16,38 +29,19 @@
         <entry key="..\:/Users/eldre/AndroidStudioProjects/PhoneFreedom2/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/eldre/AndroidStudioProjects/PhoneFreedom2/app/src/main/res/layout/fragment_menu.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/eldre/AndroidStudioProjects/PhoneFreedom2/app/src/main/res/layout/fragment_time.xml" value="0.1598731884057971" />
-        <entry key="..\:/Users/salim/AppData/Local/Android/Sdk/platforms/android-31/data/res/layout/simple_list_item_1.xml" value="0.321875" />
         <entry key="..\:/Users/salim/StudioProjects/PhoneFreedom/app/src/main/res/drawable/background.xml" value="0.18784722222222222" />
         <entry key="..\:/Users/salim/StudioProjects/PhoneFreedom/app/src/main/res/drawable/borders.xml" value="0.18784722222222222" />
-        <entry key="..\:/Users/salim/StudioProjects/PhoneFreedom/app/src/main/res/drawable/borders2.xml" value="0.3546875" />
         <entry key="..\:/Users/salim/StudioProjects/PhoneFreedom/app/src/main/res/drawable/bottombordes.xml" value="0.18784722222222222" />
-        <entry key="..\:/Users/salim/StudioProjects/PhoneFreedom/app/src/main/res/drawable/do_not_disturb.xml" value="0.3380208333333333" />
         <entry key="..\:/Users/salim/StudioProjects/PhoneFreedom/app/src/main/res/drawable/email.xml" value="0.34375" />
-        <entry key="..\:/Users/salim/StudioProjects/PhoneFreedom/app/src/main/res/drawable/goandstop.xml" value="0.37037037037037035" />
-        <entry key="..\:/Users/salim/StudioProjects/PhoneFreedom/app/src/main/res/drawable/ic_language.xml" value="0.3380208333333333" />
-        <entry key="..\:/Users/salim/StudioProjects/PhoneFreedom/app/src/main/res/drawable/instagram.xml" value="0.37037037037037035" />
-        <entry key="..\:/Users/salim/StudioProjects/PhoneFreedom/app/src/main/res/drawable/settingsb.xml" value="0.36302083333333335" />
         <entry key="..\:/Users/salim/StudioProjects/PhoneFreedom/app/src/main/res/drawable/snapchat.xml" value="0.34375" />
         <entry key="..\:/Users/salim/StudioProjects/PhoneFreedom/app/src/main/res/drawable/switch_on_of.xml" value="0.196875" />
-        <entry key="..\:/Users/salim/StudioProjects/PhoneFreedom/app/src/main/res/drawable/whatsapp.xml" value="0.37037037037037035" />
         <entry key="..\:/Users/salim/StudioProjects/PhoneFreedom/app/src/main/res/layout-land/activity_main.xml" value="0.4041666666666667" />
         <entry key="..\:/Users/salim/StudioProjects/PhoneFreedom/app/src/main/res/layout-large/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/salim/StudioProjects/PhoneFreedom/app/src/main/res/layout-normal/activity_main.xml" value="0.22" />
         <entry key="..\:/Users/salim/StudioProjects/PhoneFreedom/app/src/main/res/layout-small/activity_main.xml" value="0.265625" />
         <entry key="..\:/Users/salim/StudioProjects/PhoneFreedom/app/src/main/res/layout/activity_language.xml" value="0.18611111111111112" />
-        <entry key="..\:/Users/salim/StudioProjects/PhoneFreedom/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/salim/StudioProjects/PhoneFreedom/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/salim/StudioProjects/PhoneFreedom/app/src/main/res/layout/activity_predefined_messages.xml" value="0.3302083333333333" />
-        <entry key="..\:/Users/salim/StudioProjects/PhoneFreedom/app/src/main/res/layout/activity_predefined_messages_list_item.xml" value="0.31354166666666666" />
-        <entry key="..\:/Users/salim/StudioProjects/PhoneFreedom/app/src/main/res/layout/activity_settings_screen.xml" value="0.33" />
-        <entry key="..\:/Users/salim/StudioProjects/PhoneFreedom/app/src/main/res/layout/activity_show_setting.xml" value="0.346875" />
-        <entry key="..\:/Users/salim/StudioProjects/PhoneFreedom/app/src/main/res/layout/activity_video2.xml" value="0.28177083333333336" />
-        <entry key="..\:/Users/salim/StudioProjects/PhoneFreedom/app/src/main/res/layout/activity_video_clip.xml" value="0.33489583333333334" />
-        <entry key="..\:/Users/salim/StudioProjects/PhoneFreedom/app/src/main/res/layout/dropdown_item.xml" value="0.321875" />
-        <entry key="..\:/Users/salim/StudioProjects/PhoneFreedom/app/src/main/res/layout/edit_predefined_message.xml" value="0.31354166666666666" />
-        <entry key="..\:/Users/salim/StudioProjects/PhoneFreedom/app/src/main/res/layout/edit_text_layout.xml" value="0.321875" />
-        <entry key="..\:/Users/salim/StudioProjects/PhoneFreedom/app/src/main/res/layout/installed_apps_list_view_item.xml" value="0.346875" />
-        <entry key="..\:/Users/salim/StudioProjects/PhoneFreedom/app/src/main/res/menu/do_not_disturb_menu.xml" value="0.321875" />
-        <entry key="..\:/Users/salim/StudioProjects/PhoneFreedom/app/src/main/res/xml/policies.xml" value="0.29322916666666665" />
         <entry key="..\:/Users/salim/StudioProjects/PhoneFreedom1/app/src/main/res/drawable/borders.xml" value="0.21875" />
         <entry key="..\:/Users/salim/StudioProjects/PhoneFreedom1/app/src/main/res/drawable/button.xml" value="0.36944444444444446" />
         <entry key="..\:/Users/salim/StudioProjects/PhoneFreedom1/app/src/main/res/drawable/call.xml" value="0.21875" />

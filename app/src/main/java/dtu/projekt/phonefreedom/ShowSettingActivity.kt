@@ -7,6 +7,7 @@ import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.Toast
 import java.util.*
 
 class ShowSettingActivity : AppCompatActivity() {
@@ -23,7 +24,8 @@ class ShowSettingActivity : AppCompatActivity() {
         btn_changeLang.setOnClickListener {
             showChangeLang()
         }
-
+        val btn_animation= findViewById<Button>(R.id.Animation1)
+            btn_animation.setOnClickListener { showAnimation()}
     }
 
     private fun showChangeLang(){
@@ -36,12 +38,12 @@ class ShowSettingActivity : AppCompatActivity() {
             if (which == 0) {
                 setLocate("en")
                 recreate()
-
+                    Toast.makeText(this, "English selected.", Toast.LENGTH_SHORT).show()
 
             } else if (which == 1) {
                 setLocate("da")
                 recreate()
-
+                    Toast.makeText(this, "Danish selected.", Toast.LENGTH_SHORT).show()
             }
             dialog.dismiss()
 
@@ -76,7 +78,25 @@ class ShowSettingActivity : AppCompatActivity() {
         }
     }
 
+    private fun showAnimation(){
 
+        val listItems = arrayOf("ON","OFF")
+
+        val mBuilder = AlertDialog.Builder(this)
+        mBuilder.setTitle("Animation")
+        mBuilder.setSingleChoiceItems(listItems,-1) { dialog, tilstand ->
+            if (tilstand == 0) {
+                Toast.makeText(this, "Animation turned on.", Toast.LENGTH_SHORT).show()
+
+            } else if (tilstand == 1) {
+                Toast.makeText(this, "Animation turned off.", Toast.LENGTH_SHORT).show()
+            }
+            dialog.dismiss()
+        }
+        val mDialog = mBuilder.create()
+
+        mDialog.show()
+    }
 
 
 
