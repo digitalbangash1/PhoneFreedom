@@ -59,11 +59,17 @@ class ShowSettingActivity : AppCompatActivity() {
                 recreate()
                 Toast.makeText(this, "English selected.", Toast.LENGTH_SHORT).show()
 
+                val refresh = Intent(this, ShowSettingActivity::class.java)
+                startActivity(refresh)
 
             } else if (which == 1) {
                 setLocate("da")
                 recreate()
                 Toast.makeText(this, "Danish selected.", Toast.LENGTH_SHORT).show()
+
+                val refresh = Intent(this, ShowSettingActivity::class.java)
+                startActivity(refresh)
+
             }
             dialog.dismiss()
 

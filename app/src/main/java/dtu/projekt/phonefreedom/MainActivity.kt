@@ -1,6 +1,7 @@
 package dtu.projekt.phonefreedom
 
 import android.Manifest
+import android.Manifest.permission.ACCESS_NOTIFICATION_POLICY
 import android.annotation.SuppressLint
 import android.app.TimePickerDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -25,16 +26,26 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat.startActivity
 import androidx.core.app.ActivityCompat.startActivityForResult
 import android.app.Activity
+import android.app.Instrumentation
+import android.widget.Switch
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.RequiresApi
+import androidx.core.app.ActivityCompat
+import androidx.core.app.ActivityCompat.checkSelfPermission
 import dtu.projekt.phonefreedom.notification_services.InstalledAppsActivity
 
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var permissionLuncher :ActivityResultLauncher<Array<String>>
+    private var isNotificationGranted= false
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var editText: EditText
     private lateinit var editTextFreeTo: TextView
     private var showtime: String = "no time"
+    val requestNr= 1
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,11 +60,35 @@ class MainActivity : AppCompatActivity() {
         appButton()
         //sendWhatsapp()
         //showVideo()
-
-        launchNotificationAccessSettings()
+        //checkIfOrNot()
+       //launchNotificationAccessSettings()
         settingsScreen()
-        accessDndSetting()
+
+      permissionLuncher =registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()){permissions ->
+          isNotificationGranted = permissions[Manifest.permission.ACCESS_NOTIFICATION_POLICY] ?: isNotificationGranted
+      }
+        requestPermission()
+
     }
+
+    private fun requestPermission(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            isNotificationGranted = ContextCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_NOTIFICATION_POLICY) == PackageManager.PERMISSION_GRANTED
+            val permissionRequest : MutableList<String> = ArrayList()
+            if(!isNotificationGranted){
+                permissionRequest.add(Manifest.permission.ACCESS_NOTIFICATION_POLICY)
+            }
+            if (permissionRequest.isNotEmpty()){
+                permissionLuncher.launch(permissionRequest.toTypedArray())
+            }
+        }
+    }
+
+
+
+
+
 
     private fun addClickListeners() {
         binding.buttonSelectPredefinedMessage.setOnClickListener {
@@ -69,6 +104,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
     var SELECT_SMS_APP_RESULT = 5
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
@@ -285,25 +321,77 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    private fun launchNotificationAccessSettings() {
-        val result: Int = ContextCompat.checkSelfPermission(
-            this, ACTION_NOTIFICATION_LISTENER_SETTINGS
-        )
-        if (result == PackageManager.PERMISSION_GRANTED) {
-            return
-        }
-        val NOTIFICATION_LISTENER_SETTINGS: String
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1) {
-            NOTIFICATION_LISTENER_SETTINGS = ACTION_NOTIFICATION_LISTENER_SETTINGS
-        } else {
-            NOTIFICATION_LISTENER_SETTINGS =
-                "android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS"
-        }
-        val i = Intent(NOTIFICATION_LISTENER_SETTINGS)
-        startActivity(i)
 
 
-    }
+/*   private fun launchNotificationAccessSettings() {
+
+
+       val result: Int =
+           ContextCompat.checkSelfPermission(this, ACTION_NOTIFICATION_LISTENER_SETTINGS)
+
+       val NOTIFICATION_LISTENER_SETTINGS: String
+       if (Build.VERSION.SDK_INT >= 23 && result != PackageManager.PERMISSION_GRANTED) {
+           NOTIFICATION_LISTENER_SETTINGS = ACTION_NOTIFICATION_LISTENER_SETTINGS
+
+           val i = Intent(NOTIFICATION_LISTENER_SETTINGS)
+           startActivity(i)
+
+       } else {
+           NOTIFICATION_LISTENER_SETTINGS =
+               "android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS"
+           Toast.makeText(this, "hello", Toast.LENGTH_SHORT).show()
+
+       }
+
+   }*/
+
+
+  /*  fun checkIfOrNot(){
+
+
+        if (Build.VERSION.SDK_INT >= 23){
+            if (checkSelfPermission(this, ACTION_NOTIFICATION_LISTENER_SETTINGS)!=PackageManager.PERMISSION_GRANTED){
+                if (!shouldShowRequestPermissionRationale(ACTION_NOTIFICATION_LISTENER_SETTINGS)){
+                  requestPermissions(arrayOf(ACTION_NOTIFICATION_LISTENER_SETTINGS),requestNr)
+
+                }
+
+              return
+
+            }
+        }
+    }*/
+
+ /*   @RequiresApi(Build.VERSION_CODES.M)
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String?>, grantResults: IntArray) {
+
+
+        when (requestCode) {
+
+                requestNr  -> {
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                    Toast.makeText(this, "hello", Toast.LENGTH_SHORT).show()
+                }
+               *//* else if (grantResults[0] != PackageManager.PERMISSION_GRANTED){
+                    Toast.makeText(this, "bababa", Toast.LENGTH_SHORT).show()
+                }*//*
+                else {
+                    Toast.makeText(this, "no no  ", Toast.LENGTH_SHORT).show()
+                    val NOTIFICATION_LISTENER_SETTINGS: String =
+                        ACTION_NOTIFICATION_LISTENER_SETTINGS
+                    val i = Intent(NOTIFICATION_LISTENER_SETTINGS)
+                    startActivity(i)
+
+                }
+            }
+
+            else -> {
+                super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+            }
+        }
+    }*/
+
 
     private fun accessDndSetting() {
        /* binding.btnSettingDnd?.setOnClickListener {
@@ -328,11 +416,7 @@ class MainActivity : AppCompatActivity() {
                 //toast("Notification policy access granted.")
                 return true
             } else {
-                Toast.makeText(
-                    this,
-                    "You need to grant notification policy access.",
-                    Toast.LENGTH_SHORT
-                ).show()
+                Toast.makeText(this, "You need to grant notification policy access.", Toast.LENGTH_SHORT).show()
                 // If notification policy access not granted for this package
                 val intent = Intent(Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS)
                 startActivity(intent)
@@ -457,3 +541,23 @@ class MainActivity : AppCompatActivity() {
      val i = Intent(NOTIFICATION_LISTENER_SETTINGS)
      startActivity(i)*/
 
+
+
+//private fun launchNotificationAccessSettings() {
+//    val result: Int = ContextCompat.checkSelfPermission(
+//        this, ACTION_NOTIFICATION_LISTENER_SETTINGS
+//    )
+//    if (result == PackageManager.PERMISSION_GRANTED) {
+//        return
+//    }
+//    val NOTIFICATION_LISTENER_SETTINGS: String
+//    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1) {
+//        NOTIFICATION_LISTENER_SETTINGS = ACTION_NOTIFICATION_LISTENER_SETTINGS
+//    } else {
+//        NOTIFICATION_LISTENER_SETTINGS =
+//            "android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS"
+//    }
+//    val i = Intent(NOTIFICATION_LISTENER_SETTINGS)
+//    startActivity(i)
+//
+//}
