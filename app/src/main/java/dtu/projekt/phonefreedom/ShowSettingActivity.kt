@@ -1,6 +1,7 @@
 package dtu.projekt.phonefreedom
 
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.AlertDialog
 import android.content.ComponentName
@@ -14,6 +15,7 @@ import android.widget.Toast
 import java.util.*
 
 class ShowSettingActivity : AppCompatActivity() {
+
 
 
 
@@ -111,11 +113,22 @@ class ShowSettingActivity : AppCompatActivity() {
         val mBuilder = AlertDialog.Builder(this)
         mBuilder.setTitle("Animation")
         mBuilder.setSingleChoiceItems(listItems,-1) { dialog, tilstand ->
-            if (tilstand == 0) {
-                Toast.makeText(this, "Animation turned on.", Toast.LENGTH_SHORT).show()
+            when (tilstand) {
+                0 -> {
 
-            } else if (tilstand == 1) {
-                Toast.makeText(this, "Animation turned off.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Animation turned on.", Toast.LENGTH_SHORT).show()
+                    val refresh = Intent(this, MainActivity::class.java)
+                    startActivity(refresh)
+
+                }
+                1 -> {
+                    Toast.makeText(this, "Animation turned off.", Toast.LENGTH_SHORT).show()
+                    val refresh = Intent(this, MainActivity::class.java)
+                    startActivity(refresh)
+                }
+                else -> {
+
+                }
             }
             dialog.dismiss()
         }
@@ -123,6 +136,8 @@ class ShowSettingActivity : AppCompatActivity() {
 
         mDialog.show()
     }
+
+
 
 
 
