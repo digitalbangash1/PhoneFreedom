@@ -57,7 +57,9 @@ class ShowSettingActivity : AppCompatActivity() {
         val locale = Locale(Lang)
 
         Locale.setDefault(locale)
+
         val config = Configuration()
+
         config.locale = locale
         baseContext.resources.updateConfiguration(config, baseContext.resources.displayMetrics)
 
