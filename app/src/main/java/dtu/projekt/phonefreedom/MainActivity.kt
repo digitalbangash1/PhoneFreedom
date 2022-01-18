@@ -128,7 +128,7 @@ class MainActivity : AppCompatActivity() {
                 cal.set(Calendar.HOUR_OF_DAY, hour)
                 cal.set(Calendar.MINUTE, minute)
                 showtime = SimpleDateFormat("HH:mm").format(cal.time)
-                binding.editTextFreeTo.setText(showtime)
+                binding.editTextFreeTo.setText(showtime )
 
                 Toast.makeText(this, "Time saved at $showtime", Toast.LENGTH_SHORT).show()
             }
@@ -161,7 +161,8 @@ class MainActivity : AppCompatActivity() {
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                 showtime = s.toString()
                 var showMyTimeOnAutoText = findViewById<EditText>(R.id.editTextAutoText)
-                showMyTimeOnAutoText.setText(editText.text.toString() + "jeg tjekker min telefon kl:" + showtime)
+                val msg = "Jeg tjekker min telefon igen kl : "
+                showMyTimeOnAutoText.setText(editText.text.toString() +msg +  showtime)
             }
 
             override fun afterTextChanged(s: Editable) {

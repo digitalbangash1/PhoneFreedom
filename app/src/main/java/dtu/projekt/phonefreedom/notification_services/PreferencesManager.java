@@ -6,6 +6,7 @@ import android.provider.Telephony;
 
 import androidx.preference.PreferenceManager;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -109,11 +110,11 @@ public class PreferencesManager {
             return;
         }
         String[] predefinedMessages = new String[5];
-        predefinedMessages[0] = "one";
-        predefinedMessages[1] = "Tow";
-        predefinedMessages[2] = "Three";
-        predefinedMessages[3] = "Four";
-        predefinedMessages[4] = "Five";
+        predefinedMessages[0] = "jeg fordyber mig i min fritidsaktivitet.";
+        predefinedMessages[1] = "jeg har kvalitetstid med mine børn.";
+        predefinedMessages[2] = "jeg læser til eksamen.";
+        predefinedMessages[3] = "jeg er på ferie";
+        predefinedMessages[4] = "jeg koncentrerer mig om mit arbejde.";
         setPredefinedMessages(predefinedMessages);
 
     }

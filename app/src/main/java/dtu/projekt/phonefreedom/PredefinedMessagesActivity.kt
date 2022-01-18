@@ -52,7 +52,7 @@ class PredefinedMessagesActivity : AppCompatActivity() {
         listViewPredefinedMessage.adapter = adapter
         listViewPredefinedMessage.setOnItemClickListener { parent, view, position, id ->
             //Toast.makeText(this, messages[position], Toast.LENGTH_SHORT).show()
-            var message = "Jeg holder mobilfri  " + messages[position]
+            var message = "Jeg holder mobilfri fordi " + messages[position]
             val myIntent = Intent(this, MainActivity::class.java)
             myIntent.putExtra("Extra_SelectedPredefinedMessage", message)
             setResult(Activity.RESULT_OK, myIntent)
