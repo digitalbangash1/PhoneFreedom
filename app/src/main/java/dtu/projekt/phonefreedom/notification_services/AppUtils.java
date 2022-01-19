@@ -1,3 +1,4 @@
+/*
 package dtu.projekt.phonefreedom.notification_services;
 
 import android.content.Context;
@@ -29,3 +30,4 @@ public class AppUtils {
         }
     }
 }
+*/

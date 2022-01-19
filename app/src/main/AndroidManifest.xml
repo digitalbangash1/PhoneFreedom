@@ -39,9 +39,7 @@
             android:exported="false"
             android:label="@string/title_activity_video2"
             android:theme="@style/Theme.PhoneFreedom.NoActionBar" />
-        <activity
-            android:name=".LanguageActivity"
-            android:exported="false" />
+
         <activity
             android:name=".PredefinedMessagesActivity"
             android:exported="false" />
@@ -60,9 +58,7 @@
 
         <activity
             android:name=".notification_services.InstalledAppsActivity"
-            android:launchMode="singleTop"
-            >
-        </activity>
+            android:launchMode="singleTop"></activity>
 
         <service
             android:name=".notification_services.NotificationService"
