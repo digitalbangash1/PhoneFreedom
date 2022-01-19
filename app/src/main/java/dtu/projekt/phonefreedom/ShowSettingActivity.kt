@@ -27,7 +27,7 @@ class ShowSettingActivity : AppCompatActivity() {
         setContentView(R.layout.activity_show_setting)
 
         val actionBar = supportActionBar
-        actionBar!!.title = resources.getString(R.string.app_name)
+        actionBar!!.title = "SETTING"
 
 
         val btn_changeLang = findViewById<Button>(R.id.btn_changelang)
@@ -51,6 +51,11 @@ class ShowSettingActivity : AppCompatActivity() {
 
         val btn_SMS = findViewById<Button>(R.id.btn_msg_package)
         btn_SMS.setOnClickListener {
+            var SELECT_SMS_APP_RESULT = 5
+//                val i = Intent(this, InstalledAppsActivity::class.java)
+//                startActivityForResult(i, SELECT_SMS_APP_RESULT)
+//            Toast.makeText(this,SELECT_SMS_APP_RESULT , Toast.LENGTH_SHORT).show()
+
         }
 
     }

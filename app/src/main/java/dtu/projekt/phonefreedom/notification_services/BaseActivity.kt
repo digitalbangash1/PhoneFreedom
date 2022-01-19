@@ -1,14 +1,10 @@
-package dtu.projekt.phonefreedom.notification_services;
+package dtu.projekt.phonefreedom.notification_services
 
-import android.content.Context;
-import android.os.Build;
+import android.content.Context
+import androidx.appcompat.app.AppCompatActivity
 
-import androidx.appcompat.app.AppCompatActivity;
-
-public class BaseActivity extends AppCompatActivity {
-
-    @Override
-    protected void attachBaseContext(Context newBase) {
+open class BaseActivity : AppCompatActivity() {
+    override fun attachBaseContext(newBase: Context) {
 //        PreferencesManager prefs = PreferencesManager.getPreferencesInstance(newBase);
 //        ContextWrapper contextWrapper = ContextWrapper.wrap(newBase, prefs.getSelectedLocale());
 //        super.attachBaseContext(contextWrapper);
@@ -19,4 +15,3 @@ public class BaseActivity extends AppCompatActivity {
 //            applyOverrideConfiguration(contextWrapper.getResources().getConfiguration());
     }
 }
-
