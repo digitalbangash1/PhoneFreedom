@@ -2,6 +2,7 @@ package dtu.projekt.phonefreedom.notification_services;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.widget.Toast;
 
 import androidx.preference.PreferenceManager;
 
@@ -22,6 +23,8 @@ public class PreferencesManager {
     private final String SIGNAL_PACKAGE_NAME = "org.thoughtcrime.securesms";
     private final String KEY_PREDEFINED_MESSAGE = "prefs_predefined_messages";
     private final String KEY_SHOW_ANIMATION = "pref_show_animation";
+    private final String SMS_APP_NAME = "Sms";
+
 
     private ArrayList<SupportedApp> supportedApps = new ArrayList<>();
 
@@ -47,7 +50,7 @@ public class PreferencesManager {
     private final Context context;
 
     public PreferencesManager(Context context) {
-         this.context = context;
+        this.context = context;
         sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
         supportedApps.add(new SupportedApp("WhatsApp", WHATSAPP_PACKAGE_NAME));
         supportedApps.add(new SupportedApp("Messenger", MESSENGER_PACKAGE_NAME));
@@ -55,26 +58,27 @@ public class PreferencesManager {
         supportedApps.add(new SupportedApp("Telegram", TELEGRAM_PACKAGE_NAME));
         supportedApps.add(new SupportedApp("Instagram", INSTAGRAM_PACKAGE_NAME));
         supportedApps.add(new SupportedApp("Signal", SIGNAL_PACKAGE_NAME));
-        addSmsSuppertedApp(getSmsPackageName())
+
+        supportedApps.add(new SupportedApp(SMS_APP_NAME, getSmsPackageName()));
         ;
         //SMS_Package_Name = Telephony.Sms.getDefaultSmsPackage(context);
         initializePredefinedMessages();
     }
 
-    private void addSmsSuppertedApp(String packageName){
+    private void addSmsSuppertedApp(String packageName) {
 
-        if(packageName == null || packageName.length() == 0){
+        if (packageName == null || packageName.length() == 0) {
             return;
         }
 
         int index = -1;
-        for(SupportedApp app : supportedApps){
+        for (SupportedApp app : supportedApps) {
             index++;
-            if(app.getPackageName().toLowerCase() == packageName.toLowerCase()){
+            if (app.getPackageName().toLowerCase() == packageName.toLowerCase()) {
                 break;
             }
         }
-        if(index != -1){
+        if (index != -1) {
             supportedApps.remove(index);
         }
         supportedApps.add(new SupportedApp("Sms", packageName));
@@ -86,15 +90,17 @@ public class PreferencesManager {
         }
         return instance;
     }
-    public String[] getPredefinedMessages () {
+
+    public String[] getPredefinedMessages() {
         Set<String> messagesSet = sharedPrefs.getStringSet(KEY_PREDEFINED_MESSAGE, new HashSet<String>());
         String[] messages = new String[messagesSet.size()];
         messagesSet.toArray(messages);
         return messages;
     }
-    public void setPredefinedMessages (String[] messages){
+
+    public void setPredefinedMessages(String[] messages) {
         Set<String> set = new HashSet<>();
-        for (String message : messages){
+        for (String message : messages) {
             set.add(message);
         }
         SharedPreferences.Editor editor = sharedPrefs.edit();
@@ -102,9 +108,10 @@ public class PreferencesManager {
         editor.commit();
 
     }
-    private void initializePredefinedMessages () {
+
+    private void initializePredefinedMessages() {
         String[] currentMessages = getPredefinedMessages();
-        if (currentMessages.length>0){
+        if (currentMessages.length > 0) {
             return;
         }
         String[] predefinedMessages = new String[5];
@@ -118,17 +125,42 @@ public class PreferencesManager {
     }
 
 
-
     public String getSmsPackageName() {
         return sharedPrefs.getString(KEY_SMS_PACKAGE_NAME, "");
     }
 
     public void setSmsPackageName(String smsPackageName) {
-        addSmsSuppertedApp(smsPackageName);
+        updateSmsSuppertedAppPackageName(smsPackageName);
         SharedPreferences.Editor editor = sharedPrefs.edit();
         editor.putString(KEY_SMS_PACKAGE_NAME, smsPackageName);
         editor.commit();
     }
+
+    private void updateSmsSuppertedAppPackageName(String packageName) {
+        if (packageName == null) {
+            packageName = "";
+        }
+
+        SupportedApp smsApp = null;
+        for (SupportedApp app : supportedApps) {
+            if (app.getName().equalsIgnoreCase(SMS_APP_NAME)) {
+                smsApp = app;
+                break;
+            }
+        }
+        if (smsApp == null) {
+            smsApp.setPackageName(packageName);
+            Toast.makeText(context, "null", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+   /* public void setSmsPackageName(String smsPackageName) {
+        addSmsSuppertedApp(smsPackageName);
+        SharedPreferences.Editor editor = sharedPrefs.edit();
+        editor.putString(KEY_SMS_PACKAGE_NAME, smsPackageName);
+        editor.commit();
+    }*/
 
     /*public void setSmsPackageName(String smsPackageName) {
         SharedPreferences.Editor editor = sharedPrefs.edit();
@@ -187,8 +219,9 @@ public class PreferencesManager {
         enabledApps.toArray(allEnabledApps);
         return allEnabledApps;
     }
+
     public void setEnabledApp(String packageName) {
-        if(packageName == null || packageName.length() == 0){
+        if (packageName == null || packageName.length() == 0) {
             return;
         }
 
@@ -201,7 +234,7 @@ public class PreferencesManager {
     }
 
     public void setDisabledApp(String packageName) {
-        if(packageName == null || packageName.length() == 0){
+        if (packageName == null || packageName.length() == 0) {
             return;
         }
 
@@ -212,6 +245,7 @@ public class PreferencesManager {
         editor.putStringSet(KEY_ENABLED_APPS_PACKAGE_NAMES, enabledAppsPackageNames);
         editor.commit();
     }
+
     //Add these new methods
     public boolean isSmsEnabled() {
         return isSupportedAppEnabled(getSmsPackageName());
@@ -221,17 +255,22 @@ public class PreferencesManager {
         setAppEnabled(getSmsPackageName(), enabled);
     }
 
-    public String getShowAnimation() {
-        return sharedPrefs.getString(KEY_SHOW_ANIMATION, "show");
+    public boolean getShowAnimation() {
+        return sharedPrefs.getBoolean(KEY_SHOW_ANIMATION, true);
     }
+
     public void setShowAimation(boolean enabled) {
         SharedPreferences.Editor editor = sharedPrefs.edit();
         editor.putBoolean(KEY_SHOW_ANIMATION, enabled);
         editor.commit();
     }
 
-    public boolean isAnimationEnabled(){return sharedPrefs.getBoolean(KEY_SHOW_ANIMATION,false);}
-    public  void setAnimationEnabled(boolean enabled){ }
+    public boolean isAnimationEnabled() {
+        return sharedPrefs.getBoolean(KEY_SHOW_ANIMATION, false);
+    }
+
+    public void setAnimationEnabled(boolean enabled) {
+    }
 
 
     /* public void setEnabledApp(String packageName) {
@@ -255,6 +294,7 @@ public class PreferencesManager {
     public boolean isSupportedAppEnabled(String packageName) {
         SupportedApp[] enabledApps = getEnabledApps();
         for (SupportedApp enabledApp : enabledApps) {
+            //Toast.makeText(context,enabledApp.getPackageName(),Toast.LENGTH_SHORT).show();
             if (enabledApp.getPackageName().equalsIgnoreCase(packageName)) {
                 return true;
             }

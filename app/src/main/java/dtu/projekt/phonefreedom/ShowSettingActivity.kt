@@ -51,6 +51,15 @@ class ShowSettingActivity : AppCompatActivity() {
 
         val btn_SMS = findViewById<Button>(R.id.btn_msg_package)
         btn_SMS.setOnClickListener {
+            val prefs = PreferencesManager.getPreferencesInstance(this)
+            prefs.setSmsEnabled(false)
+            prefs.setSmsPackageName("")
+
+            /*
+            val i = Intent(this, InstalledAppsActivity::class.java)
+            startActivityForResult(i, )
+            Toast.makeText(this, SMS_APP_PACKAGE_NAME_RESULT, Toast.LENGTH_SHORT).show()*/
+
         }
 
     }
@@ -158,17 +167,17 @@ class ShowSettingActivity : AppCompatActivity() {
     fun showAnimation(){
 
         val listItems = arrayOf("ON","OFF")
-
+        val prefs: PreferencesManager = PreferencesManager.getPreferencesInstance(this)
         val mBuilder = AlertDialog.Builder(this)
         mBuilder.setTitle("Animation")
         mBuilder.setSingleChoiceItems(listItems,-1) { dialog, tilstand ->
             when (tilstand) {
-                0 -> {
+                0 -> {prefs.setShowAimation(true)
                         Toast.makeText(this, "Animation turned on.", Toast.LENGTH_SHORT).show()
                     val refresh = Intent(this, MainActivity::class.java)
                     startActivity(refresh)
                 }
-                1 -> {
+                1 -> {prefs.setShowAimation(false)
                     Toast.makeText(this, "Animation turned off.", Toast.LENGTH_SHORT).show()
                     val refresh = Intent(this, MainActivity::class.java)
                     startActivity(refresh)
@@ -180,6 +189,8 @@ class ShowSettingActivity : AppCompatActivity() {
 
         mDialog.show()
     }
+
+
 
 
 

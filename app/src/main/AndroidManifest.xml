@@ -21,14 +21,7 @@
         android:resizeable="true"
         android:smallScreens="true" />
 
-    <queries>
 
-        <!-- Specific apps Watomatic interacts with. Required for Android 11+ -->
-        <package android:name="com.whatsapp" />
-        <package android:name="com.facebook.orca" />
-        <package android:name="com.facebook.mlite" />
-        <package android:name="com.instagram.android" />
-    </queries>
 
     <application
         android:allowBackup="true"

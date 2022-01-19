@@ -22,18 +22,13 @@ import androidx.annotation.RequiresApi
 import dtu.projekt.phonefreedom.notification_services.InstalledAppsActivity
 
 
-
-
-
 open class MainActivity : AppCompatActivity() {
-
 
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var editText: EditText
     private lateinit var editTextFreeTo: TextView
     private var showtime: String = "no time"
-
 
 
     @RequiresApi(Build.VERSION_CODES.M)
@@ -60,7 +55,7 @@ open class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun requestPermission(){
+    private fun requestPermission() {
 
         val isNotificationServiceRunning = isNotificationServiceRunning()
         if (!isNotificationServiceRunning) {
@@ -118,10 +113,6 @@ open class MainActivity : AppCompatActivity() {
     }
 
 
-
-
-
-
     private fun addTime() {
         binding.textViewFreeAddTime.setOnClickListener {
             val cal = Calendar.getInstance()
@@ -147,7 +138,6 @@ open class MainActivity : AppCompatActivity() {
         }
 
     }
-
 
 
     private fun appButton() {
@@ -187,10 +177,11 @@ open class MainActivity : AppCompatActivity() {
                 } else {
 
                     prefs.setAutoReplyText(text)
-                // Toast.makeText(this@MainActivity, showtime,Toast.LENGTH_SHORT).show()
+                    // Toast.makeText(this@MainActivity, showtime,Toast.LENGTH_SHORT).show()
                 }
 
             }
+
             override fun afterTextChanged(s: Editable) {
             }
         })
@@ -213,7 +204,7 @@ open class MainActivity : AppCompatActivity() {
 
         binding.EmailButton.setOnClickListener {
             binding.EmailButton.isSelected = !binding.EmailButton.isSelected
-            prefs.setOutlookEnabled(binding.EmailButton.isSelected)
+            prefs.setSignalEnabled(binding.EmailButton.isSelected)
         }
 
         binding.messengerButton.setOnClickListener {
@@ -270,16 +261,13 @@ open class MainActivity : AppCompatActivity() {
 
     private fun showVideo() {
         val prefs: PreferencesManager = PreferencesManager.getPreferencesInstance(this)
-        if (binding.goandstopButton.isSelected) {
+        if (prefs.getShowAnimation()) {
 
-            prefs.setShowAimation(false)
             val intent = Intent(this, VideoActivity2::class.java)
             this.startActivity(intent)
-            binding.goandstopButton.isSelected
+
         }
     }
-
-
 
 
 /*   private fun launchNotificationAccessSettings() {
@@ -310,7 +298,9 @@ open class MainActivity : AppCompatActivity() {
                 //toast("Notification policy access granted.")
                 return true
             } else {
-                Toast.makeText(this, "You need to grant notification policy access.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,
+                    "You need to grant notification policy access.",
+                    Toast.LENGTH_SHORT).show()
                 // If notification policy access not granted for this package
                 val intent = Intent(Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS)
                 startActivity(intent)
@@ -338,9 +328,6 @@ open class MainActivity : AppCompatActivity() {
 
 
 }
-
-
-
 
 
 /*private fun sendWhatsapp(message: String) {
