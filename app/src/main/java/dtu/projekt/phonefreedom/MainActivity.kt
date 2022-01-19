@@ -25,7 +25,7 @@ import dtu.projekt.phonefreedom.notification_services.InstalledAppsActivity
 
 
 
-class MainActivity : AppCompatActivity() {
+open class MainActivity : AppCompatActivity() {
 
 
 
@@ -262,7 +262,12 @@ class MainActivity : AppCompatActivity() {
         }
         binding.goandstopButton.setOnClickListener {
             binding.goandstopButton.isSelected = !binding.goandstopButton.isSelected
-            showVideo()
+
+            val showme = ShowSettingActivity()
+
+
+           // showVideo()
+
 
         }
 
@@ -285,7 +290,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    private fun showVideo() {
+    open fun showVideo() {
         if (binding.goandstopButton.isSelected) {
             val intent = Intent(this, VideoActivity2::class.java)
             this.startActivity(intent)
