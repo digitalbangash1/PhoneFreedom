@@ -18,11 +18,6 @@ import android.widget.Toast
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.TextView
-import androidx.core.content.ContextCompat.startActivity
-import androidx.core.app.ActivityCompat.startActivityForResult
-import android.app.Activity
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.annotation.RequiresApi
 import androidx.annotation.RequiresApi
 import dtu.projekt.phonefreedom.notification_services.InstalledAppsActivity
 
@@ -38,7 +33,7 @@ open class MainActivity : AppCompatActivity() {
     private lateinit var editText: EditText
     private lateinit var editTextFreeTo: TextView
     private var showtime: String = "no time"
-    val requestNr= 1
+
 
 
     @RequiresApi(Build.VERSION_CODES.M)
@@ -46,15 +41,11 @@ open class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
-        /*val intent = Intent("android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS")
-        startActivity(intent)*/
         setContentView(view)
         addTime()
         addClickListeners()
         appButton()
         settingsScreen()
-
-
         isNotificationServiceRunning()
         requestPermission()
     }
@@ -80,9 +71,6 @@ open class MainActivity : AppCompatActivity() {
 
 
 
-
-
-
     private fun addClickListeners() {
         binding.buttonSelectPredefinedMessage.setOnClickListener {
             val myIntent = Intent(this, PredefinedMessagesActivity::class.java)
@@ -92,16 +80,12 @@ open class MainActivity : AppCompatActivity() {
 
 
 
-
     private fun settingsScreen() {
         binding.toSettings.setOnClickListener {
             val myIntent = Intent(this, ShowSettingActivity::class.java)
             startActivity(myIntent)
         }
     }
-
-
-
 
 
     var SELECT_SMS_APP_RESULT = 5
@@ -357,9 +341,6 @@ open class MainActivity : AppCompatActivity() {
             this.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_ALL)
         }
     }
-
-
-
 
 
 }

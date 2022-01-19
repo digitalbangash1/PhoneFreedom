@@ -2,6 +2,7 @@ package dtu.projekt.phonefreedom
 
 import android.app.Activity
 import android.app.AlertDialog
+import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
@@ -60,37 +61,51 @@ class ShowSettingActivity : AppCompatActivity() {
         mBuilder.setSingleChoiceItems(listItems,-1) { dialog, which ->
             if (which == 0) {
                 setLocate("ar")
-                recreate()
-                Toast.makeText(this, "English selected.", Toast.LENGTH_SHORT).show()
 
+                recreate()
+                Toast.makeText(this, "تم اختيار اللغة العربية", Toast.LENGTH_SHORT).show()
                 val refresh = Intent(this, MainActivity::class.java)
                 startActivity(refresh)
 
             } else if (which == 1) {
                 setLocate("zh")
                 recreate()
+                Toast.makeText(this, "Chinese selected.", Toast.LENGTH_SHORT).show()
+                val refresh = Intent(this, MainActivity::class.java)
+                startActivity(refresh)
 
             } else if (which == 2) {
                 setLocate("da")
                 recreate()
+                Toast.makeText(this, "Danish selected.", Toast.LENGTH_SHORT).show()
+                val refresh = Intent(this, MainActivity::class.java)
+                startActivity(refresh)
 
             } else if (which == 3) {
                 setLocate("en")
                 recreate()
+                Toast.makeText(this, "English selected.", Toast.LENGTH_SHORT).show()
+                val refresh = Intent(this, MainActivity::class.java)
+                startActivity(refresh)
 
             } else if (which == 4) {
                 setLocate("fr")
                 recreate()
+                Toast.makeText(this, "French selected.", Toast.LENGTH_SHORT).show()
+                val refresh = Intent(this, MainActivity::class.java)
+                startActivity(refresh)
 
             } else if (which == 5) {
                 setLocate("ge")
                 recreate()
+                Toast.makeText(this, "Deutsch selected.", Toast.LENGTH_SHORT).show()
+                val refresh = Intent(this, MainActivity::class.java)
+                startActivity(refresh)
 
             } else if (which == 6) {
                 setLocate("es")
                 recreate()
-                Toast.makeText(this, "Danish selected.", Toast.LENGTH_SHORT).show()
-
+                Toast.makeText(this, "Spanish selected.", Toast.LENGTH_SHORT).show()
                 val refresh = Intent(this, MainActivity::class.java)
                 startActivity(refresh)
 
