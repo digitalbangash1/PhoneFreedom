@@ -14,8 +14,10 @@ class NotificationIntentActivity : BaseActivity() {
             val extras = intent.extras
             if (extras != null && extras.getString("package") != null) {
                 val packageName = extras.getString("package")
-                NotificationHelper.getInstance(applicationContext)
-                    .markNotificationDismissed(packageName)
+                if (packageName != null) {
+                    NotificationHelper.getInstance(applicationContext)
+                        ?.markNotificationDismissed(packageName)
+                }
                 launchApp(packageName)
             } else {
                 //launchHomeScreen();
