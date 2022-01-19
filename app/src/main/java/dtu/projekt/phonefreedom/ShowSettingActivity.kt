@@ -12,6 +12,8 @@ import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.Toast
+import dtu.projekt.phonefreedom.notification_services.InstalledAppsActivity
+import dtu.projekt.phonefreedom.notification_services.PreferencesManager
 import java.util.*
 
 class ShowSettingActivity : AppCompatActivity() {
@@ -45,6 +47,10 @@ class ShowSettingActivity : AppCompatActivity() {
             val settingdnd = Intent()
             settingdnd.component = ComponentName("com.android.settings", "com.android.settings.Settings\$ZenModeSettingsActivity")
             startActivity(settingdnd)
+        }
+
+        val btn_SMS = findViewById<Button>(R.id.btn_msg_package)
+        btn_SMS.setOnClickListener {
         }
 
     }
