@@ -69,15 +69,12 @@ open class MainActivity : AppCompatActivity() {
 
     }
 
-
-
     private fun addClickListeners() {
         binding.buttonSelectPredefinedMessage.setOnClickListener {
             val myIntent = Intent(this, PredefinedMessagesActivity::class.java)
             this.startActivityForResult(myIntent, 1)
         }
     }
-
 
 
     private fun settingsScreen() {
@@ -296,7 +293,6 @@ open class MainActivity : AppCompatActivity() {
            NOTIFICATION_LISTENER_SETTINGS = ACTION_NOTIFICATION_LISTENER_SETTINGS
 
 
-
        } else {
            NOTIFICATION_LISTENER_SETTINGS =
                "android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS"
@@ -306,8 +302,6 @@ open class MainActivity : AppCompatActivity() {
        val i = Intent(NOTIFICATION_LISTENER_SETTINGS)
        startActivity(i)
    }*/
-
-
 
 
     private fun checkNotificationPolicyAccess(notificationManager: NotificationManager): Boolean {
