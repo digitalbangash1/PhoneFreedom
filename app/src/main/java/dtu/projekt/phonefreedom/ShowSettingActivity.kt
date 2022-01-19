@@ -126,20 +126,15 @@ class ShowSettingActivity : AppCompatActivity() {
         mBuilder.setSingleChoiceItems(listItems,-1) { dialog, tilstand ->
             when (tilstand) {
                 0 -> {
-
-
-
                         Toast.makeText(this, "Animation turned on.", Toast.LENGTH_SHORT).show()
                     val refresh = Intent(this, MainActivity::class.java)
                     startActivity(refresh)
-
                 }
                 1 -> {
                     Toast.makeText(this, "Animation turned off.", Toast.LENGTH_SHORT).show()
                     val refresh = Intent(this, MainActivity::class.java)
                     startActivity(refresh)
                 }
-
             }
             dialog.dismiss()
         }

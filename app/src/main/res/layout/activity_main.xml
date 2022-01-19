@@ -155,7 +155,7 @@
 
             <Button
                 android:id="@+id/textViewFreeAddTime"
-                android:layout_width="140dp"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
 
                 android:backgroundTint="#C9D4DF"
@@ -166,7 +166,7 @@
 
             <TextView
                 android:id="@+id/editTextFreeTo"
-                android:layout_width="140dp"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:background="#7476CD"

@@ -85,14 +85,20 @@ open class MainActivity : AppCompatActivity() {
         }
     }
 
+
+
+
     private fun settingsScreen() {
         binding.toSettings.setOnClickListener {
             val myIntent = Intent(this, ShowSettingActivity::class.java)
            startActivity(myIntent)
         }
     }
-    var SELECT_SMS_APP_RESULT = 5
 
+
+
+
+    var SELECT_SMS_APP_RESULT = 5
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
@@ -103,7 +109,6 @@ open class MainActivity : AppCompatActivity() {
                 var predefinedMessageEditText = findViewById<EditText>(R.id.editTextAutoText)
                 predefinedMessageEditText.setText(predefinedMessage)
             }
-
 
             if (resultCode === RESULT_CANCELED) {
 
@@ -157,6 +162,7 @@ open class MainActivity : AppCompatActivity() {
     }
 
 
+
     private fun appButton() {
 
         val prefs: PreferencesManager = PreferencesManager.getPreferencesInstance(this)
@@ -193,19 +199,12 @@ open class MainActivity : AppCompatActivity() {
                 } else {
 
                     prefs.setAutoReplyText(text)
-
-
-                    // Toast.makeText(this@MainActivity, showtime,Toast.LENGTH_SHORT).show()
+                // Toast.makeText(this@MainActivity, showtime,Toast.LENGTH_SHORT).show()
                 }
 
             }
-
             override fun afterTextChanged(s: Editable) {
-
-
             }
-
-
         })
 
         binding.whatsappButton.isSelected = prefs.isWhatsAppEnabled
@@ -223,10 +222,7 @@ open class MainActivity : AppCompatActivity() {
         binding.CallButton.setOnClickListener {
             binding.CallButton.isSelected = !binding.CallButton.isSelected
         }
-        /*  binding.SnapchatButton.setOnClickListener {
-              binding.SnapchatButton.isSelected = !binding.SnapchatButton.isSelected
-              prefs.setSignalEnabled(binding.SnapchatButton.isSelected)
-          }*/
+
         binding.EmailButton.setOnClickListener {
             binding.EmailButton.isSelected = !binding.EmailButton.isSelected
             prefs.setOutlookEnabled(binding.EmailButton.isSelected)
@@ -262,13 +258,7 @@ open class MainActivity : AppCompatActivity() {
         }
         binding.goandstopButton.setOnClickListener {
             binding.goandstopButton.isSelected = !binding.goandstopButton.isSelected
-
-            val showme = ShowSettingActivity()
-
-
-           // showVideo()
-
-
+            showVideo()
         }
 
 
@@ -294,8 +284,10 @@ open class MainActivity : AppCompatActivity() {
         if (binding.goandstopButton.isSelected) {
             val intent = Intent(this, VideoActivity2::class.java)
             this.startActivity(intent)
+
             binding.goandstopButton.isSelected
         }
+
     }
 
 
