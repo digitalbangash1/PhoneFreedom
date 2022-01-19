@@ -84,6 +84,30 @@
             />
     </LinearLayout>
 
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/borders"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+        <Button
+            android:id="@+id/btn_msg_package"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SMS package"
+            android:background="@drawable/borders"
+            android:textStyle="normal|bold"
+            android:textSize="15sp"
+            style="@style/Widget.MaterialComponents.Button.Icon"
+            android:textColor="#0E0E0E"
+            app:icon="@drawable/ic_baseline_message_24"
+            android:textAlignment="textStart"
+            />
+
+    </LinearLayout>
+
     </LinearLayout>
 
 
