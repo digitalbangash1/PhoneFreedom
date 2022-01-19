@@ -53,7 +53,6 @@ class ShowSettingActivity : AppCompatActivity() {
         val btn_SMS = findViewById<Button>(R.id.btn_msg_package)
         btn_SMS.setOnClickListener {
 
-
             var SMS_APP_PACKAGE_NAME_RESULT = 6
             val i = Intent(this, InstalledAppsActivity::class.java)
             startActivityForResult(i, SMS_APP_PACKAGE_NAME_RESULT)
