@@ -21,11 +21,6 @@
     <string name="pref_is_append_watomatic_attribution" translatable="false">pref_is_append_watomatic_attribution</string>
     <string name="pref_show_foreground_service_notification" translatable="false">pref_show_foreground_service_notification</string>
 
-    <!--Settings.Language selector-->
-    <string-array name="Animation_selector">
-        <item>ON</item>
-        <item>OFF</item>
-    </string-array>
 
     <!--Autostart Permission Dialog-->
     <string name="auto_start_permission_dialog_title" translatable="false">AutoStart Permission</string>
