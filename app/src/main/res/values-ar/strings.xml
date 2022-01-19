@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PhoneFreedom</string>
+    <string name="autosvar">نص الرد التلقائي</string>
+    <string name="write_msg">اكتب الرسالة هنا</string>
+    <string name="til">ل</string>
+    <string name="fra">من</string>
+    <string name="settings">إعدادات</string>
+    <string name="add_time">إضافة وقت</string>
+    <string name="holderfrifratlf">أتحقق من الهاتف مرة أخرى على:</string>
+    <string name="auto_reply">نص الرد التلقائي</string>
+    <string name="standart">أبقي الهاتف مجانيًا وأتحقق من هاتفي مرة أخرى على:</string>
+    <string name="family">"أحافظ على الهاتف المحمول مجانًا وأقضي وقتًا ممتعًا مع عائلتي. أتحقق من هاتفي مرة أخرى على: "</string>
+    <string name="friends">"أحافظ على الهاتف المحمول مجانًا وأقضي وقتًا ممتعًا مع أصدقائي. أتحقق من هاتفي مرة أخرى على: "</string>
+    <string name="work">"   أبقي الهاتف مجانيًا وأركز على عملي. أتحقق من هاتفي مرة أخرى على: "</string>
+    <string name="exam">"أحافظ على الهاتف المحمول مجانًا وأقرأ للامتحانات. أتحقق من هاتفي مرة أخرى على: "</string>
+    <string name="holiday">"أحافظ على الهاتف المحمول مجانًا وأعيد الشحن في إجازتي. أتحقق من هاتفي مرة أخرى على: "</string>
+    <string name="free_time">"أحافظ على حرية التنقل وأغمر نفسي في نشاطي الترفيهي. أتحقق من هاتفي مرة أخرى على: "</string>
+</resources>

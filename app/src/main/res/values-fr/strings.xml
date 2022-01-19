@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PhoneFreedom</string>
+    <string name="autosvar">Texte de réponse automatique</string>
+    <string name="write_msg">Écrit le message ici</string>
+    <string name="til">à</string>
+    <string name="fra">à partir de</string>
+    <string name="settings">Réglages</string>
+    <string name="add_time">Ajoutez le temps</string>
+    <string name="standart">J’ai pris congé du portable et vérifie le portable à nouveau à :</string>
+    <string name="children">" J’ai pris congé du portable et je passe du temps de qualité avec mes enfants. Je vérifie le portable à nouveau à :"</string>
+    <string name="family">J’ai pris congé du portable et je passe du temps de qualité avec mes enfants. Je vérifie le portable à nouveau à :</string>
+    <string name="friends">J’ai pris congé du portable et je passe du temps de qualité avec mes amis. Je vérifie le portable à nouveau à:</string>
+    <string name="work">J’ai pris congé du portable et je m\'immerge dans mon travail. Je vérifie le portable à nouveau à:</string>
+    <string name="exam">J’ai pris congé du portable pour étudier pour les examens. Je vérifie le portable à nouveau à :</string>
+    <string name="holiday">J’ai pris congé du portable pour me recharger pendant mes vacances. Je vérifie le portable à nouveau à:</string>
+    <string name="free_time">J’ai pris congé du portable et me plonge dans une activité de loisir. Je vérifie mon portable à nouveau à :</string>
+</resources>
