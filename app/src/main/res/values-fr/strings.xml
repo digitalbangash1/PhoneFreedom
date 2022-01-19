@@ -15,4 +15,6 @@
     <string name="exam">J’ai pris congé du portable pour étudier pour les examens. Je vérifie le portable à nouveau à :</string>
     <string name="holiday">J’ai pris congé du portable pour me recharger pendant mes vacances. Je vérifie le portable à nouveau à:</string>
     <string name="free_time">J’ai pris congé du portable et me plonge dans une activité de loisir. Je vérifie mon portable à nouveau à :</string>
+    <string name="auto_reply">Texte de réponse automatique</string>
+    <string name="holderfrifratlf">"Je vérifie le portable à nouveau à :  "</string>
 </resources>
