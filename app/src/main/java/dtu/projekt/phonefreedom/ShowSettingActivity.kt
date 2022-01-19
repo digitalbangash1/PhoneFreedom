@@ -36,28 +36,30 @@ class ShowSettingActivity : AppCompatActivity() {
         }
 
 
-        val btn_animation= findViewById<Button>(R.id.Animation1)
+        val btn_animation = findViewById<Button>(R.id.Animation1)
         btn_animation.setOnClickListener {
-                showAnimation()
+            showAnimation()
         }
 
 
         val btn_DoNot = findViewById<Button>(R.id.btn_DontDisturb)
         btn_DoNot.setOnClickListener {
             val settingdnd = Intent()
-            settingdnd.component = ComponentName("com.android.settings", "com.android.settings.Settings\$ZenModeSettingsActivity")
+            settingdnd.component = ComponentName("com.android.settings",
+                "com.android.settings.Settings\$ZenModeSettingsActivity")
             startActivity(settingdnd)
         }
 
         val btn_SMS = findViewById<Button>(R.id.btn_msg_package)
         btn_SMS.setOnClickListener {
-            var SELECT_SMS_APP_RESULT = 5
-//                val i = Intent(this, InstalledAppsActivity::class.java)
-//                startActivityForResult(i, SELECT_SMS_APP_RESULT)
-//            Toast.makeText(this,SELECT_SMS_APP_RESULT , Toast.LENGTH_SHORT).show()
+
+
+            var SMS_APP_PACKAGE_NAME_RESULT = 6
+            val i = Intent(this, InstalledAppsActivity::class.java)
+            startActivityForResult(i, SMS_APP_PACKAGE_NAME_RESULT)
+            Toast.makeText(this, SMS_APP_PACKAGE_NAME_RESULT, Toast.LENGTH_SHORT).show()
 
         }
-
     }
 
 
