@@ -54,6 +54,7 @@ class ShowSettingActivity : AppCompatActivity() {
             val prefs = PreferencesManager.getPreferencesInstance(this)
             prefs.setSmsEnabled(false)
             prefs.setSmsPackageName("")
+            Toast.makeText(this,"Default sms app is resetted ",Toast.LENGTH_SHORT).show()
 
             /*
             val i = Intent(this, InstalledAppsActivity::class.java)

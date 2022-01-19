@@ -50,7 +50,7 @@ public class PreferencesManager {
     private final Context context;
 
     public PreferencesManager(Context context) {
-        this.context = context;
+         this.context = context;
         sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
         supportedApps.add(new SupportedApp("WhatsApp", WHATSAPP_PACKAGE_NAME));
         supportedApps.add(new SupportedApp("Messenger", MESSENGER_PACKAGE_NAME));
@@ -130,7 +130,8 @@ public class PreferencesManager {
     }
 
     public void setSmsPackageName(String smsPackageName) {
-        updateSmsSuppertedAppPackageName(smsPackageName);
+        addSmsSuppertedApp(smsPackageName);
+        //updateSmsSuppertedAppPackageName(smsPackageName);
         SharedPreferences.Editor editor = sharedPrefs.edit();
         editor.putString(KEY_SMS_PACKAGE_NAME, smsPackageName);
         editor.commit();
@@ -149,7 +150,7 @@ public class PreferencesManager {
             }
         }
         if (smsApp == null) {
-            smsApp.setPackageName(packageName);
+           // smsApp.setPackageName(packageName);
             Toast.makeText(context, "null", Toast.LENGTH_SHORT).show();
         }
 
@@ -291,10 +292,12 @@ public class PreferencesManager {
          editor.commit();
      }
  */
+
+    // LOOK AT THIS METHOD
     public boolean isSupportedAppEnabled(String packageName) {
         SupportedApp[] enabledApps = getEnabledApps();
         for (SupportedApp enabledApp : enabledApps) {
-            //Toast.makeText(context,enabledApp.getPackageName(),Toast.LENGTH_SHORT).show();
+            Toast.makeText(context,enabledApp.getPackageName(),Toast.LENGTH_SHORT).show();
             if (enabledApp.getPackageName().equalsIgnoreCase(packageName)) {
                 return true;
             }
@@ -322,9 +325,9 @@ public class PreferencesManager {
         return isSupportedAppEnabled(INSTAGRAM_PACKAGE_NAME);
     }
 
-    /*public boolean isSMSEnabled() {
+    public boolean isSMSEnabled() {
         return isSupportedAppEnabled(KEY_SMS_PACKAGE_NAME);
-    }*/
+    }
 
     public boolean isSignalEnabled() {
         return isSupportedAppEnabled(SIGNAL_PACKAGE_NAME);
@@ -354,8 +357,8 @@ public class PreferencesManager {
     public void setInstagramEnabled(boolean enabled) {
         setAppEnabled(INSTAGRAM_PACKAGE_NAME, enabled);
     }
-
-   /* public void setSmsEnabled(boolean enabled) {
+/*
+    public void setSmsEnabled(boolean enabled) {
         setAppEnabled(KEY_SMS_PACKAGE_NAME, enabled);
     }*/
 
@@ -379,6 +382,7 @@ public class PreferencesManager {
     public SupportedApp getSupportedApp(String packageName) {
         for (SupportedApp app : supportedApps) {
             if (app.getPackageName().equalsIgnoreCase(packageName)) {
+                //Toast.makeText(context,getEnabledApps(app),Toast.LENGTH_SHORT).show();
                 return app;
             }
         }
