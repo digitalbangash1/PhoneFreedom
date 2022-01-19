@@ -25,6 +25,8 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat.startActivity
 import androidx.core.app.ActivityCompat.startActivityForResult
 import android.app.Activity
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.RequiresApi
 import dtu.projekt.phonefreedom.notification_services.InstalledAppsActivity
 
 
@@ -50,6 +52,7 @@ class MainActivity : AppCompatActivity() {
         //sendWhatsapp()
         //showVideo()
 
+        //checkIfPesmissionIsGranted()
         launchNotificationAccessSettings()
         settingsScreen()
         accessDndSetting()
@@ -65,9 +68,10 @@ class MainActivity : AppCompatActivity() {
     private fun settingsScreen() {
         binding.toSettings.setOnClickListener {
             val myIntent = Intent(this, ShowSettingActivity::class.java)
-           startActivity(myIntent)
+            startActivity(myIntent)
         }
     }
+
     var SELECT_SMS_APP_RESULT = 5
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -102,23 +106,22 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-
- /*   @JvmName("onActivityResult1")
-    protected fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == SELECT_SMS_APP_RESULT) {
-            if (resultCode == RESULT_OK) {
-                val smsPackageName =
-                    data.getStringExtra(InstalledAppsActivity.SMS_APP_PACKAGE_NAME_RESULT)
-                val prefs = PreferencesManager.getPreferencesInstance(this)
-                prefs.setSmsPackageName(smsPackageName)
-                Toast.makeText(this, smsPackageName, Toast.LENGTH_LONG).show()
-            }
-            if (resultCode == RESULT_CANCELED) {
-                // user cancelled
-            }
-        }
-    }*/
+    /*   @JvmName("onActivityResult1")
+       protected fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
+           super.onActivityResult(requestCode, resultCode, data)
+           if (requestCode == SELECT_SMS_APP_RESULT) {
+               if (resultCode == RESULT_OK) {
+                   val smsPackageName =
+                       data.getStringExtra(InstalledAppsActivity.SMS_APP_PACKAGE_NAME_RESULT)
+                   val prefs = PreferencesManager.getPreferencesInstance(this)
+                   prefs.setSmsPackageName(smsPackageName)
+                   Toast.makeText(this, smsPackageName, Toast.LENGTH_LONG).show()
+               }
+               if (resultCode == RESULT_CANCELED) {
+                   // user cancelled
+               }
+           }
+       }*/
 
 
     private fun addTime() {
@@ -128,7 +131,7 @@ class MainActivity : AppCompatActivity() {
                 cal.set(Calendar.HOUR_OF_DAY, hour)
                 cal.set(Calendar.MINUTE, minute)
                 showtime = SimpleDateFormat("HH:mm").format(cal.time)
-                binding.editTextFreeTo.setText(showtime )
+                binding.editTextFreeTo.setText(showtime)
 
                 Toast.makeText(this, "Time saved at $showtime", Toast.LENGTH_SHORT).show()
             }
@@ -162,7 +165,7 @@ class MainActivity : AppCompatActivity() {
                 showtime = s.toString()
                 var showMyTimeOnAutoText = findViewById<EditText>(R.id.editTextAutoText)
                 val msg = "Jeg tjekker min telefon igen kl : "
-                showMyTimeOnAutoText.setText(editText.text.toString() +msg +  showtime)
+                showMyTimeOnAutoText.setText(editText.text.toString() + msg + showtime)
             }
 
             override fun afterTextChanged(s: Editable) {
@@ -202,7 +205,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.whatsappButton.isSelected = prefs.isWhatsAppEnabled
         binding.MessageButton.isSelected = prefs.isSmsEnabled
-       // binding.whatsappButton.isSelected = prefs.isGroupReplyEnabled
+        // binding.whatsappButton.isSelected = prefs.isGroupReplyEnabled
 
 
         binding.whatsappButton.setOnClickListener {
@@ -227,7 +230,7 @@ class MainActivity : AppCompatActivity() {
         binding.messengerButton.setOnClickListener {
             binding.messengerButton.isSelected = !binding.messengerButton.isSelected
             prefs.setMessengerEnabled(binding.messengerButton.isSelected)
-            prefs.isGroupReplyEnabled= true
+            prefs.isGroupReplyEnabled = true
         }
         binding.TelegramButton.setOnClickListener {
             binding.TelegramButton.isSelected = !binding.TelegramButton.isSelected
@@ -278,7 +281,10 @@ class MainActivity : AppCompatActivity() {
 
 
     private fun showVideo() {
+        val prefs: PreferencesManager = PreferencesManager.getPreferencesInstance(this)
         if (binding.goandstopButton.isSelected) {
+
+            prefs.setShowAimation(false)
             val intent = Intent(this, VideoActivity2::class.java)
             this.startActivity(intent)
             binding.goandstopButton.isSelected
@@ -290,9 +296,9 @@ class MainActivity : AppCompatActivity() {
         val result: Int = ContextCompat.checkSelfPermission(
             this, ACTION_NOTIFICATION_LISTENER_SETTINGS
         )
-        if (result == PackageManager.PERMISSION_GRANTED) {
+        if (result == PackageManager.PERMISSION_GRANTED)
             return
-        }
+
         val NOTIFICATION_LISTENER_SETTINGS: String
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1) {
             NOTIFICATION_LISTENER_SETTINGS = ACTION_NOTIFICATION_LISTENER_SETTINGS
@@ -307,13 +313,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun accessDndSetting() {
-       /* binding.btnSettingDnd?.setOnClickListener {
-            val settingdnd = Intent()
-            settingdnd.component = ComponentName(
-                "com.android.settings",
-                "com.android.settings.Settings\$ZenModeSettingsActivity"
-            )
-            *//*settingdnd.putExtra("android.provider.extra.APP_PACKAGE", getPackageName())
+        /* binding.btnSettingDnd?.setOnClickListener {
+             val settingdnd = Intent()
+             settingdnd.component = ComponentName(
+                 "com.android.settings",
+                 "com.android.settings.Settings\$ZenModeSettingsActivity"
+             )
+             *//*settingdnd.putExtra("android.provider.extra.APP_PACKAGE", getPackageName())
             settingdnd.putExtra("app_uid", getApplicationInfo().uid);*//*
 
 
@@ -358,9 +364,6 @@ class MainActivity : AppCompatActivity() {
             this.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_ALL)
         }
     }
-
-
-
 
 
 }
