@@ -1,52 +1,43 @@
-package dtu.projekt.phonefreedom.notification_services;
+package dtu.projekt.phonefreedom.notification_services
 
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.TextView;
+import android.content.Context
 
-import java.util.ArrayList;
+import dtu.projekt.phonefreedom.notification_services.InstalledApp
+import android.widget.ArrayAdapter
+import dtu.projekt.phonefreedom.R
+import android.view.ViewGroup
+import android.view.LayoutInflater
+import android.view.View
+import android.widget.TextView
+import java.util.ArrayList
 
-import dtu.projekt.phonefreedom.R;
-
-public class InstalledAppsAdapter extends ArrayAdapter<InstalledApp> {
-
-    private ArrayList<InstalledApp> dataSet;
-    Context mContext;
-
-    public InstalledAppsAdapter(ArrayList<InstalledApp> data, Context context) {
-        super(context, R.layout.installed_apps_list_view_item, data);
-        this.dataSet = data;
-        this.mContext = context;
-    }
-
-    private int lastPosition = -1;
-
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        InstalledApp dataModel = getItem(position);
-        ViewHolder viewHolder;
+class InstalledAppsAdapter(private val dataSet: ArrayList<InstalledApp>, var mContext: Context) :
+    ArrayAdapter<InstalledApp?>(
+        mContext, R.layout.installed_apps_list_view_item, dataSet as List<InstalledApp?>
+    ) {
+    private val lastPosition = -1
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+        var convertView = convertView
+        val dataModel = getItem(position)
+        val viewHolder: ViewHolder
         if (convertView == null) {
-
-            viewHolder = new ViewHolder();
-            LayoutInflater inflater = LayoutInflater.from(getContext());
-            convertView = inflater.inflate(R.layout.installed_apps_list_view_item, parent, false);
-            viewHolder.appName = (TextView) convertView.findViewById(R.id.app_name);
-            viewHolder.appPackageName = (TextView) convertView.findViewById(R.id.app_package_name);
-            convertView.setTag(viewHolder);
+            viewHolder = ViewHolder()
+            val inflater = LayoutInflater.from(context)
+            convertView = inflater.inflate(R.layout.installed_apps_list_view_item, parent, false)
+            viewHolder.appName = convertView.findViewById<View>(R.id.app_name) as TextView
+            viewHolder.appPackageName =
+                convertView.findViewById<View>(R.id.app_package_name) as TextView
+            convertView.tag = viewHolder
         } else {
-            viewHolder = (ViewHolder) convertView.getTag();
+            viewHolder = convertView.tag as ViewHolder
         }
-
-        viewHolder.appName.setText(dataModel.getName());
-        viewHolder.appPackageName.setText(dataModel.getPackageName());
-        return convertView;
+        viewHolder.appName!!.text = dataModel!!.name
+        viewHolder.appPackageName!!.text = dataModel.packageName
+        return convertView!!
     }
 
-    private static class ViewHolder {
-        TextView appName;
-        TextView appPackageName;
+    private class ViewHolder {
+        var appName: TextView? = null
+        var appPackageName: TextView? = null
     }
 }

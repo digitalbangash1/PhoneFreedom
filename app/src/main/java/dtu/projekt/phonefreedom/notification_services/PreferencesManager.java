@@ -2,15 +2,12 @@ package dtu.projekt.phonefreedom.notification_services;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.provider.Telephony;
 
 import androidx.preference.PreferenceManager;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
-
-import dtu.projekt.phonefreedom.MainActivity;
 
 public class PreferencesManager {
 
@@ -24,6 +21,7 @@ public class PreferencesManager {
     private final String KEY_SMS_PACKAGE_NAME = "prefs_sms_package_name";
     private final String SIGNAL_PACKAGE_NAME = "org.thoughtcrime.securesms";
     private final String KEY_PREDEFINED_MESSAGE = "prefs_predefined_messages";
+    private final String KEY_SHOW_ANIMATION = "pref_show_animation";
 
     private ArrayList<SupportedApp> supportedApps = new ArrayList<>();
 
@@ -223,26 +221,37 @@ public class PreferencesManager {
         setAppEnabled(getSmsPackageName(), enabled);
     }
 
-
-
-   /* public void setEnabledApp(String packageName) {
-        Set<String> enabledAppsPackageNames =
-                sharedPrefs.getStringSet(KEY_ENABLED_APPS_PACKAGE_NAMES, new HashSet<>());
-        enabledAppsPackageNames.add(packageName);
+    public String getShowAnimation() {
+        return sharedPrefs.getString(KEY_SHOW_ANIMATION, "show");
+    }
+    public void setShowAimation(boolean enabled) {
         SharedPreferences.Editor editor = sharedPrefs.edit();
-        editor.putStringSet(KEY_ENABLED_APPS_PACKAGE_NAMES, enabledAppsPackageNames);
+        editor.putBoolean(KEY_SHOW_ANIMATION, enabled);
         editor.commit();
     }
 
-    public void setDisabledApp(String packageName) {
-        Set<String> enabledAppsPackageNames =
-                sharedPrefs.getStringSet(KEY_ENABLED_APPS_PACKAGE_NAMES, new HashSet<>());
-        enabledAppsPackageNames.remove(packageName);
-        SharedPreferences.Editor editor = sharedPrefs.edit();
-        editor.putStringSet(KEY_ENABLED_APPS_PACKAGE_NAMES, enabledAppsPackageNames);
-        editor.commit();
-    }
-*/
+    public boolean isAnimationEnabled(){return sharedPrefs.getBoolean(KEY_SHOW_ANIMATION,false);}
+    public  void setAnimationEnabled(boolean enabled){ }
+
+
+    /* public void setEnabledApp(String packageName) {
+         Set<String> enabledAppsPackageNames =
+                 sharedPrefs.getStringSet(KEY_ENABLED_APPS_PACKAGE_NAMES, new HashSet<>());
+         enabledAppsPackageNames.add(packageName);
+         SharedPreferences.Editor editor = sharedPrefs.edit();
+         editor.putStringSet(KEY_ENABLED_APPS_PACKAGE_NAMES, enabledAppsPackageNames);
+         editor.commit();
+     }
+
+     public void setDisabledApp(String packageName) {
+         Set<String> enabledAppsPackageNames =
+                 sharedPrefs.getStringSet(KEY_ENABLED_APPS_PACKAGE_NAMES, new HashSet<>());
+         enabledAppsPackageNames.remove(packageName);
+         SharedPreferences.Editor editor = sharedPrefs.edit();
+         editor.putStringSet(KEY_ENABLED_APPS_PACKAGE_NAMES, enabledAppsPackageNames);
+         editor.commit();
+     }
+ */
     public boolean isSupportedAppEnabled(String packageName) {
         SupportedApp[] enabledApps = getEnabledApps();
         for (SupportedApp enabledApp : enabledApps) {
