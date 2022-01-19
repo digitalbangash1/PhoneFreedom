@@ -96,7 +96,7 @@ class ShowSettingActivity : AppCompatActivity() {
                 startActivity(refresh)
 
             } else if (which == 5) {
-                setLocate("ge")
+                setLocate("de")
                 recreate()
                 Toast.makeText(this, "Deutsch selected.", Toast.LENGTH_SHORT).show()
                 val refresh = Intent(this, MainActivity::class.java)
