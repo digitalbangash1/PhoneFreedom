@@ -3,13 +3,21 @@ package dtu.projekt.phonefreedom
 import android.app.Activity
 import android.app.AlertDialog
 import android.content.Context
+import android.content.Intent
 import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
+import android.widget.ImageButton
+import android.widget.Toast
 import java.util.*
 
 class ShowSettingActivity : AppCompatActivity() {
+
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         loadLocate()
@@ -24,7 +32,24 @@ class ShowSettingActivity : AppCompatActivity() {
             showChangeLang()
         }
 
+
+        val btn_animation= findViewById<Button>(R.id.Animation1)
+        btn_animation.setOnClickListener {
+                showAnimation()
+        }
+
+
+        val btn_DoNot = findViewById<Button>(R.id.btn_DontDisturb)
+        btn_DoNot.setOnClickListener {
+            val settingdnd = Intent()
+            settingdnd.component = ComponentName("com.android.settings", "com.android.settings.Settings\$ZenModeSettingsActivity")
+            startActivity(settingdnd)
+        }
+
     }
+
+
+
 
     private fun showChangeLang(){
 
@@ -36,6 +61,10 @@ class ShowSettingActivity : AppCompatActivity() {
             if (which == 0) {
                 setLocate("ar")
                 recreate()
+                Toast.makeText(this, "English selected.", Toast.LENGTH_SHORT).show()
+
+                val refresh = Intent(this, MainActivity::class.java)
+                startActivity(refresh)
 
             } else if (which == 1) {
                 setLocate("zh")
@@ -60,9 +89,12 @@ class ShowSettingActivity : AppCompatActivity() {
             } else if (which == 6) {
                 setLocate("es")
                 recreate()
+                Toast.makeText(this, "Danish selected.", Toast.LENGTH_SHORT).show()
+
+                val refresh = Intent(this, MainActivity::class.java)
+                startActivity(refresh)
 
             }
-
             dialog.dismiss()
 
         }
@@ -95,6 +127,40 @@ class ShowSettingActivity : AppCompatActivity() {
             setLocate(language)
         }
     }
+
+
+
+
+
+
+
+    fun showAnimation(){
+
+        val listItems = arrayOf("ON","OFF")
+
+        val mBuilder = AlertDialog.Builder(this)
+        mBuilder.setTitle("Animation")
+        mBuilder.setSingleChoiceItems(listItems,-1) { dialog, tilstand ->
+            when (tilstand) {
+                0 -> {
+                        Toast.makeText(this, "Animation turned on.", Toast.LENGTH_SHORT).show()
+                    val refresh = Intent(this, MainActivity::class.java)
+                    startActivity(refresh)
+                }
+                1 -> {
+                    Toast.makeText(this, "Animation turned off.", Toast.LENGTH_SHORT).show()
+                    val refresh = Intent(this, MainActivity::class.java)
+                    startActivity(refresh)
+                }
+            }
+            dialog.dismiss()
+        }
+        val mDialog = mBuilder.create()
+
+        mDialog.show()
+    }
+
+
 
 
 

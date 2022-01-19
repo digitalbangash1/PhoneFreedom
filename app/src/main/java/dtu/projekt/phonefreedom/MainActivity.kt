@@ -1,7 +1,6 @@
 package dtu.projekt.phonefreedom
 
-import android.Manifest
-import android.annotation.SuppressLint
+
 import android.app.TimePickerDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -14,11 +13,8 @@ import android.provider.Settings
 import android.widget.EditText
 import dtu.projekt.phonefreedom.notification_services.PreferencesManager
 import android.app.NotificationManager
-import android.content.ComponentName
-import android.content.pm.PackageManager
 import android.provider.Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS
 import android.widget.Toast
-import androidx.core.content.ContextCompat
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.TextView
@@ -27,18 +23,25 @@ import androidx.core.app.ActivityCompat.startActivityForResult
 import android.app.Activity
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
+import androidx.annotation.RequiresApi
 import dtu.projekt.phonefreedom.notification_services.InstalledAppsActivity
 
 
-class MainActivity : AppCompatActivity() {
+
+
+
+open class MainActivity : AppCompatActivity() {
+
 
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var editText: EditText
     private lateinit var editTextFreeTo: TextView
     private var showtime: String = "no time"
+    val requestNr= 1
 
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -49,14 +52,36 @@ class MainActivity : AppCompatActivity() {
         addTime()
         addClickListeners()
         appButton()
-        //sendWhatsapp()
-        //showVideo()
-
-        //checkIfPesmissionIsGranted()
-        launchNotificationAccessSettings()
         settingsScreen()
-        accessDndSetting()
+
+
+        isNotificationServiceRunning()
+        requestPermission()
     }
+
+    private fun isNotificationServiceRunning(): Boolean {
+        val contentResolver = contentResolver
+        val enabledNotificationListeners =
+            Settings.Secure.getString(contentResolver, "enabled_notification_listeners")
+        val packageName = getPackageName()
+        return enabledNotificationListeners != null && enabledNotificationListeners.contains(
+            packageName)
+
+    }
+
+    private fun requestPermission(){
+
+        val isNotificationServiceRunning = isNotificationServiceRunning()
+        if (!isNotificationServiceRunning) {
+            startActivity(Intent(ACTION_NOTIFICATION_LISTENER_SETTINGS))
+        }
+
+    }
+
+
+
+
+
 
     private fun addClickListeners() {
         binding.buttonSelectPredefinedMessage.setOnClickListener {
@@ -65,12 +90,19 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
+
+
     private fun settingsScreen() {
         binding.toSettings.setOnClickListener {
             val myIntent = Intent(this, ShowSettingActivity::class.java)
             startActivity(myIntent)
         }
     }
+
+
+
+
 
     var SELECT_SMS_APP_RESULT = 5
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -83,7 +115,6 @@ class MainActivity : AppCompatActivity() {
                 var predefinedMessageEditText = findViewById<EditText>(R.id.editTextAutoText)
                 predefinedMessageEditText.setText(predefinedMessage)
             }
-
 
             if (resultCode === RESULT_CANCELED) {
 
@@ -106,22 +137,8 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    /*   @JvmName("onActivityResult1")
-       protected fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
-           super.onActivityResult(requestCode, resultCode, data)
-           if (requestCode == SELECT_SMS_APP_RESULT) {
-               if (resultCode == RESULT_OK) {
-                   val smsPackageName =
-                       data.getStringExtra(InstalledAppsActivity.SMS_APP_PACKAGE_NAME_RESULT)
-                   val prefs = PreferencesManager.getPreferencesInstance(this)
-                   prefs.setSmsPackageName(smsPackageName)
-                   Toast.makeText(this, smsPackageName, Toast.LENGTH_LONG).show()
-               }
-               if (resultCode == RESULT_CANCELED) {
-                   // user cancelled
-               }
-           }
-       }*/
+
+
 
 
     private fun addTime() {
@@ -149,6 +166,7 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
+
 
 
     private fun appButton() {
@@ -188,19 +206,12 @@ class MainActivity : AppCompatActivity() {
                 } else {
 
                     prefs.setAutoReplyText(text)
-
-
-                    // Toast.makeText(this@MainActivity, showtime,Toast.LENGTH_SHORT).show()
+                // Toast.makeText(this@MainActivity, showtime,Toast.LENGTH_SHORT).show()
                 }
 
             }
-
             override fun afterTextChanged(s: Editable) {
-
-
             }
-
-
         })
 
         binding.whatsappButton.isSelected = prefs.isWhatsAppEnabled
@@ -218,10 +229,7 @@ class MainActivity : AppCompatActivity() {
         binding.CallButton.setOnClickListener {
             binding.CallButton.isSelected = !binding.CallButton.isSelected
         }
-        /*  binding.SnapchatButton.setOnClickListener {
-              binding.SnapchatButton.isSelected = !binding.SnapchatButton.isSelected
-              prefs.setSignalEnabled(binding.SnapchatButton.isSelected)
-          }*/
+
         binding.EmailButton.setOnClickListener {
             binding.EmailButton.isSelected = !binding.EmailButton.isSelected
             prefs.setOutlookEnabled(binding.EmailButton.isSelected)
@@ -258,7 +266,6 @@ class MainActivity : AppCompatActivity() {
         binding.goandstopButton.setOnClickListener {
             binding.goandstopButton.isSelected = !binding.goandstopButton.isSelected
             showVideo()
-
         }
 
 
@@ -292,41 +299,31 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    private fun launchNotificationAccessSettings() {
-        val result: Int = ContextCompat.checkSelfPermission(
-            this, ACTION_NOTIFICATION_LISTENER_SETTINGS
-        )
-        if (result == PackageManager.PERMISSION_GRANTED)
-            return
-
-        val NOTIFICATION_LISTENER_SETTINGS: String
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1) {
-            NOTIFICATION_LISTENER_SETTINGS = ACTION_NOTIFICATION_LISTENER_SETTINGS
-        } else {
-            NOTIFICATION_LISTENER_SETTINGS =
-                "android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS"
-        }
-        val i = Intent(NOTIFICATION_LISTENER_SETTINGS)
-        startActivity(i)
 
 
-    }
+/*   private fun launchNotificationAccessSettings() {
 
-    private fun accessDndSetting() {
-        /* binding.btnSettingDnd?.setOnClickListener {
-             val settingdnd = Intent()
-             settingdnd.component = ComponentName(
-                 "com.android.settings",
-                 "com.android.settings.Settings\$ZenModeSettingsActivity"
-             )
-             *//*settingdnd.putExtra("android.provider.extra.APP_PACKAGE", getPackageName())
-            settingdnd.putExtra("app_uid", getApplicationInfo().uid);*//*
+
+       val result: Int =
+           ContextCompat.checkSelfPermission(this, ACTION_NOTIFICATION_LISTENER_SETTINGS)
+
+       val NOTIFICATION_LISTENER_SETTINGS: String
+       if (Build.VERSION.SDK_INT >= 23) {
+           NOTIFICATION_LISTENER_SETTINGS = ACTION_NOTIFICATION_LISTENER_SETTINGS
 
 
 
-            startActivity(settingdnd)
-        }*/
-    }
+       } else {
+           NOTIFICATION_LISTENER_SETTINGS =
+               "android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS"
+           Toast.makeText(this, "hello", Toast.LENGTH_SHORT).show()
+
+       }
+       val i = Intent(NOTIFICATION_LISTENER_SETTINGS)
+       startActivity(i)
+   }*/
+
+
 
 
     private fun checkNotificationPolicyAccess(notificationManager: NotificationManager): Boolean {
@@ -335,11 +332,7 @@ class MainActivity : AppCompatActivity() {
                 //toast("Notification policy access granted.")
                 return true
             } else {
-                Toast.makeText(
-                    this,
-                    "You need to grant notification policy access.",
-                    Toast.LENGTH_SHORT
-                ).show()
+                Toast.makeText(this, "You need to grant notification policy access.", Toast.LENGTH_SHORT).show()
                 // If notification policy access not granted for this package
                 val intent = Intent(Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS)
                 startActivity(intent)
@@ -366,22 +359,15 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+
+
+
 }
 
 
-/*  val sharedPreferences = getSharedPreferences("shared time", Context.MODE_PRIVATE)
-        showtime = sharedPreferences.getString("STRING_KEY",toString()).toString()
-        binding.editTextFreeTo.text = showtime
- */
 
 
-/* val sharedPreferences =
-                        getSharedPreferences("shared time", Context.MODE_PRIVATE)
-                    val edtior = sharedPreferences.edit()
-                    edtior.apply {
-                        putString("STRING_KEY", showtime)
-                    }.apply()
- */
+
 /*private fun sendWhatsapp(message: String) {
       val sendIntent = Intent()
       sendIntent.action = Intent.ACTION_SEND
@@ -460,4 +446,6 @@ class MainActivity : AppCompatActivity() {
          }
      val i = Intent(NOTIFICATION_LISTENER_SETTINGS)
      startActivity(i)*/
+
+
 
