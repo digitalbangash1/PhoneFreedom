@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PhoneFreedom</string>
+    <string name="autosvar">Auto-Antwort-Text</string>
+    <string name="standart">"Ich halte das Handy frei und checke mein Handy erneut unter: "</string>
+    <string name="children">"Ich halte mein Handy frei und habe Zeit mit meinen Kindern. Ich schaue nochmal auf mein Handy: "</string>
+    <string name="family">Ich halte mein Handy frei und habe viel Zeit mit meiner Familie. Ich schaue nochmal auf mein Handy:</string>
+    <string name="friends">Ich halte mein Handy frei und habe Zeit mit meinen Freunden. Ich schaue nochmal auf mein Handy:</string>
+    <string name="work">Ich bleibe mobil und konzentriere mich auf meine Arbeit. Ich schaue nochmal auf mein Handy:</string>
+    <string name="exam">Ich halte Handy frei und lese für Prüfungen. Ich schaue nochmal auf mein Handy:</string>
+    <string name="holiday">Ich halte mein Handy frei und lade es im Urlaub auf. Ich schaue nochmal auf mein Handy:</string>
+    <string name="free_time">Ich halte mobil frei und tauche in meine Freizeitbeschäftigung ein. Ich schaue nochmal auf mein Handy:</string>
+    <string name="til">zu</string>
+    <string name="fra">von</string>
+    <string name="write_msg">schreibe die Nachricht hier</string>
+    <string name="add_time">" Zeit hinzufügen "</string>
+    <string name="auto_reply">"Auto-Antwort-Text "</string>
+    <string name="settings">"die Einstellungen "</string>
+    <string name="holderfrifratlf">" Ich checke das Telefon noch einmal unter: "</string>
+</resources>

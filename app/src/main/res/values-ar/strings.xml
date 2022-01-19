@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PhoneFreedom</string>
+    <string name="autosvar">نص الرد التلقائي</string>
+    <string name="write_msg">اكتب الرسالة هنا</string>
+    <string name="til">ل</string>
+    <string name="fra">من</string>
+    <string name="settings">إعدادات</string>
+    <string name="add_time">إضافة وقت</string>
+    <string name="holderfrifratlf">سأتفقد الهاتف مرة أخرى في الساعة:</string>
+    <string name="auto_reply"> المجيب الآلي</string>
+    <string name="standart">سوف اتحقق من الهاتف مرة اخرى في الساعة:</string>
+    <string name="family">"هاتفي ليس معي لأنني أقضي وقتًا ممتعًا مع عائلتي. سأتفقد الهاتف مرة أخرى في الساعة: "</string>
+    <string name="friends">"هاتفي ليس معي لأنني أقضي وقتًا ممتعًا مع أصدقائي.سأتفقد الهاتف مرة أخرى في الساعة: "</string>
+    <string name="work">" هاتفي ليس معي لأنني أركز على عملي. سأتفقد الهاتف مرة أخرى في الساعة: "</string>
+    <string name="exam">"هاتفي ليس معي لأنني أقرأ للامتحانات. سأتفقد الهاتف مرة أخرى في الساعة: "</string>
+    <string name="holiday">"هاتفي ليس معي لأنني  في الإجازة. سأتفقد الهاتف مرة أخرى في الساعة: "</string>
+    <string name="free_time">"هاتفي ليس معي لأنني في نشاطي الترفيهي. سأتفقد الهاتف مرة أخرى في الساعة: "</string>
+</resources>

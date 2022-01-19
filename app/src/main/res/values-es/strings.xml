@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PhoneFreedom</string>
+    <string name="autosvar">exto de respuesta automática</string>
+    <string name="standart">Mantengo el móvil libre y reviso mi teléfono de nuevo en:</string>
+    <string name="children">"Mantengo el móvil libre y tengo tiempo de calidad con mis hijos. Vuelvo a revisar mi teléfono en: "</string>
+    <string name="family">Mantengo el móvil libre y tengo tiempo de calidad con mi familia. Vuelvo a revisar mi teléfono en:</string>
+    <string name="friends">Mantengo el móvil libre y tengo tiempo de calidad con mis amigos. Vuelvo a revisar mi teléfono en:</string>
+    <string name="work">Mantengo el móvil libre y me concentro en mi trabajo. Vuelvo a revisar mi teléfono en:</string>
+    <string name="exam">Mantengo el móvil libre y leo para los exámenes. Vuelvo a revisar mi teléfono en:</string>
+    <string name="holiday">Mantengo el móvil libre y lo recargo en mis vacaciones. Vuelvo a revisar mi teléfono en:</string>
+    <string name="free_time">Mantengo el móvil libre y me sumerjo en mi actividad de ocio. Vuelvo a revisar mi teléfono en:</string>
+    <string name="auto_reply">Texto de respuesta automática</string>
+    <string name="til">a</string>
+    <string name="fra">desde</string>
+    <string name="write_msg">escribe el mensaje aquí</string>
+    <string name="add_time">agregar tiempo</string>
+    <string name="settings">"ajustes "</string>
+    <string name="holderfrifratlf">"Compruebo el teléfono de nuevo en: "</string>
+</resources>

@@ -28,18 +28,37 @@ class ShowSettingActivity : AppCompatActivity() {
 
     private fun showChangeLang(){
 
-        val listItems = arrayOf("English","Danish")
+        val listItems = arrayOf("العربية", "中國人","Dansk","English","Français","Deutsch","Español")
 
         val mBuilder = AlertDialog.Builder(this)
         mBuilder.setTitle("Choose Language")
         mBuilder.setSingleChoiceItems(listItems,-1) { dialog, which ->
             if (which == 0) {
+                setLocate("ar")
+                recreate()
+
+            } else if (which == 1) {
+                setLocate("zh")
+                recreate()
+
+            } else if (which == 2) {
+                setLocate("da")
+                recreate()
+
+            } else if (which == 3) {
                 setLocate("en")
                 recreate()
 
+            } else if (which == 4) {
+                setLocate("fr")
+                recreate()
 
-            } else if (which == 1) {
-                setLocate("da")
+            } else if (which == 5) {
+                setLocate("ge")
+                recreate()
+
+            } else if (which == 6) {
+                setLocate("es")
                 recreate()
 
             }

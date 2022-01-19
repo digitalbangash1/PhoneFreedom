@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PhoneFreedom</string>
+    <string name="autosvar">自动应答文本</string>
+    <string name="auto_reply">"自动应答文本 "</string>
+    <string name="write_msg">在这里写信息</string>
+    <string name="til">到</string>
+    <string name="fra">从</string>
+    <string name="settings">设置</string>
+    <string name="add_time">添加时间</string>
+    <string name="standart">"我保持手机免费，并再次检查我的手机： "</string>
+    <string name="children">" 我保持手机免费，并与我的孩子共度美好时光。我再次查看我的手机： "</string>
+    <string name="family">我保持手机免费，并与家人共度美好时光。我再次查看我的手机：</string>
+    <string name="friends">我保持手机免费，并与朋友共度美好时光。我再次查看我的手机：</string>
+    <string name="work">我保持移动自由并专注于我的工作。我再次查看我的手机：</string>
+    <string name="exam">我保持手机免费并阅读考试。我再次查看我的手机：</string>
+    <string name="holiday">我保持手机免费并在假期充电。我再次查看我的手机：</string>
+    <string name="free_time">我保持手机自由，沉浸在我的休闲活动中。我再次查看我的手机：</string>
+    <string name="holderfrifratlf">"   我再次查看电话 "</string>
+</resources>
