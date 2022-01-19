@@ -26,17 +26,7 @@ public class PreferencesManager {
     private ArrayList<SupportedApp> supportedApps = new ArrayList<>();
 
 
-    /*   *//*public final SupportedApp[] supportedApps = new SupportedApp[]{
-     *//**//*new SupportedApp("WhatsApp", WHATSAPP_PACKAGE_NAME),
-            new SupportedApp("Messenger", MESSENGER_PACKAGE_NAME),
-            new SupportedApp("Snapchat", SNAPCHAT_PACKAGE_NAME),
-            new SupportedApp("Telegram", TELEGRAM_PACKAGE_NAME),
-            new SupportedApp("Instagram", INSTAGRAM_PACKAGE_NAME),
-            new SupportedApp("Outlook", OUTLOOK_PACKAGE_NAME),
-            new SupportedApp("Sms", SMS_Package_Name),
-            new SupportedApp("Signal",SIGNAL_PACKAGE_NAME)
-    };
-*/
+
     private final String KEY_SERVICE_ENABLED = "pref_service_enabled";
     private final String KEY_GROUP_REPLY_ENABLED = "pref_group_reply_enabled";
     private final String KEY_AUTO_REPLY_TEXT = "pref_auto_reply_text";
@@ -57,7 +47,7 @@ public class PreferencesManager {
         supportedApps.add(new SupportedApp("Signal", SIGNAL_PACKAGE_NAME));
         addSmsSuppertedApp(getSmsPackageName())
         ;
-        //SMS_Package_Name = Telephony.Sms.getDefaultSmsPackage(context);
+
         initializePredefinedMessages();
     }
 
@@ -130,12 +120,6 @@ public class PreferencesManager {
         editor.commit();
     }
 
-    /*public void setSmsPackageName(String smsPackageName) {
-        SharedPreferences.Editor editor = sharedPrefs.edit();
-        editor.putString(KEY_SMS_PACKAGE_NAME, smsPackageName);
-        editor.commit();
-    }
-*/
 
 
     public boolean isServiceEnabled() {
@@ -234,24 +218,7 @@ public class PreferencesManager {
     public  void setAnimationEnabled(boolean enabled){ }
 
 
-    /* public void setEnabledApp(String packageName) {
-         Set<String> enabledAppsPackageNames =
-                 sharedPrefs.getStringSet(KEY_ENABLED_APPS_PACKAGE_NAMES, new HashSet<>());
-         enabledAppsPackageNames.add(packageName);
-         SharedPreferences.Editor editor = sharedPrefs.edit();
-         editor.putStringSet(KEY_ENABLED_APPS_PACKAGE_NAMES, enabledAppsPackageNames);
-         editor.commit();
-     }
 
-     public void setDisabledApp(String packageName) {
-         Set<String> enabledAppsPackageNames =
-                 sharedPrefs.getStringSet(KEY_ENABLED_APPS_PACKAGE_NAMES, new HashSet<>());
-         enabledAppsPackageNames.remove(packageName);
-         SharedPreferences.Editor editor = sharedPrefs.edit();
-         editor.putStringSet(KEY_ENABLED_APPS_PACKAGE_NAMES, enabledAppsPackageNames);
-         editor.commit();
-     }
- */
     public boolean isSupportedAppEnabled(String packageName) {
         SupportedApp[] enabledApps = getEnabledApps();
         for (SupportedApp enabledApp : enabledApps) {
@@ -282,9 +249,7 @@ public class PreferencesManager {
         return isSupportedAppEnabled(INSTAGRAM_PACKAGE_NAME);
     }
 
-    /*public boolean isSMSEnabled() {
-        return isSupportedAppEnabled(KEY_SMS_PACKAGE_NAME);
-    }*/
+
 
     public boolean isSignalEnabled() {
         return isSupportedAppEnabled(SIGNAL_PACKAGE_NAME);
@@ -315,9 +280,6 @@ public class PreferencesManager {
         setAppEnabled(INSTAGRAM_PACKAGE_NAME, enabled);
     }
 
-   /* public void setSmsEnabled(boolean enabled) {
-        setAppEnabled(KEY_SMS_PACKAGE_NAME, enabled);
-    }*/
 
     public void setSignalEnabled(boolean enabled) {
         setAppEnabled(SIGNAL_PACKAGE_NAME, enabled);
@@ -325,7 +287,7 @@ public class PreferencesManager {
 
 
     public void setOutlookEnabled(boolean enabled) {
-        setAppEnabled(OUTLOOK_PACKAGE_NAME, enabled);
+        setAppEnabled(SIGNAL_PACKAGE_NAME, enabled);
     }
 
     public void setAppEnabled(String packageName, boolean enabled) {

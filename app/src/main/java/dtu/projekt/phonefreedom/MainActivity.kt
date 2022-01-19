@@ -27,8 +27,6 @@ import dtu.projekt.phonefreedom.notification_services.InstalledAppsActivity
 
 open class MainActivity : AppCompatActivity() {
 
-
-
     private lateinit var binding: ActivityMainBinding
     private lateinit var editText: EditText
     private lateinit var editTextFreeTo: TextView
@@ -70,14 +68,12 @@ open class MainActivity : AppCompatActivity() {
     }
 
 
-
     private fun addClickListeners() {
         binding.buttonSelectPredefinedMessage.setOnClickListener {
             val myIntent = Intent(this, PredefinedMessagesActivity::class.java)
             this.startActivityForResult(myIntent, 1)
         }
     }
-
 
 
     private fun settingsScreen() {
@@ -119,8 +115,6 @@ open class MainActivity : AppCompatActivity() {
         }
 
     }
-
-
 
 
 
@@ -242,11 +236,8 @@ open class MainActivity : AppCompatActivity() {
             } else {
                 prefs.setSmsEnabled(binding.MessageButton.isSelected)
             }
-            /*val i = Intent(this, InstalledAppsActivity::class.java)
-            startActivityForResult(i, SELECT_SMS_APP_RESULT)
-            prefs.setSmsEnabled(binding.MessageButton.isSelected)
-*/
         }
+
         binding.goandstopButton.setOnClickListener {
             binding.goandstopButton.isSelected = !binding.goandstopButton.isSelected
             showVideo()
@@ -284,32 +275,6 @@ open class MainActivity : AppCompatActivity() {
 
 
 
-
-/*   private fun launchNotificationAccessSettings() {
-
-
-       val result: Int =
-           ContextCompat.checkSelfPermission(this, ACTION_NOTIFICATION_LISTENER_SETTINGS)
-
-       val NOTIFICATION_LISTENER_SETTINGS: String
-       if (Build.VERSION.SDK_INT >= 23) {
-           NOTIFICATION_LISTENER_SETTINGS = ACTION_NOTIFICATION_LISTENER_SETTINGS
-
-
-
-       } else {
-           NOTIFICATION_LISTENER_SETTINGS =
-               "android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS"
-           Toast.makeText(this, "hello", Toast.LENGTH_SHORT).show()
-
-       }
-       val i = Intent(NOTIFICATION_LISTENER_SETTINGS)
-       startActivity(i)
-   }*/
-
-
-
-
     private fun checkNotificationPolicyAccess(notificationManager: NotificationManager): Boolean {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (notificationManager.isNotificationPolicyAccessGranted) {
@@ -344,89 +309,3 @@ open class MainActivity : AppCompatActivity() {
 
 
 }
-
-
-
-
-
-/*private fun sendWhatsapp(message: String) {
-      val sendIntent = Intent()
-      sendIntent.action = Intent.ACTION_SEND
-      sendIntent.putExtra(Intent.EXTRA_TEXT, "this is ")
-      sendIntent.type = "text/plain"
-      sendIntent.setPackage("com.whatsapp")
-      if (sendIntent.resolveActivity(packageManager) != null) {
-          startActivity(sendIntent)
-      }
-  }
-
-  private fun sendWhatsapp() {
-      binding.whatsappSend.setOnClickListener {
-
-          val sendIntent = Intent() // this works
-          sendIntent.action = Intent.ACTION_SEND
-          sendIntent.putExtra(Intent.EXTRA_TEXT, "This is my text to send.")
-          sendIntent.type = "text/plain"
-          sendIntent.setPackage("com.whatsapp")
-          startActivity(sendIntent)
-
-          *//* val sendIntent = Intent()
-             sendIntent.action = Intent.ACTION_SEND
-             sendIntent.putExtra(Intent.EXTRA_TEXT, "this is a test")
-             sendIntent.type = "text/plain"
-             sendIntent.setPackage("com.whatsapp")
-             if (sendIntent.resolveActivity(packageManager) != null) {
-                 startActivity(sendIntent)
-             }*//*
-        }
-
-
-//Here we tell android to only send it to whatsapp by setting the package to whatsapp's package.
-//This will not open the app selection dialog as we specifically send to whatsapp
-
-
-//Here we tell android to only send it to whatsapp by setting the package to whatsapp's package.
-//This will not open the app selection dialog as we specifically send to whatsapp
-
-            //sendIntent.setPackage("com.whatsapp") // whatsapp
-            // sendIntent.setPackage("com.facebook.orca") // facebook messeger
-            //sendIntent.setPackage("org.telegram.messenger") // telegram
-            // sendIntent.setPackage("com.snapchat.android") //snapchat
-            //sendIntent.setPackage("com.instagram.android") //instagram
-            //  sendIntent.setPackage("com.samsung.android.messaging") // messages
-            //sendIntent.setPackage("com.android.server.telecom") Phone call not working // telefon
-            //
-
-
-            //startActivity(sendIntent)
-        }*/
-
-
-/* val result: Int
-     result = ContextCompat.checkSelfPermission(this, ACTION_NOTIFICATION_LISTENER_SETTINGS)
-     if (result == PERMISSION_GRANTED) {
-         return
-     }
-
-     val NOTIFICATION_LISTENER_SETTINGS: String
-     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1) {
-         NOTIFICATION_LISTENER_SETTINGS = ACTION_NOTIFICATION_LISTENER_SETTINGS
-
-     } else {
-         NOTIFICATION_LISTENER_SETTINGS = "android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS"
-
-     }
-     val i = Intent(NOTIFICATION_LISTENER_SETTINGS)
-     startActivity(i)
-
-     NOTIFICATION_LISTENER_SETTINGS =
-         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1) {
-             Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS
-         } else {
-             "android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS"
-         }
-     val i = Intent(NOTIFICATION_LISTENER_SETTINGS)
-     startActivity(i)*/
-
-
-
