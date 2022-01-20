@@ -23,6 +23,6 @@
     <string name="reset_sms_package">Nulstil SMS Pakke</string>
     <string name="edit">Rediger</string>
     <string name="edit_message">Rediger Besked</string>
-    <string name="cancel">Cancel</string>
+    <string name="cancel">Anuller</string>
     <string name="ok">OK</string>
 </resources>

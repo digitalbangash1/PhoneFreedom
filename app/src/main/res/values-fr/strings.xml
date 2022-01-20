@@ -17,12 +17,12 @@
     <string name="free_time">J’ai pris congé du portable et me plonge dans une activité de loisir. Je vérifie mon portable à nouveau à :</string>
     <string name="auto_reply">Texte de réponse automatique</string>
     <string name="holderfrifratlf">"Je vérifie le portable à nouveau à :  "</string>
-    <string name="change_language">Change Language</string>
-    <string name="don_t_disturb_setting">Don\'t disturb Setting</string>
-    <string name="screen_animation">Screen animation</string>
-    <string name="reset_sms_package">Reset SMS Package</string>
-    <string name="edit">Edit</string>
-    <string name="edit_message">Edit message</string>
-    <string name="cancel">Cancel</string>
+    <string name="change_language">Changer de langue</string>
+    <string name="don_t_disturb_setting">Ne pas déranger le réglage</string>
+    <string name="screen_animation">Animation d'écran</string>
+    <string name="reset_sms_package">Réinitialiser le paquet de messages texte</string>
+    <string name="edit">Éditer</string>
+    <string name="edit_message">Modifier le message</string>
+    <string name="cancel">Annuler</string>
     <string name="ok">OK</string>
 </resources>
