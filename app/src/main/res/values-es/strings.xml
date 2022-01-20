@@ -17,4 +17,9 @@
     <string name="add_time">agregar tiempo</string>
     <string name="settings">"ajustes "</string>
     <string name="holderfrifratlf">"Compruebo el teléfono de nuevo en: "</string>
+    <string name="change_language">Change Language</string>
+    <string name="don_t_disturb_setting">Don\'t disturb Setting</string>
+    <string name="screen_animation">Screen animation</string>
+    <string name="reset_sms_package">Reset SMS Package</string>
+
 </resources>

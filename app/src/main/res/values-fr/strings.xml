@@ -17,4 +17,8 @@
     <string name="free_time">J’ai pris congé du portable et me plonge dans une activité de loisir. Je vérifie mon portable à nouveau à :</string>
     <string name="auto_reply">Texte de réponse automatique</string>
     <string name="holderfrifratlf">"Je vérifie le portable à nouveau à :  "</string>
+    <string name="change_language">Change Language</string>
+    <string name="don_t_disturb_setting">Don\'t disturb Setting</string>
+    <string name="screen_animation">Screen animation</string>
+    <string name="reset_sms_package">Reset SMS Package</string>
 </resources>

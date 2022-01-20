@@ -16,4 +16,8 @@
     <string name="exam">"هاتفي ليس معي لأنني أقرأ للامتحانات. سأتفقد الهاتف مرة أخرى في الساعة: "</string>
     <string name="holiday">"هاتفي ليس معي لأنني  في الإجازة. سأتفقد الهاتف مرة أخرى في الساعة: "</string>
     <string name="free_time">"هاتفي ليس معي لأنني في نشاطي الترفيهي. سأتفقد الهاتف مرة أخرى في الساعة: "</string>
+    <string name="change_language">تغيير اللغة </string>
+    <string name="don_t_disturb_setting">اعدادات عدم الإزعاج</string>
+    <string name="screen_animation">فيديو زر التشغيل</string>
+    <string name="reset_sms_package">إعادة ضبط حزمة الرسائل النصية</string>
 </resources>
