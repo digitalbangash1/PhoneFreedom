@@ -3,15 +3,15 @@ package dtu.projekt.phonefreedom.notification_services
 import dtu.projekt.phonefreedom.notification_services.NotificationHelper.Companion.getInstance
 import android.content.Intent
 import android.os.IBinder
-import dtu.projekt.phonefreedom.notification_services.PreferencesManager
-import dtu.projekt.phonefreedom.notification_services.NotificationServiceRestartReceiver
-import dtu.projekt.phonefreedom.notification_services.NotificationService
 import android.app.ActivityManager
 import android.app.Service
 import android.util.Log
-import dtu.projekt.phonefreedom.notification_services.NotificationHelper
-import dtu.projekt.phonefreedom.notification_services.KeepAliveService
 
+/**
+ * Keep alive service. This piece of code is taken from opensource project on github(watomatic) and modified
+ *
+ * @constructor Create empty Keep alive service
+ */
 class KeepAliveService : Service() {
     override fun onCreate() {
         Log.d("DEBUG", "KeepAliveService onCreate")

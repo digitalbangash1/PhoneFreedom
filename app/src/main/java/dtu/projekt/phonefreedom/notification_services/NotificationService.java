@@ -12,10 +12,17 @@ import androidx.core.app.RemoteInput;
 
 import static java.lang.Math.max;
 
+/**
+ * This class is taken from opensource free project on github(watomatic) and modified to our use.
+ */
 public class NotificationService extends NotificationListenerService {
     private final String TAG = NotificationService.class.getSimpleName();
     //private DbUtils dbUtils;
 
+    /**
+     * Method that triggers when notification is recived
+     * @param sbn
+     */
     @Override
     public void onNotificationPosted(StatusBarNotification sbn) {
         super.onNotificationPosted(sbn);
@@ -77,6 +84,10 @@ public class NotificationService extends NotificationListenerService {
         return START_STICKY;
     }
 
+    /**
+     * Method that sends the reply
+     * @param sbn
+     */
     private void sendReply(StatusBarNotification sbn) {
         PreferencesManager prefs = PreferencesManager.getPreferencesInstance(this);
         NotificationWear notificationWear = NotificationUtils.extractWearNotification(sbn);

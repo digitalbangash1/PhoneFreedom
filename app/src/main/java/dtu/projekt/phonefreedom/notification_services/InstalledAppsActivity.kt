@@ -4,20 +4,18 @@ package dtu.projekt.phonefreedom.notification_services
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import dtu.projekt.phonefreedom.R
-import dtu.projekt.phonefreedom.notification_services.InstalledApp
 import android.content.pm.PackageManager
-import android.content.pm.ApplicationInfo
-import dtu.projekt.phonefreedom.notification_services.InstalledAppsActivity.InstalledAppComparator
-import dtu.projekt.phonefreedom.notification_services.InstalledAppsAdapter
 import android.widget.AdapterView.OnItemClickListener
-import android.widget.AdapterView
 import android.content.Intent
-import dtu.projekt.phonefreedom.notification_services.InstalledAppsActivity
-import android.app.Activity
 import android.view.View
 import android.widget.ListView
 import java.util.*
 
+/**
+ * Installed apps activity
+ *This class is responsible for opening the activty that contains all the applications on user device
+ * @constructor Create empty Installed apps activity
+ */
 class InstalledAppsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
