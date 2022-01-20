@@ -66,6 +66,10 @@
     <string name="screen_animation">Screen animation</string>
     <string name="nulstil_sms_package">Nulstil SMS package</string>
     <string name="reset_sms_package">Reset SMS Package</string>
+    <string name="edit">Edit</string>
+    <string name="edit_message">Edit message</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">OK</string>
 
 
 </resources>

@@ -20,4 +20,8 @@
     <string name="don_t_disturb_setting">اعدادات عدم الإزعاج</string>
     <string name="screen_animation">فيديو زر التشغيل</string>
     <string name="reset_sms_package">إعادة ضبط حزمة الرسائل النصية</string>
+    <string name="edit">تعديل</string>
+    <string name="edit_message">تعديل الرسالة </string>
+    <string name="cancel">إلغاء</string>
+    <string name="ok">تم</string>
 </resources>
