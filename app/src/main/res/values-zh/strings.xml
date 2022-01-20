@@ -26,4 +26,5 @@
     <string name="cancel">取消</string>
     <string name="ok">行</string>
     <string name="nulstil_sms_package">重置短信包</string>
+    <string name="don_t_disturb">请勿打扰</string>
 </resources>
