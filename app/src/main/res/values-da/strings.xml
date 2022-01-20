@@ -26,4 +26,5 @@
     <string name="cancel">Anuller</string>
     <string name="ok">OK</string>
     <string name="nulstil_sms_package">Nulstil SMS Pakke</string>
+    <string name="don_t_disturb">Don\'t-Disturb:</string>
 </resources>

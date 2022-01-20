@@ -26,5 +26,6 @@
     <string name="cancel">Cancelar</string>
     <string name="ok">OK</string>
     <string name="nulstil_sms_package">Restablecer paquete de sms</string>
+    <string name="don_t_disturb">Don\'t-Disturb:</string>
 
 </resources>

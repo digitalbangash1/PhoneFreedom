@@ -70,6 +70,7 @@
     <string name="edit_message">Edit message</string>
     <string name="cancel">Cancel</string>
     <string name="ok">OK</string>
+    <string name="don_t_disturb">Don\'t-Disturb:</string>
 
 
 </resources>
