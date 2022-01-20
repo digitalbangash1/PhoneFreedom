@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">PhoneFreedom</string>
-    <string name="standart">Jeg holder mobilfri og tjekker min tlf igen kl:</string>
-    <string name="children">Jeg holder mobilfri og har kvalitetstid med mine børn. Jeg tjekker min tlf igen kl:</string>
-    <string name="family">Jeg holder mobilfri og har kvalitetstid med min familie. Jeg tjekker min tlf igen kl:</string>
-    <string name="friends">Jeg holder mobilfri og har kvalitetstid med mine venner. Jeg tjekker min tlf igen kl:</string>
-    <string name="work">Jeg holder mobilfri og koncentrerer mig om mit arbejde. Jeg tjekker min tlf igen kl:</string>
-    <string name="exam">Jeg holder mobilfri og læser til eksamen. Jeg tjekker min tlf igen kl:</string>
-    <string name="holiday">Jeg holder mobilfri og lader op på min ferie. Jeg tjekker min tlf igen kl:</string>
-    <string name="free_time">Jeg holder mobilfri og fordyber mig i min fritidsaktivitet. Jeg tjekker min tlf igen kl:</string>
+    <string name="standart">Jeg holder mobilfri fordi</string>
+    <string name="children">Jeg holder mobilfri og har kvalitetstid med mine børn.</string>
+    <string name="family">Jeg holder mobilfri og har kvalitetstid med min familie.</string>
+    <string name="friends">Jeg holder mobilfri og har kvalitetstid med mine venner.</string>
+    <string name="work">Jeg holder mobilfri og koncentrerer mig om mit arbejde.</string>
+    <string name="exam">Jeg holder mobilfri og læser til eksamen. </string>
+    <string name="holiday">Jeg holder mobilfri og lader op på min ferie.</string>
+    <string name="free_time">Jeg holder mobilfri og fordyber mig i min fritidsaktivitet.</string>
     <string name="autosvar">Auto-svar tekst</string>
     <string name="holderfrifratlf">Jeg tjekker min telefon igen Kl:</string>
     <string name="write_msg">Skriv beskeden her</string>

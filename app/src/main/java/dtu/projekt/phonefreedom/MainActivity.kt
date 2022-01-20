@@ -153,7 +153,8 @@ open class MainActivity : AppCompatActivity() {
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                 showtime = s.toString()
                 var showMyTimeOnAutoText = findViewById<EditText>(R.id.editTextAutoText)
-                val msg = "Jeg tjekker min telefon igen kl : "
+               // val msg = "Jeg tjekker min telefon igen kl : "
+                val msg = resources.getString(R.string.holderfrifratlf)
                 showMyTimeOnAutoText.setText(editText.text.toString() + msg + showtime)
             }
 
@@ -198,9 +199,9 @@ open class MainActivity : AppCompatActivity() {
             prefs.setWhatsAppEnabled(binding.whatsappButton.isSelected)
             prefs.isGroupReplyEnabled = true
         }
-        binding.CallButton.setOnClickListener {
-            binding.CallButton.isSelected = !binding.CallButton.isSelected
-        }
+//        binding.CallButton.setOnClickListener {
+//            binding.CallButton.isSelected = !binding.CallButton.isSelected
+//        }
 
         binding.EmailButton.setOnClickListener {
             binding.EmailButton.isSelected = !binding.EmailButton.isSelected

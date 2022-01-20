@@ -29,11 +29,11 @@
                 android:layout_marginHorizontal="3dp"
                 android:background="@drawable/messenger" />
 
-            <ImageButton
-                android:id="@+id/CallButton"
-                style="@style/availableAppsItem"
-                android:layout_marginHorizontal="3dp"
-                android:background="@drawable/call" />
+<!--            <ImageButton-->
+<!--                android:id="@+id/CallButton"-->
+<!--                style="@style/availableAppsItem"-->
+<!--                android:layout_marginHorizontal="3dp"-->
+<!--                android:background="@drawable/call" />-->
 
             <ImageButton
                 android:id="@+id/TelegramButton"
@@ -53,17 +53,17 @@
                 android:layout_marginHorizontal="3dp"
                 android:background="@drawable/signal" />
 
-            <ImageButton
-                android:id="@+id/InstagramButton"
-                style="@style/availableAppsItem"
-                android:layout_marginHorizontal="3dp"
-                android:background="@drawable/instagram" />
 
             <ImageButton
                 android:id="@+id/MessageButton"
                 style="@style/availableAppsItem"
                 android:layout_marginHorizontal="3dp"
                 android:background="@drawable/message" />
+            <ImageButton
+                android:id="@+id/InstagramButton"
+                style="@style/availableAppsItem"
+                android:layout_marginHorizontal="3dp"
+                android:background="@drawable/instagram" />
         </LinearLayout>
     </HorizontalScrollView>
 
