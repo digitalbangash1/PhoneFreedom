@@ -32,19 +32,7 @@ class PredefinedMessagesActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_predefined_messages)
-
-
-
         messages = prefs.predefinedMessages
-
-          /*  "Fordi jeg spiser",
-            "jeg gider ikke",
-            "One",
-            "Two",
-            "Three",
-            "One",
-            "Two",
-            "Three"*/
 
         var adapter = PredefinedMessagesAdapter(this, messages)
         listViewPredefinedMessage = findViewById<ListView>(R.id.listViewPredefinedMessage)
@@ -81,17 +69,12 @@ class PredefinedMessagesActivity : AppCompatActivity() {
     }
 
     fun editClickListner(view: View) {
-       // val toast = Toast.makeText(applicationContext, "Hello Javatpoint", Toast.LENGTH_SHORT)
-        //toast.show()
-
-
         val item = view.parent as View
         var pos = listViewPredefinedMessage.getPositionForView(item);
         var messageIndex = listViewPredefinedMessage.getItemIdAtPosition(pos).toInt();
         var messageToEdit = messages[messageIndex]
 
         showDialogForEditingMessage(messageToEdit, messageIndex)
-
     }
 
     private fun showDialogForEditingMessage(message: String, position: Int) {
@@ -101,7 +84,7 @@ class PredefinedMessagesActivity : AppCompatActivity() {
 
 
 
-// dialog will show this layout from xml file
+        // dialog will show this layout from xml file
         dialog.setContentView(R.layout.edit_predefined_message) // <--------- define am xml file with this id that has an editText with ok and cancel buttons
 
         var editText = dialog.findViewById<EditText>(R.id.editTextForEditingPredefinedMessage) // <-- with this id for editText
@@ -129,8 +112,5 @@ class PredefinedMessagesActivity : AppCompatActivity() {
         window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         dialog.show()
     }
-
-
-
 
 }

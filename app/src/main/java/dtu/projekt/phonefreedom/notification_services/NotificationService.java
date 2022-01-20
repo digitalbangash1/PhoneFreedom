@@ -33,7 +33,7 @@ public class NotificationService extends NotificationListenerService {
         return isServiceEnabled() &&
                 isSupportedPackage(sbn) &&
                 NotificationUtils.isNewNotification(sbn) &&
-                isGroupMessageAndReplyAllowed(sbn) &&
+                //isGroupMessageAndReplyAllowed(sbn) &&
                 canSendReplyNow(sbn);
     }
 

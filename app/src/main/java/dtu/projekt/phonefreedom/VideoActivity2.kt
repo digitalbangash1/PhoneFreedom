@@ -1,10 +1,8 @@
 package dtu.projekt.phonefreedom
 
-import android.content.SharedPreferences
 import android.widget.VideoView
 import android.os.Bundle
 import android.view.View
-import android.widget.MediaController
 import androidx.appcompat.app.AppCompatActivity
 import dtu.projekt.phonefreedom.notification_services.PreferencesManager
 
@@ -19,8 +17,3 @@ class VideoActivity2 : AppCompatActivity() {
         videoView.start()
     }
 }
-//val mediaController = MediaController(this)
-//link mediaController to videoView
-// mediaController.setAnchorView(videoView)
-//allow mediaController to control our videoView
-//videoView.setMediaController(mediaController)

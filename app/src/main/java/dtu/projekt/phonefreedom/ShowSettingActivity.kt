@@ -27,7 +27,7 @@ class ShowSettingActivity : AppCompatActivity() {
         setContentView(R.layout.activity_show_setting)
 
         val actionBar = supportActionBar
-        actionBar!!.title = resources.getString(R.string.app_name)
+        actionBar!!.title = "SETTING"
 
 
         val btn_changeLang = findViewById<Button>(R.id.btn_changelang)
@@ -38,7 +38,7 @@ class ShowSettingActivity : AppCompatActivity() {
 
         val btn_animation= findViewById<Button>(R.id.Animation1)
         btn_animation.setOnClickListener {
-                showAnimation()
+            showAnimation()
         }
 
 
