@@ -67,6 +67,7 @@ class ShowSettingActivity : AppCompatActivity() {
 
 
 
+    /** Show dialogbox with the different language profiles **/
 
     private fun showChangeLang(){
 
@@ -134,6 +135,8 @@ class ShowSettingActivity : AppCompatActivity() {
         mDialog.show()
     }
 
+    /** Set language profile **/
+
     private fun setLocate(Lang: String) {
 
         val locale = Locale(Lang)
@@ -148,8 +151,9 @@ class ShowSettingActivity : AppCompatActivity() {
         val editor = getSharedPreferences("Settings", Context.MODE_PRIVATE).edit()
         editor.putString("My Lang", Lang)
         editor.apply()
-        //loadLocate()
     }
+
+    /** Load Language profile **/
 
     private fun loadLocate() {
         val sharedPreferences = getSharedPreferences("Settings", Activity.MODE_PRIVATE)
@@ -158,11 +162,6 @@ class ShowSettingActivity : AppCompatActivity() {
             setLocate(language)
         }
     }
-
-
-
-
-
 
 
     fun showAnimation(){
