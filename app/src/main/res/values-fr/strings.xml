@@ -25,4 +25,5 @@
     <string name="edit_message">Modifier le message</string>
     <string name="cancel">Annuler</string>
     <string name="ok">OK</string>
+    <string name="nulstil_sms_package">Réinitialiser le paquet de messages texte</string>
 </resources>

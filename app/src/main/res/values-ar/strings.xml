@@ -24,4 +24,5 @@
     <string name="edit_message">تعديل الرسالة </string>
     <string name="cancel">إلغاء</string>
     <string name="ok">تم</string>
+    <string name="nulstil_sms_package">إعادة ضبط حزمة الرسائل النصية</string>
 </resources>

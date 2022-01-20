@@ -25,5 +25,6 @@
     <string name="edit_message">Nachricht bearbeiten</string>
     <string name="cancel">Abbrechen</string>
     <string name="ok">OK</string>
+    <string name="nulstil_sms_package">SMS-Paket zurücksetzen</string>
 
 </resources>
