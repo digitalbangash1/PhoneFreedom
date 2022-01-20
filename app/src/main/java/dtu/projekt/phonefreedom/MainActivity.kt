@@ -22,6 +22,8 @@ import androidx.annotation.RequiresApi
 import dtu.projekt.phonefreedom.notification_services.InstalledAppsActivity
 
 
+
+
 open class MainActivity : AppCompatActivity() {
 
 
@@ -44,7 +46,7 @@ open class MainActivity : AppCompatActivity() {
         isNotificationServiceRunning()
         requestPermission()
     }
-
+   /** function to check if the Notification Service is Running */
     private fun isNotificationServiceRunning(): Boolean {
         val contentResolver = contentResolver
         val enabledNotificationListeners =
@@ -55,6 +57,7 @@ open class MainActivity : AppCompatActivity() {
 
     }
 
+   /** function to request a permission if it not Running */
     private fun requestPermission() {
 
         val isNotificationServiceRunning = isNotificationServiceRunning()
@@ -64,6 +67,7 @@ open class MainActivity : AppCompatActivity() {
 
     }
 
+    /** function to show the activity for Predefined Messages */
     private fun addClickListeners() {
         binding.buttonSelectPredefinedMessage.setOnClickListener {
             val myIntent = Intent(this, PredefinedMessagesActivity::class.java)
@@ -71,13 +75,14 @@ open class MainActivity : AppCompatActivity() {
         }
     }
 
-
+    /** function to show the activity for settings page  */
     private fun settingsScreen() {
         binding.toSettings.setOnClickListener {
             val myIntent = Intent(this, ShowSettingActivity::class.java)
             startActivity(myIntent)
         }
     }
+
 
 
     var SELECT_SMS_APP_RESULT = 5
@@ -91,7 +96,6 @@ open class MainActivity : AppCompatActivity() {
                 var predefinedMessageEditText = findViewById<EditText>(R.id.editTextAutoText)
                 predefinedMessageEditText.setText(predefinedMessage)
             }
-
             if (resultCode === RESULT_CANCELED) {
 
             }
@@ -109,10 +113,9 @@ open class MainActivity : AppCompatActivity() {
                 // user cancelled
             }
         }
-
     }
 
-
+      /** function to add time */
     private fun addTime() {
         binding.textViewFreeAddTime.setOnClickListener {
             val cal = Calendar.getInstance()
@@ -139,7 +142,7 @@ open class MainActivity : AppCompatActivity() {
 
     }
 
-
+    /** function to make button clicked and to add the written text to message */
     private fun appButton() {
 
         val prefs: PreferencesManager = PreferencesManager.getPreferencesInstance(this)
@@ -149,12 +152,11 @@ open class MainActivity : AppCompatActivity() {
         editTextFreeTo.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
 
-
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                 showtime = s.toString()
                 var showMyTimeOnAutoText = findViewById<EditText>(R.id.editTextAutoText)
                // val msg = "Jeg tjekker min telefon igen kl : "
-                val msg = resources.getString(R.string.holderfrifratlf)
+                   val msg = resources.getString(R.string.holderfrifratlf)
                 showMyTimeOnAutoText.setText(editText.text.toString() + msg + showtime)
             }
 
@@ -167,20 +169,15 @@ open class MainActivity : AppCompatActivity() {
             }
 
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-
                 val default = "This is default message "
-
                 val text = s.toString().trim()
                 if (s.length == 0) {
 
                     prefs.setAutoReplyText(default)
-
                 } else {
-
                     prefs.setAutoReplyText(text)
                     // Toast.makeText(this@MainActivity, showtime,Toast.LENGTH_SHORT).show()
                 }
-
             }
 
             override fun afterTextChanged(s: Editable) {
@@ -194,8 +191,6 @@ open class MainActivity : AppCompatActivity() {
 
         binding.whatsappButton.setOnClickListener {
             binding.whatsappButton.isSelected = !binding.whatsappButton.isSelected
-
-
             prefs.setWhatsAppEnabled(binding.whatsappButton.isSelected)
             prefs.isGroupReplyEnabled = true
         }
@@ -231,17 +226,12 @@ open class MainActivity : AppCompatActivity() {
             } else {
                 prefs.setSmsEnabled(binding.MessageButton.isSelected)
             }
-            /*val i = Intent(this, InstalledAppsActivity::class.java)
-            startActivityForResult(i, SELECT_SMS_APP_RESULT)
-            prefs.setSmsEnabled(binding.MessageButton.isSelected)
-*/
         }
+
         binding.goandstopButton.setOnClickListener {
             binding.goandstopButton.isSelected = !binding.goandstopButton.isSelected
             showVideo()
         }
-
-
         val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
 
         binding.SwitchOnOff.setOnCheckedChangeListener { buttonView, isChecked ->
@@ -260,39 +250,16 @@ open class MainActivity : AppCompatActivity() {
     }
 
 
+      /** function to show video when user click on go/stop button */
     private fun showVideo() {
         val prefs: PreferencesManager = PreferencesManager.getPreferencesInstance(this)
         if (prefs.getShowAnimation()) {
-
             val intent = Intent(this, VideoActivity2::class.java)
             this.startActivity(intent)
-
         }
     }
 
-
-/*   private fun launchNotificationAccessSettings() {
-
-
-       val result: Int =
-           ContextCompat.checkSelfPermission(this, ACTION_NOTIFICATION_LISTENER_SETTINGS)
-
-       val NOTIFICATION_LISTENER_SETTINGS: String
-       if (Build.VERSION.SDK_INT >= 23) {
-           NOTIFICATION_LISTENER_SETTINGS = ACTION_NOTIFICATION_LISTENER_SETTINGS
-
-
-       } else {
-           NOTIFICATION_LISTENER_SETTINGS =
-               "android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS"
-           Toast.makeText(this, "hello", Toast.LENGTH_SHORT).show()
-
-       }
-       val i = Intent(NOTIFICATION_LISTENER_SETTINGS)
-       startActivity(i)
-   }*/
-
-
+     /** function to check the Notification Policy Access */
     private fun checkNotificationPolicyAccess(notificationManager: NotificationManager): Boolean {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (notificationManager.isNotificationPolicyAccessGranted) {
@@ -312,15 +279,14 @@ open class MainActivity : AppCompatActivity() {
         return false
     }
 
+    /** Extension function to turn on do not disturb */
     fun NotificationManager.onDOD() {
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             this.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_NONE)
         }
     }
 
-
-    // Extension function to turn off do not disturb
+    /** Extension function to turn off do not disturb */
     fun NotificationManager.offDOD() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             this.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_ALL)

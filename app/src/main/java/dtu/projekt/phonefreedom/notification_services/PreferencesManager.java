@@ -297,7 +297,7 @@ public class PreferencesManager {
     public boolean isSupportedAppEnabled(String packageName) {
         SupportedApp[] enabledApps = getEnabledApps();
         for (SupportedApp enabledApp : enabledApps) {
-            Toast.makeText(context,enabledApp.getPackageName(),Toast.LENGTH_SHORT).show();
+            //Toast.makeText(context,enabledApp.getPackageName(),Toast.LENGTH_SHORT).show();
             if (enabledApp.getPackageName().equalsIgnoreCase(packageName)) {
                 return true;
             }

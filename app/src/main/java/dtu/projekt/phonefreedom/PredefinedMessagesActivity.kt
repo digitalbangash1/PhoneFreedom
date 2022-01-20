@@ -1,7 +1,6 @@
 package dtu.projekt.phonefreedom
 
-import android.R.attr
-import android.annotation.SuppressLint
+
 import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -11,19 +10,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import android.app.Dialog
-import android.content.Context
-import android.content.SharedPreferences
-import android.provider.Contacts.SettingsColumns.KEY
 import android.view.Window
-import androidx.preference.PreferenceManager
 import dtu.projekt.phonefreedom.notification_services.PreferencesManager
-import java.util.*
 
 
 class PredefinedMessagesActivity : AppCompatActivity() {
 
 
-    //Declare fields so they can be seen from all functions etc
+    /**Declare fields so they can be seen from all functions etc */
     lateinit var listViewPredefinedMessage: ListView
     lateinit var messages: Array<String>
     val prefs : PreferencesManager = PreferencesManager.getPreferencesInstance(this)
@@ -56,7 +50,7 @@ class PredefinedMessagesActivity : AppCompatActivity() {
         private val messages: Array<String>
     ) : ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, messages) {
 
-
+       /** function to get the view of predefined messages */
         override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
             var inflater: LayoutInflater = LayoutInflater.from(context)
             var view: View =
@@ -65,10 +59,10 @@ class PredefinedMessagesActivity : AppCompatActivity() {
             message.setText(messages[position])
             return view
         }
-
-
     }
 
+
+     /** function to edit the predefined message */
     fun editClickListner(view: View) {
         val item = view.parent as View
         var pos = listViewPredefinedMessage.getPositionForView(item);
@@ -78,12 +72,12 @@ class PredefinedMessagesActivity : AppCompatActivity() {
         showDialogForEditingMessage(messageToEdit, messageIndex)
     }
 
+
+    /** function to show the edited predefined message */
     private fun showDialogForEditingMessage(message: String, position: Int) {
         val dialog = Dialog(this)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.setCancelable(true)
-
-
 
         // dialog will show this layout from xml file
         dialog.setContentView(R.layout.edit_predefined_message) // <--------- define am xml file with this id that has an editText with ok and cancel buttons
@@ -101,14 +95,10 @@ class PredefinedMessagesActivity : AppCompatActivity() {
             dialog.dismiss()
 
         }
-
         noButton.setOnClickListener { dialog.dismiss() } // just close dialog and do nothing when no button is clicked
 
-
         dialog.window
-
         //window.setLayout((ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT)
-
         //dialog.getWindow()?.setLayout((6* width)/7,LinearLayout.LayoutParams.MATCH_PARENT)
         window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         dialog.show()

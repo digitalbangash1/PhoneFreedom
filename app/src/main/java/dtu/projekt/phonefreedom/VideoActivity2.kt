@@ -14,6 +14,7 @@ class VideoActivity2 : AppCompatActivity() {
         val videoView = findViewById<View>(R.id.VideoView) as VideoView
         videoView.setVideoPath("android.resource://" + packageName + "/" + R.raw.videoclip)
 
+        /** start the video */
         videoView.start()
     }
 }
