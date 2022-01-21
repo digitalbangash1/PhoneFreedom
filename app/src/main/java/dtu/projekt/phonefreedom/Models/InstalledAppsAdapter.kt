@@ -1,8 +1,8 @@
-package dtu.projekt.phonefreedom.notification_services
+package dtu.projekt.phonefreedom.Models
 
 import android.content.Context
 
-import dtu.projekt.phonefreedom.notification_services.InstalledApp
+import dtu.projekt.phonefreedom.Models.notification_services.InstalledApp
 import android.widget.ArrayAdapter
 import dtu.projekt.phonefreedom.R
 import android.view.ViewGroup

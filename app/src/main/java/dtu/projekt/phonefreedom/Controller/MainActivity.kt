@@ -1,4 +1,4 @@
-package dtu.projekt.phonefreedom
+package dtu.projekt.phonefreedom.Controller
 
 
 import android.app.TimePickerDialog
@@ -11,7 +11,7 @@ import android.content.Intent
 import android.os.Build
 import android.provider.Settings
 import android.widget.EditText
-import dtu.projekt.phonefreedom.notification_services.PreferencesManager
+import dtu.projekt.phonefreedom.Models.PreferencesManager
 import android.app.NotificationManager
 import android.provider.Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS
 import android.widget.Toast
@@ -19,7 +19,8 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.widget.TextView
 import androidx.annotation.RequiresApi
-import dtu.projekt.phonefreedom.notification_services.InstalledAppsActivity
+import dtu.projekt.phonefreedom.Models.notification_services.InstalledAppsActivity
+import dtu.projekt.phonefreedom.R
 
 
 
@@ -57,7 +58,7 @@ open class MainActivity : AppCompatActivity() {
 
     }
 
-   /** function to request a permission if it not Running */
+   /** function to request a permission if it not granted */
     private fun requestPermission() {
 
         val isNotificationServiceRunning = isNotificationServiceRunning()
@@ -84,7 +85,10 @@ open class MainActivity : AppCompatActivity() {
     }
 
 
-
+    /**
+     * S e l e c t_s m s_a p p_r e s u l t
+     * This method retrieves the results from another activity (onActivityResult)
+     */
     var SELECT_SMS_APP_RESULT = 5
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -295,86 +299,6 @@ open class MainActivity : AppCompatActivity() {
 
 
 }
-
-
-/*private fun sendWhatsapp(message: String) {
-      val sendIntent = Intent()
-      sendIntent.action = Intent.ACTION_SEND
-      sendIntent.putExtra(Intent.EXTRA_TEXT, "this is ")
-      sendIntent.type = "text/plain"
-      sendIntent.setPackage("com.whatsapp")
-      if (sendIntent.resolveActivity(packageManager) != null) {
-          startActivity(sendIntent)
-      }
-  }
-
-  private fun sendWhatsapp() {
-      binding.whatsappSend.setOnClickListener {
-
-          val sendIntent = Intent() // this works
-          sendIntent.action = Intent.ACTION_SEND
-          sendIntent.putExtra(Intent.EXTRA_TEXT, "This is my text to send.")
-          sendIntent.type = "text/plain"
-          sendIntent.setPackage("com.whatsapp")
-          startActivity(sendIntent)
-
-          *//* val sendIntent = Intent()
-             sendIntent.action = Intent.ACTION_SEND
-             sendIntent.putExtra(Intent.EXTRA_TEXT, "this is a test")
-             sendIntent.type = "text/plain"
-             sendIntent.setPackage("com.whatsapp")
-             if (sendIntent.resolveActivity(packageManager) != null) {
-                 startActivity(sendIntent)
-             }*//*
-        }
-
-
-//Here we tell android to only send it to whatsapp by setting the package to whatsapp's package.
-//This will not open the app selection dialog as we specifically send to whatsapp
-
-
-//Here we tell android to only send it to whatsapp by setting the package to whatsapp's package.
-//This will not open the app selection dialog as we specifically send to whatsapp
-
-            //sendIntent.setPackage("com.whatsapp") // whatsapp
-            // sendIntent.setPackage("com.facebook.orca") // facebook messeger
-            //sendIntent.setPackage("org.telegram.messenger") // telegram
-            // sendIntent.setPackage("com.snapchat.android") //snapchat
-            //sendIntent.setPackage("com.instagram.android") //instagram
-            //  sendIntent.setPackage("com.samsung.android.messaging") // messages
-            //sendIntent.setPackage("com.android.server.telecom") Phone call not working // telefon
-            //
-
-
-            //startActivity(sendIntent)
-        }*/
-
-
-/* val result: Int
-     result = ContextCompat.checkSelfPermission(this, ACTION_NOTIFICATION_LISTENER_SETTINGS)
-     if (result == PERMISSION_GRANTED) {
-         return
-     }
-
-     val NOTIFICATION_LISTENER_SETTINGS: String
-     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1) {
-         NOTIFICATION_LISTENER_SETTINGS = ACTION_NOTIFICATION_LISTENER_SETTINGS
-
-     } else {
-         NOTIFICATION_LISTENER_SETTINGS = "android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS"
-
-     }
-     val i = Intent(NOTIFICATION_LISTENER_SETTINGS)
-     startActivity(i)
-
-     NOTIFICATION_LISTENER_SETTINGS =
-         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1) {
-             Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS
-         } else {
-             "android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS"
-         }
-     val i = Intent(NOTIFICATION_LISTENER_SETTINGS)
-     startActivity(i)*/
 
 
 

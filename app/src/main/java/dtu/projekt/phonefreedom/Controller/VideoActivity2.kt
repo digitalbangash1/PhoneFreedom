@@ -1,10 +1,10 @@
-package dtu.projekt.phonefreedom
+package dtu.projekt.phonefreedom.Controller
 
 import android.widget.VideoView
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import dtu.projekt.phonefreedom.notification_services.PreferencesManager
+import dtu.projekt.phonefreedom.R
 
 
 class VideoActivity2 : AppCompatActivity() {

@@ -1,9 +1,9 @@
-package dtu.projekt.phonefreedom.notification_services
+package dtu.projekt.phonefreedom.Models.notification_services
 
 import android.service.notification.StatusBarNotification
 import android.os.Parcelable
-import dtu.projekt.phonefreedom.notification_services.NotificationUtils
-import dtu.projekt.phonefreedom.notification_services.NotificationWear
+import dtu.projekt.phonefreedom.Models.notification_services.NotificationUtils
+import dtu.projekt.phonefreedom.Models.notification_services.NotificationWear
 import android.app.PendingIntent
 import androidx.core.app.NotificationCompat
 import androidx.core.app.RemoteInput

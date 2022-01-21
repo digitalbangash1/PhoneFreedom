@@ -1,4 +1,4 @@
-package dtu.projekt.phonefreedom.notification_services
+package dtu.projekt.phonefreedom.Models.notification_services
 
 data class InstalledApp(
     val name :String,

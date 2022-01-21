@@ -1,11 +1,12 @@
-package dtu.projekt.phonefreedom.notification_services
+package dtu.projekt.phonefreedom.Models.notification_services
 
-import dtu.projekt.phonefreedom.notification_services.NotificationHelper.Companion.getInstance
+import dtu.projekt.phonefreedom.Models.notification_services.NotificationHelper.Companion.getInstance
 import android.content.Intent
 import android.os.IBinder
 import android.app.ActivityManager
 import android.app.Service
 import android.util.Log
+import dtu.projekt.phonefreedom.Models.PreferencesManager
 
 /**
  * Keep alive service. This piece of code is taken from opensource project on github(watomatic) and modified

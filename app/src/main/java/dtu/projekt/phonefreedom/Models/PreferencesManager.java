@@ -1,4 +1,4 @@
-package dtu.projekt.phonefreedom.notification_services;
+package dtu.projekt.phonefreedom.Models;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -9,6 +9,8 @@ import androidx.preference.PreferenceManager;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
+
+import dtu.projekt.phonefreedom.Models.notification_services.SupportedApp;
 
 public class PreferencesManager {
 

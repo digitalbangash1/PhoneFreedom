@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="horizontal"
     android:descendantFocusability="blocksDescendants"
-    tools:context=".PredefinedMessagesActivity">
+    tools:context=".Controller.PredefinedMessagesActivity">
 
     <TextView
         android:id="@+id/textViewMessage"

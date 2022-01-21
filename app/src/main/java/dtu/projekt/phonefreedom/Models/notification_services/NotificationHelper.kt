@@ -1,12 +1,12 @@
-package dtu.projekt.phonefreedom.notification_services
+package dtu.projekt.phonefreedom.Models.notification_services
 
-import dtu.projekt.phonefreedom.notification_services.NotificationHelper
+import dtu.projekt.phonefreedom.Models.notification_services.NotificationHelper
 import org.json.JSONException
 import android.os.Build
 import android.app.NotificationManager
 import android.app.NotificationChannel
 import android.content.Intent
-import dtu.projekt.phonefreedom.notification_services.NotificationIntentActivity
+import dtu.projekt.phonefreedom.Models.notification_services.NotificationIntentActivity
 import android.app.PendingIntent
 import android.app.Service
 import android.content.Context

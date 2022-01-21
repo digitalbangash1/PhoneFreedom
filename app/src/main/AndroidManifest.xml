@@ -31,19 +31,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PhoneFreedom">
         <activity
-            android:name=".ShowSettingActivity"
+            android:name=".Controller.ShowSettingActivity"
             android:exported="false" />
         <activity
-            android:name=".VideoActivity2"
+            android:name=".Controller.VideoActivity2"
             android:exported="false"
             android:label="@string/title_activity_video2"
             android:theme="@style/Theme.PhoneFreedom.NoActionBar" />
 
         <activity
-            android:name=".PredefinedMessagesActivity"
+            android:name=".Controller.PredefinedMessagesActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Controller.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -52,17 +52,17 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".notification_services.NotificationIntentActivity"
+            android:name=".Models.notification_services.NotificationIntentActivity"
             android:launchMode="singleTop" />
 
         <activity
-            android:name=".notification_services.InstalledAppsActivity"
+            android:name=".Models.notification_services.InstalledAppsActivity"
             android:launchMode="singleTop">
 
         </activity>
 
         <service
-            android:name=".notification_services.NotificationService"
+            android:name=".Models.notification_services.NotificationService"
             android:exported="false"
             android:label="NotificationService"
             android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
@@ -71,11 +71,11 @@
             </intent-filter>
         </service>
         <service
-            android:name=".notification_services.KeepAliveService"
+            android:name=".Models.notification_services.KeepAliveService"
             android:stopWithTask="false" />
 
         <receiver
-            android:name=".notification_services.NotificationServiceRestartReceiver"
+            android:name=".Models.notification_services.NotificationServiceRestartReceiver"
             android:enabled="true"
             android:exported="false"
             android:permission="android.permission.RECEIVE_BOOT_COMPLETED">

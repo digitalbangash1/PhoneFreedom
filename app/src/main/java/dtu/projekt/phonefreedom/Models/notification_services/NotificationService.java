@@ -1,4 +1,4 @@
-package dtu.projekt.phonefreedom.notification_services;
+package dtu.projekt.phonefreedom.Models.notification_services;
 
 import android.app.PendingIntent;
 import android.content.Intent;
@@ -11,6 +11,8 @@ import android.util.Log;
 import androidx.core.app.RemoteInput;
 
 import static java.lang.Math.max;
+
+import dtu.projekt.phonefreedom.Models.PreferencesManager;
 
 /**
  * This class is taken from opensource free project on github(watomatic) and modified to our use.

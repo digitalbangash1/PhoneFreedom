@@ -1,8 +1,8 @@
-package dtu.projekt.phonefreedom.notification_services
+package dtu.projekt.phonefreedom.Models.notification_services
 
-import dtu.projekt.phonefreedom.notification_services.BaseActivity
+import dtu.projekt.phonefreedom.Models.notification_services.BaseActivity
 import android.os.Bundle
-import dtu.projekt.phonefreedom.notification_services.NotificationHelper
+import dtu.projekt.phonefreedom.Models.notification_services.NotificationHelper
 import android.content.Intent
 import android.content.pm.PackageManager
 

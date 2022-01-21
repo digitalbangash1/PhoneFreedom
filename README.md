@@ -15,6 +15,7 @@ David Lucas, Møller                         s173210        github: XSystem32
 Under course:
 62550 User experience and mobile application development Fall 21
 DTU
+Dated and submitted on : 21-01-2022
 
 
 

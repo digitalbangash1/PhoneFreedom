@@ -1,4 +1,4 @@
-package dtu.projekt.phonefreedom.notification_services
+package dtu.projekt.phonefreedom.Models.notification_services
 
 
 import androidx.appcompat.app.AppCompatActivity
@@ -9,6 +9,7 @@ import android.widget.AdapterView.OnItemClickListener
 import android.content.Intent
 import android.view.View
 import android.widget.ListView
+import dtu.projekt.phonefreedom.Models.InstalledAppsAdapter
 import java.util.*
 
 /**

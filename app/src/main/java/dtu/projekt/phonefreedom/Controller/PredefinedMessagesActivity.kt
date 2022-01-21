@@ -1,4 +1,4 @@
-package dtu.projekt.phonefreedom
+package dtu.projekt.phonefreedom.Controller
 
 
 import android.app.Activity
@@ -11,7 +11,9 @@ import android.view.ViewGroup
 import android.widget.*
 import android.app.Dialog
 import android.view.Window
-import dtu.projekt.phonefreedom.notification_services.PreferencesManager
+import dtu.projekt.phonefreedom.Models.PreferencesManager
+import dtu.projekt.phonefreedom.R
+
 
 
 class PredefinedMessagesActivity : AppCompatActivity() {

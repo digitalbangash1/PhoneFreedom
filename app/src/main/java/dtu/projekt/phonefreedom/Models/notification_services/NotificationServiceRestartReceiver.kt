@@ -1,11 +1,11 @@
-package dtu.projekt.phonefreedom.notification_services;
+package dtu.projekt.phonefreedom.Models.notification_services;
 
 import android.content.BroadcastReceiver
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.util.Log
+import dtu.projekt.phonefreedom.Models.PreferencesManager
 
 class NotificationServiceRestartReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context?, intent: Intent?) {
