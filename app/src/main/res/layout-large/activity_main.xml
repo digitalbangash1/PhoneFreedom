@@ -106,7 +106,7 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:hint="@string/write_msg"
-                android:textSize="40dp"
+                android:textSize="30sp"
                 android:inputType="textPersonName"
                 android:text=""
                 android:layout_marginTop="10dp"/>
@@ -150,8 +150,8 @@
 
             <Button
                 android:id="@+id/textViewFreeAddTime"
-                android:layout_width="300dp"
-                android:layout_height="70dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:backgroundTint="#C9D4DF"
                 android:text="@string/add_time"
                 android:textColor="#000109"
@@ -160,8 +160,8 @@
 
             <TextView
                 android:id="@+id/editTextFreeTo"
-                android:layout_width="300dp"
-                android:layout_height="70dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:background="#7476CD"
                 android:ems="10"
