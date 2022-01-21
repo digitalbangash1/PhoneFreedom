@@ -12,7 +12,7 @@ import java.util.Set;
 
 public class PreferencesManager {
 
-    //These are all the supported apps
+    //These are the apps we could work with
     private final String WHATSAPP_PACKAGE_NAME = "com.whatsapp";
     private final String MESSENGER_PACKAGE_NAME = "com.facebook.orca";
     private final String SNAPCHAT_PACKAGE_NAME = "com.snapchat.android";
@@ -91,6 +91,10 @@ public class PreferencesManager {
         return instance;
     }
 
+    /**
+     * method to retrieve predefined messages
+     * @return
+     */
     public String[] getPredefinedMessages() {
         Set<String> messagesSet = sharedPrefs.getStringSet(KEY_PREDEFINED_MESSAGE, new HashSet<String>());
         String[] messages = new String[messagesSet.size()];
@@ -98,6 +102,10 @@ public class PreferencesManager {
         return messages;
     }
 
+    /**
+     * Method to set predefind message thorough shared preferences
+     * @param messages
+     */
     public void setPredefinedMessages(String[] messages) {
         Set<String> set = new HashSet<>();
         for (String message : messages) {
@@ -109,6 +117,9 @@ public class PreferencesManager {
 
     }
 
+    /**
+     * Predefined messages are intialized in this method
+     */
     private void initializePredefinedMessages() {
         String[] currentMessages = getPredefinedMessages();
         if (currentMessages.length > 0) {
@@ -196,6 +207,10 @@ public class PreferencesManager {
         return sharedPrefs.getString(KEY_AUTO_REPLY_TEXT, "This is a default automated message.");
     }
 
+    /**
+     * Method that saves the sending text in shared pref
+     * @param text
+     */
     public void setAutoReplyText(String text) {
         SharedPreferences.Editor editor = sharedPrefs.edit();
         editor.putString(KEY_AUTO_REPLY_TEXT, text);
@@ -293,11 +308,11 @@ public class PreferencesManager {
      }
  */
 
-    // LOOK AT THIS METHOD
+
     public boolean isSupportedAppEnabled(String packageName) {
         SupportedApp[] enabledApps = getEnabledApps();
         for (SupportedApp enabledApp : enabledApps) {
-            //Toast.makeText(context,enabledApp.getPackageName(),Toast.LENGTH_SHORT).show();
+           // Toast.makeText(context,enabledApp.getPackageName(),Toast.LENGTH_SHORT).show();
             if (enabledApp.getPackageName().equalsIgnoreCase(packageName)) {
                 return true;
             }

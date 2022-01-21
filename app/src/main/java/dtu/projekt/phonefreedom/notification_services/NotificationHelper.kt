@@ -14,6 +14,12 @@ import androidx.core.app.NotificationCompat
 import dtu.projekt.phonefreedom.R
 import org.json.JSONObject
 
+/**
+ * Notification helper
+ * This class was taken from free opensource project on github(watomatic) and modified for use.
+ * @property appContext
+ * @constructor Create empty Notification helper
+ */
 class NotificationHelper private constructor(private val appContext: Context) {
     private fun setNotificationSummaryShown(packageName: String) {
         var packageName: String? = packageName

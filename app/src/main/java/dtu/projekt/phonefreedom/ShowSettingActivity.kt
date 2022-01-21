@@ -60,13 +60,17 @@ class ShowSettingActivity : AppCompatActivity() {
             val i = Intent(this, InstalledAppsActivity::class.java)
             startActivityForResult(i, )
             Toast.makeText(this, SMS_APP_PACKAGE_NAME_RESULT, Toast.LENGTH_SHORT).show()*/
+
         }
+
     }
 
 
 
-    /** function to change language */
+    /** Show dialogbox with the different language profiles **/
+
     private fun showChangeLang(){
+
         val listItems = arrayOf("العربية", "中國人","Dansk","English","Français","Deutsch","Español")
 
         val mBuilder = AlertDialog.Builder(this)
@@ -131,7 +135,8 @@ class ShowSettingActivity : AppCompatActivity() {
         mDialog.show()
     }
 
-   /** function to set  the chosen language */
+    /** Set language profile **/
+
     private fun setLocate(Lang: String) {
 
         val locale = Locale(Lang)
@@ -149,7 +154,8 @@ class ShowSettingActivity : AppCompatActivity() {
         //loadLocate()
     }
 
-    /** function to load the chosen language */
+    /** Load Language profile **/
+
     private fun loadLocate() {
         val sharedPreferences = getSharedPreferences("Settings", Activity.MODE_PRIVATE)
         val language = sharedPreferences.getString("My Lang", "")
@@ -181,6 +187,7 @@ class ShowSettingActivity : AppCompatActivity() {
             dialog.dismiss()
         }
         val mDialog = mBuilder.create()
+
         mDialog.show()
     }
 
