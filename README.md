@@ -1,4 +1,4 @@
-We have developed this application that supports the auto Reply feature for several applications, including WhatsApp, Telegram, Signal and Messenger.
+A1We have developed this application that supports the auto Reply feature for several applications, including WhatsApp, Telegram, Signal and Messenger.
  This application allows users to choose specific applications or choose all applications.
 It is also possible to write a message or choose one of the previously defined messages.
 There is also an opportunity to add the time that the person will check their phone again and will automatically type the time in the text of the message.
