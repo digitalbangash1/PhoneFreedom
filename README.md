@@ -3,6 +3,12 @@ A1We have developed this application that supports the auto Reply feature for se
 It is also possible to write a message or choose one of the previously defined messages.
 There is also an opportunity to add the time that the person will check their phone again and will automatically type the time in the text of the message.
   The application is available in several languages, including English, French, Arabic, Chinese, Spanish and Danish.
+  
+  ![phone](https://user-images.githubusercontent.com/71657588/179394020-c23db57d-abb8-48f8-99c1-55fe33378f4a.png)
+
+  
+  
+  
 
 The app is developed by:
 Muhammad Ali Khan, Bangash                  s092512        github: digitalbangash1
